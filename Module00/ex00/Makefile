@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/20 16:02:28 by umeneses          #+#    #+#              #
-#    Updated: 2025/03/20 17:07:05 by umeneses         ###   ########.fr        #
+#    Updated: 2025/04/03 12:22:58 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ GTEST_LIB		:= /usr/lib/libgtest.a /usr/lib/libgtest_main.a
 NAME			:= $(BIN_DIR)megaphone
 
 SRC_F			= $(wildcard $(SRC_DIR)*.cpp)
+OBJ_F			= $(wildcard $(SRC_DIR)%.cpp, $(BUILD_DIR)%.o, $(SRC_F))
 
 # **************************************************************************** #
 #								COMMANDS									   #
@@ -60,11 +61,14 @@ MV_OBJS			:= find . -type f \( -name '.o' -o -name '.a'\) -exec mv {} \
 # **************************************************************************** #
 
 AUTHOR			:= umeneses
-COMPILER		:= C++
+COMPILER		:= c++
 FLAGS			:= -Wall -Wextra -Werror
 LIMITATIONS		:= -std=c++98
 DEBUG			:= -g3
 
+
+RM				:= rm -rf
+MKDIR			:= mkdir -p
 
 
 # **************************************************************************** #
@@ -73,6 +77,33 @@ DEBUG			:= -g3
 
 all:			$(NAME)
 
-$(NAME):		$(OBJS) | $(BIN_DIR)
-				@echo "$(GREEN)Compiling C++ Files:$(RESET)"
-				@$(COMPILER) $(FLAGS) $(LIMITATIONS) $(DEBUG) $@ -o $^
+$(NAME):		$(OBJ_F) | $(BIN_DIR)
+				@echo "$(GREEN)Compiling C++ Files -> $(YELLOW)$(notdir $<)"
+				@printf "$(RESET)"
+				@$(COMPILER) $(FLAGS) $(LIMITATIONS) $(DEBUG) -o $@ $^
+				@echo "$(GREEN)C++ Program Ready!$(RESET)"
+
+$(BUILD_DIR)%.o:	$(SRC_DIR)%.cpp | $(BUILD_DIR)
+	$(COMPILER) $(FLAGS) $(LIMITATIONS) -c -o $@ $<
+
+$(BIN_DIR):
+	@$(MKDIR) $(BIN_DIR)
+
+clean:
+	@$(RM) $(BUILD_DIR)
+	@echo "$(RED)Cleaning -> $(YELLOW)$(BUILD_DIR)"
+	@printf "$(RESET)"
+
+fclean: clean
+	@$(RM) $(BIN_DIR)
+	@echo "$(RED)Cleaning -> $(YELLOW)$(BIN_DIR)"
+	@printf "$(RESET)"
+
+re:		fclean all
+	@echo "$(PURPLE)>>>>>>>>>>>>>>>>>>>>>>>"
+	@echo "$(CYAN)Program just rebuilt -> $(YELLOW)$(NAME) $(RESET)"
+
+go:	all
+	@./$(NAME) $*
+
+.PHONY: all clean fclean re go
