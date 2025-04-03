@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/20 16:02:28 by umeneses          #+#    #+#              #
-#    Updated: 2025/04/03 12:22:58 by umeneses         ###   ########.fr        #
+#    Updated: 2025/04/03 13:22:24 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,11 +65,10 @@ COMPILER		:= c++
 FLAGS			:= -Wall -Wextra -Werror
 LIMITATIONS		:= -std=c++98
 DEBUG			:= -g3
-
+ALL_HEADERS		:= -I$(HEADERS_DIR)
 
 RM				:= rm -rf
 MKDIR			:= mkdir -p
-
 
 # **************************************************************************** #
 #								TARGETS										   #
@@ -80,11 +79,11 @@ all:			$(NAME)
 $(NAME):		$(OBJ_F) | $(BIN_DIR)
 				@echo "$(GREEN)Compiling C++ Files -> $(YELLOW)$(notdir $<)"
 				@printf "$(RESET)"
-				@$(COMPILER) $(FLAGS) $(LIMITATIONS) $(DEBUG) -o $@ $^
+				@$(COMPILER) $(FLAGS) $(LIMITATIONS) $(DEBUG) $^ -o $(NAME)
 				@echo "$(GREEN)C++ Program Ready!$(RESET)"
 
 $(BUILD_DIR)%.o:	$(SRC_DIR)%.cpp | $(BUILD_DIR)
-	$(COMPILER) $(FLAGS) $(LIMITATIONS) -c -o $@ $<
+	$(COMPILER) $(FLAGS) $(LIMITATIONS) $(ALL_HEADERS) -c -o $@ $<
 
 $(BIN_DIR):
 	@$(MKDIR) $(BIN_DIR)

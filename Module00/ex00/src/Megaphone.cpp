@@ -6,12 +6,11 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 14:31:21 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/03 12:23:45 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/04/03 13:28:19 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cstring>
+#include "../headers/Megaphone.hpp"
 
 int main()
 {
@@ -22,8 +21,8 @@ int main()
 	a = 40;
 	b = 2;
 	sum = a + b;
-	strcpy(megaphone,"Helloooooooo World!");
+	strcpy(megaphone,"Helloooooooo World");
 	std::cout <<
-		megaphone << ", " << sum << std::endl;
+		megaphone << ", " << sum << "!" << std::endl;
 	return 0;
 }
