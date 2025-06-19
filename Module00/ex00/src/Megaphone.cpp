@@ -6,23 +6,32 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 14:31:21 by umeneses          #+#    #+#             */
-/*   Updated: 2025/04/03 13:28:19 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/06/19 20:14:32 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/Megaphone.hpp"
+// #include <iostream>
+// #include <cstring>
 
-int main()
+int megaphone(int argc, char **argv)
 {
-	int a, b;
-	int sum;
-	char megaphone[50];
-	
-	a = 40;
-	b = 2;
-	sum = a + b;
-	strcpy(megaphone,"Helloooooooo World");
-	std::cout <<
-		megaphone << ", " << sum << "!" << std::endl;
+	std::string str;
+	if (argc == 1)
+	{
+		std::cout
+		<< ">>> SHOUTING IS BAD <<<" << std::endl;
+	}
+	else
+	{
+		for (int i = 1; i < argc; ++i)
+		{
+			str += argv[i];
+			if (i < argc - 1)
+				str += " ";
+		}
+		std::cout
+		<< str << " argv with more then 2 !" << std::endl;
+	}
 	return 0;
 }
