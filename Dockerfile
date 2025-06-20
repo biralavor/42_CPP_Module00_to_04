@@ -9,38 +9,25 @@ RUN apt-get update && apt-get install -y \
     clang \
     cmake \
     git \
-    python3 \
-    python3-pip \
-    python3-venv \
     libreadline-dev \
     libgtest-dev \
     valgrind
 
-# Clone GoogleTest
-RUN git clone https://github.com/google/googletest.git /googletest
-
 # Build and install GoogleTest
-RUN cd /googletest && \
-    mkdir build && \
-    cd build && \
-    cmake .. && \
-    make && \
-    make install
+RUN cd /usr/src/gtest \
+    && cmake . \
+    && make
 
-# Create a non-root user
-ARG USER_ID=1000
-ARG GROUP_ID=1000
-RUN groupadd -g ${GROUP_ID} developer && \
-    useradd -u ${USER_ID} -g ${GROUP_ID} -m -s /bin/bash developer
-
-# Create and set permissions for workspace
-RUN mkdir -p /workspace && \
-    chown developer:developer /workspace
-# Switch to non-root user
-USER developer
+# # Copy the GoogleTest Library
+RUN cd /usr/src/gtest/lib \
+    && cp libgtest.a /usr/lib \
+    && cp libgtest_main.a /usr/lib
 
 # Set working directory for projects
-WORKDIR /workspace
+WORKDIR /app
+
+# Copy project files into the container
+COPY . .
 
 # Default command
-CMD ["/bin/bash"]
+CMD [ "/bin/bash" ]
