@@ -1,5 +1,13 @@
-NAME = cpp42-env
-CONTAINER = cpp42-container
+define get_container_name
+	head -n 4 docker-compose.yaml | tail -n 1 | sed 's/://g'
+endef
+
+define get_image_name
+	cat docker-compose.yaml | grep 'image:' | awk '{printf $$2}'
+endef
+
+IMAGE = $(shell $(get_image_name))
+CONTAINER = $(shell $(get_container_name))
 
 RED				:= \033[0;31m
 GREEN			:= \033[0;32m
@@ -16,39 +24,33 @@ COLORED_GROUP_ID = $(CYAN)$(shell id -g)$(YELLOW)
 
 .PHONY: build
 build:
-	@echo "$(YELLOW)Building DOCKER with UID=$(COLORED_USER_ID) and GID=$(COLORED_GROUP_ID)$(RESET)"
-	docker build \
-		--build-arg USER_ID=$(shell id -u) \
-		--build-arg GROUP_ID=$(shell id -g) \
-		-t $(NAME) .
+	docker compose up -d --build
+	@echo "$(GREEN)Docker image $(IMAGE) built successfully!$(RESET)"
 
-.PHONY: go-docker
-go-docker:
-	docker run -it \
-	--name $(CONTAINER) \
-	-v $(PWD):/workspace:rw \
-	--user $(shell id -u):$(shell id -g) \
-	$(NAME)
+.PHONY: go
+go: build
+	@echo "$(GREEN)Docker container $(CONTAINER) is running!$(RESET)"
+	$(call prepare_googletest)
+	$(call build_googletest)
 
 .PHONY: stop
 stop:
-	docker stop $(CONTAINER) || true
+	docker compose stop $(CONTAINER)
+	@printf "$(YELLOW)Docker container $(CONTAINER) stopped!$(RESET)"
 
-.PHONY: clean
-clean: stop
-	docker rm $(CONTAINER) || true
+.PHONY: down
+down:
+	docker compose down
+	@printf "$(YELLOW)Docker container $(CONTAINER) stopped and removed!$(RESET)"
 
 .PHONY: reload-docker
-reload-docker: clean build go-docker
-
-.PHONY: deep-clean
-deep-clean: clean
-	docker rmi $(NAME) || true
+reload-docker: stop build go-docker
 
 .PHONY: ps
 ps:
 	docker ps -a
+	@printf "$(YELLOW)Docker containers listed!$(RESET)"
 
-.PHONY: prune-system
-prune-system:
-	docker system prune -f
+.PHONY: deep-clean
+deep-clean:
+	docker builder prune
