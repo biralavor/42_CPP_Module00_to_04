@@ -6,13 +6,11 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 14:31:21 by umeneses          #+#    #+#             */
-/*   Updated: 2025/06/19 20:14:32 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/06/19 22:42:00 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/Megaphone.hpp"
-// #include <iostream>
-// #include <cstring>
 
 int megaphone(int argc, char **argv)
 {
@@ -26,12 +24,12 @@ int megaphone(int argc, char **argv)
 	{
 		for (int i = 1; i < argc; ++i)
 		{
-			str += argv[i];
+			str += toupper(argv[i]);
 			if (i < argc - 1)
 				str += " ";
 		}
 		std::cout
-		<< str << " argv with more then 2 !" << std::endl;
+		<< str << std::endl;
 	}
 	return 0;
 }
