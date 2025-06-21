@@ -24,7 +24,6 @@ ORANGE			:= \033[0;91m
 MAGENT			:= \033[0;95m
 RESET			:= \033[0m
 
-
 # **************************************************************************** #
 #								PATHS										   #
 # **************************************************************************** #
@@ -35,17 +34,14 @@ BIN_DIR			:= ./bin/
 LIBS_DIR		:= ./libs/
 HEADERS_DIR		:= ./headers/
 
-GTEST_DIR		:= /usr/bin/googletest/
-GTEST_LIB		:= /usr/lib/libgtest.a /usr/lib/libgtest_main.a
-
 # **************************************************************************** #
 #								FILES										   #
 # **************************************************************************** #
 
 NAME			:= $(BIN_DIR)megaphone
-
-SRC_F			= $(wildcard $(SRC_DIR)*.cpp)
-OBJ_F			= $(wildcard $(SRC_DIR)%.cpp, $(BUILD_DIR)%.o, $(SRC_F))
+SRC_F			:= $(wildcard $(SRC_DIR)*.cpp)
+OBJ_F			:= $(patsubst $(SRC_DIR)%.cpp, $(BUILD_DIR)%.o, $(SRC_F))
+HEADERS_F		:= $(wildcard $(HEADERS_DIR)*.hpp)
 
 # **************************************************************************** #
 #								COMMANDS									   #
@@ -67,42 +63,42 @@ LIMITATIONS		:= -std=c++98
 DEBUG			:= -g3
 ALL_HEADERS		:= -I$(HEADERS_DIR)
 
-RM				:= rm -rf
-MKDIR			:= mkdir -p
-
 # **************************************************************************** #
 #								TARGETS										   #
 # **************************************************************************** #
 
+.PHONY: all
 all:			$(NAME)
 
 $(NAME):		$(OBJ_F) | $(BIN_DIR)
 				@echo "$(GREEN)Compiling C++ Files -> $(YELLOW)$(notdir $<)"
 				@printf "$(RESET)"
-				@$(COMPILER) $(FLAGS) $(LIMITATIONS) $(DEBUG) $^ -o $(NAME)
+				@$(COMPILER) $(FLAGS) $(LIMITATIONS) $(DEBUG) $^ -o $@
 				@echo "$(GREEN)C++ Program Ready!$(RESET)"
 
-$(BUILD_DIR)%.o:	$(SRC_DIR)%.cpp | $(BUILD_DIR)
+$(BUILD_DIR)%.o: $(SRC_DIR)%.cpp $(HEADERS_F) | $(BUILD_DIR)
 	$(COMPILER) $(FLAGS) $(LIMITATIONS) $(ALL_HEADERS) -c -o $@ $<
 
-$(BIN_DIR):
-	@$(MKDIR) $(BIN_DIR)
+$(BUILD_DIR) $(BIN_DIR):
+	@$(MKDIR) $@
 
+.PHONY: clean
 clean:
 	@$(RM) $(BUILD_DIR)
 	@echo "$(RED)Cleaning -> $(YELLOW)$(BUILD_DIR)"
 	@printf "$(RESET)"
 
+.PHONY: fclean
 fclean: clean
 	@$(RM) $(BIN_DIR)
 	@echo "$(RED)Cleaning -> $(YELLOW)$(BIN_DIR)"
 	@printf "$(RESET)"
 
+.PHONY: re
 re:		fclean all
 	@echo "$(PURPLE)>>>>>>>>>>>>>>>>>>>>>>>"
 	@echo "$(CYAN)Program just rebuilt -> $(YELLOW)$(NAME) $(RESET)"
 
+.PHONY: go
 go:	all
 	@./$(NAME) $*
-
-.PHONY: all clean fclean re go
