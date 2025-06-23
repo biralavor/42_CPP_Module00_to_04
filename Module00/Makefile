@@ -18,27 +18,31 @@ CMAKE_FLAGS := -DCMAKE_BUILD_TYPE=Debug
 #                                 TARGETS                                        #
 # **************************************************************************** #
 
+.PHONY: all
 all: test
 
-$(BUILD_DIR):
+.PHONY: configure
+configure:
 	@mkdir -p $(BUILD_DIR)
 	@cd $(BUILD_DIR) && cmake $(CMAKE_FLAGS) ..
 	@echo "$(GREEN)CMake files generated in $(YELLOW)$(BUILD_DIR)$(RESET)"
 
-build: $(BUILD_DIR)
+.PHONY: build
+build: configure
 	@echo "$(CYAN)Building project...$(RESET)"
 	@cmake --build $(BUILD_DIR)
 	@echo "$(GREEN)Build complete$(RESET)"
 
+.PHONY: test
 test: build
 	@echo "$(CYAN)Running tests...$(RESET)"
 	@cd $(BUILD_DIR) && ctest --output-on-failure
 	@echo "$(GREEN)Tests completed$(RESET)"
 
+.PHONY: clean
 clean:
 	@rm -rf $(BUILD_DIR)
 	@echo "$(GREEN)Build directory cleaned$(RESET)"
 
+.PHONY: re
 re: clean all
-
-.PHONY: all build test clean re
