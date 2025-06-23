@@ -37,8 +37,10 @@ TEST_F(MegaphoneTest, SingleArgumentTest) {
 
 TEST_F(MegaphoneTest, DoubleArgumentsTest) {
     char* argv[] = {(char*)"./megaphone", (char*)"Forty", (char*)"Two"};
-    int argc = 3;
-    
+    int argc = 0;
+    while (argv[argc] != nullptr)
+        argc++;
+    argc++;
     megaphone(argc, argv);
 
     EXPECT_EQ(buffer.str(), "FORTY TWO");
