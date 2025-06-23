@@ -23,6 +23,7 @@ all: test
 
 .PHONY: configure
 configure:
+	@$(shell export GTEST_COLOR=yes)
 	@mkdir -p $(BUILD_DIR)
 	@cd $(BUILD_DIR) && cmake $(CMAKE_FLAGS) ..
 	@echo "$(GREEN)CMake files generated in $(YELLOW)$(BUILD_DIR)$(RESET)"
