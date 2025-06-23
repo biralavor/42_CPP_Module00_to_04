@@ -14,6 +14,7 @@
 #define MEGAPHONE_HPP
 
 #include <iostream>
+#include <cstdlib>
 
 int megaphone(int argc, char **argv);
 

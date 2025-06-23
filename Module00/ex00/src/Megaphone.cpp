@@ -14,22 +14,37 @@
 
 int megaphone(int argc, char **argv)
 {
-	std::string str;
+	std::string result;
+	int			i;
+	int			j;
+
+	result = "";
+	i = 0;
 	if (argc == 1)
 	{
-		std::cout
-		<< ">>> SHOUTING IS BAD <<<" << std::endl;
+		std::cout <<
+		">>> SHOUTING IS BAD <<<" <<
+		std::endl;
 	}
 	else
 	{
-		for (int i = 1; i < argc; ++i)
+		while (++i < argc)
 		{
-			str += argv[i];
-			if (i < argc - 1)
-				str += " ";
+			j = -1;
+			while (argv[i][++j])
+				result += toupper(argv[i][j]);
+			result += ' ';
 		}
 		std::cout
-		<< str << std::endl;
+		<< result << std::endl;
 	}
 	return 0;
+}
+
+int main(int argc, char** argv)
+{
+	std::cout << 
+	megaphone(argc, argv) << 
+	std::endl;
+	return EXIT_SUCCESS;
 }
