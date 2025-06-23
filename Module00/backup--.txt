@@ -1,0 +1,63 @@
+NAME = Module00Tests
+
+BUILD_DIR = build
+TEST_DIR = tests
+EXERCISE_DIRS = $(wildcard ex*)
+
+CMAKE_FLAGS = -DCMAKE_BUILD_TYPE=Debug
+
+# Colors for output
+GREEN = \033[0;32m
+YELLOW = \033[0;33m
+RESET = \033[0m
+
+.PHONY: all
+all: exercises tests
+
+.PHONY: exercises
+exercises:
+	@for dir in $(EXERCISE_DIRS); do \
+		echo "$(CYAN)Building $$dir...$(RESET)"; \
+		$(MAKE) -C $$dir || exit 1; \
+		echo "$(GREEN)$$Dir built successfully$(RESET)"; \
+	done
+
+$(BUILD_DIR):
+	@mkdir -p $(BUILD_DIR)
+	@cd $(BUILD_DIR) && cmake $(CMAKE_FLAGS) ..
+	@echo "$(GREEN)CMake files generated at: $(YELLOW)$(BUILD_DIR)$(RESET)"
+
+.PHONY: tests_build
+tests_build: $(BUILD_DIR)
+	@cd $(BUILD_DIR) && cmake --build .
+	@echo "$(GREEN)Tests-Build complete!$(RESET)"
+
+.PHONY: tests
+tests: tests_build
+	cd $(BUILD_DIR) && ctest --output-on-failure
+	@echo "$(GREEN)Tests executed!$(RESET)"
+
+.PHONY: list
+list:
+	@echo "$(CYAN)Available exercises:$(RESET)"
+	@for dir in $(EXERCISE_DIRS); do \
+		echo "  - $$dir"; \
+	done
+
+.PHONY: $(EXERCISE_DIRS)
+$(EXERCISE_DIRS):
+	@echo "$(CYAN)Building $@...$(RESET)"
+	@$(MAKE) -C $@
+	@echo "$(GREEN)$@ built successfully$(RESET)"
+
+.PHONY: clean
+clean:
+	@for dir in $(EXERCISE_DIRS); do \
+		echo "$(CYAN)Cleaning $$dir...$(RESET)"; \
+		#(MAKE) -C $$dir clean; \
+	done
+	rm -rf $(BUILD_DIR)
+	@echo "$(YELLOW)All directories were cleaned.$(RESET)"
+
+.PHONY: re
+re: clean all

@@ -1,22 +1,19 @@
-cmake_minimum_required(VERSION 3.10)
-project(CPP_Module00Tests)
-set(CMAKE_CXX_STANDARD 98)
-set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
-set(PROJECT_VERSION 1.0)
-
 find_package(GTest REQUIRED)
 
+# Create test executable
 add_executable(Module00Tests
     TestModule00Ex00.cpp
-    ../ex00/src/Megaphone.cpp
 )
 
-target_link_libraries(Module00Tests
-    GTest::GTest
+# Configure test executable
+target_link_libraries(Module00Tests PRIVATE
+    GTest::GTest 
     GTest::Main
+    megaphone_lib
 )
 
-target_include_directories(Module00Tests PRIVATE
-    ../ex00/headers
-    ${GTEST_INCLUDE_DIRS}
+# Register test
+add_test(
+    NAME Module00_Ex00_Test
+    COMMAND Module00Tests
 )
