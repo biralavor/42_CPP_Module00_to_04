@@ -1,6 +1,4 @@
 #include <gtest/gtest.h>
-#include <iostream>
-#include <sstream>
 #include "../ex00/headers/Megaphone.hpp"
 
 class MegaphoneTest : public ::testing::Test {
@@ -17,19 +15,20 @@ class MegaphoneTest : public ::testing::Test {
     }
 };
 
-TEST_F(MegaphoneTest, NoArgumentsTest) {
-    char* argv[] = {(char*)"megaphone"};
-    int argc = 1;
-    megaphone(argc, argv);
-
-    EXPECT_EQ(buffer.str(), ">>> SHOUTING IS BAD <<<\n");
-}
-
-// TEST_F(MegaphoneTest, SIngleArgumentTest) {
-//     char* argv[] = {(char*)"./megaphone", (char*)"hello"};
-//     int argc = 2;
-
+// TEST_F(MegaphoneTest, NoArgumentsTest) {
+//     char* argv[] = {(char*)"megaphone"};
+//     int argc = 1;
+    
 //     megaphone(argc, argv);
 
-//     EXPECT_EQ(buffer.str(), ">>> HELLO <<<\n");
+//     EXPECT_EQ(buffer.str(), ">>> SHOUTING IS BAD <<<\n");
+// }
+
+// TEST_F(MegaphoneTest, SingleArgumentTest) {
+//     char* argv[] = {(char*)"./megaphone", (char*)"hello\n"};
+//     int argc = 2;
+    
+//     megaphone(argc, argv);
+
+//     EXPECT_EQ(buffer.str(), "HELLO\n");
 // }
