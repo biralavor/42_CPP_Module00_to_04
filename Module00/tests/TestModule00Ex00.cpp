@@ -7,6 +7,8 @@ class MegaphoneTest : public ::testing::Test {
     std::streambuf* oldCout;
 
     void SetUp() override {
+        buffer.str("");
+        buffer.clear();
         oldCout = std::cout.rdbuf(buffer.rdbuf());
     }
 
