@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 14:31:21 by umeneses          #+#    #+#             */
-/*   Updated: 2025/06/20 19:41:50 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/06/23 16:39:39 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,4 @@ int megaphone(int argc, char **argv)
 		<< result << std::endl;
 	}
 	return 0;
-}
-
-int main(int argc, char** argv)
-{
-	std::cout << 
-	megaphone(argc, argv) << 
-	std::endl;
-	return EXIT_SUCCESS;
 }

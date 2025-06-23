@@ -1,4 +1,4 @@
-# Create library for testing
+# Create library for testing (without main function)
 add_library(megaphone_lib
     src/Megaphone.cpp
 )
@@ -9,7 +9,7 @@ target_include_directories(megaphone_lib PUBLIC
 
 # Create executable
 add_executable(megaphone
-    src/Megaphone.cpp
+    src/main.cpp
 )
 
 target_link_libraries(megaphone PRIVATE

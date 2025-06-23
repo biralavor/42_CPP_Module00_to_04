@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Megaphone.hpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/11 14:31:10 by umeneses          #+#    #+#             */
-/*   Updated: 2025/06/23 15:51:03 by umeneses         ###   ########.fr       */
+/*   Created: 2025/06/23 17:30:00 by umeneses          #+#    #+#             */
+/*   Updated: 2025/06/23 16:09:50 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MEGAPHONE_HPP
-#define MEGAPHONE_HPP
+#include "../headers/Megaphone.hpp"
 
-#include <iostream>
-#include <cstdlib>
-#include <sstream>
-
-int megaphone(int argc, char **argv);
-
-#endif
+int main(int argc, char** argv)
+{
+	std::cout << 
+	megaphone(argc, argv) << 
+	std::endl;
+	return EXIT_SUCCESS;
+}
