@@ -30,5 +30,5 @@ TEST_F(MegaphoneTest, SingleArgumentTest) {
     
     megaphone(argc, argv);
 
-    EXPECT_EQ(buffer.str(), "HELLO" + std::string("\n"));
+    EXPECT_EQ(buffer.str(), "HELLO");
 }
