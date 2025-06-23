@@ -32,6 +32,7 @@ go: build
 	@echo "$(GREEN)Docker container $(CONTAINER) is running!$(RESET)"
 	$(call prepare_googletest)
 	$(call build_googletest)
+	docker compose exec app /bin/bash
 
 .PHONY: stop
 stop:
