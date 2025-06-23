@@ -53,3 +53,11 @@ TEST_F(MegaphoneTest, MultipleArgumentsTest) {
     EXPECT_EQ(buffer.str(), "FORTY TWO IS AWESOME");
 }
 
+TEST_F(MegaphoneTest, ArgumentsWithNumbersTest) {
+    char* argv[] = {(char*)"./megaphone", (char*)"Hi", (char*)"42"};
+    int argc = 3;
+    
+    megaphone(argc, argv);
+
+    EXPECT_EQ(buffer.str(), "HI 42");
+}
