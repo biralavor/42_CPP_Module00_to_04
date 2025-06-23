@@ -34,5 +34,8 @@ COPY . .
 RUN git config --global user.name "Bira Lavor" \
     && git config --global user.email "umeneses@student.42sp.org.br"
 
+# Set the default shell to fish
+SHELL ["/usr/bin/fish", "-c"]
+
 # Default command
 CMD [ "/bin/bash" ]
