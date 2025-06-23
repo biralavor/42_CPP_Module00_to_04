@@ -30,5 +30,9 @@ WORKDIR /app
 # Copy project files into the container
 COPY . .
 
+# Set git user configuration
+RUN git config --global user.name "Bira Lavor" \
+    && git config --global user.email "umeneses@student.42sp.org.br"
+
 # Default command
 CMD [ "/bin/bash" ]
