@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     clang \
     cmake \
     git \
+    fish \
     libreadline-dev \
     libgtest-dev \
     valgrind
