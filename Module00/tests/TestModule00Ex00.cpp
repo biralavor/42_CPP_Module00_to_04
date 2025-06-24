@@ -36,19 +36,24 @@ TEST_F(MegaphoneTest, SingleArgumentTest) {
 }
 
 TEST_F(MegaphoneTest, DoubleArgumentsTest) {
-    char* argv[] = {(char*)"./megaphone", (char*)"Forty", (char*)"Two"};
+    char* argv[] = {(char*)"./megaphone",
+                    (char*)"Forty", (char*)"Two",
+                    nullptr};
     int argc = 0;
     while (argv[argc] != nullptr)
         argc++;
-    argc++;
     megaphone(argc, argv);
 
     EXPECT_EQ(buffer.str(), "FORTY TWO");
 }
 
 TEST_F(MegaphoneTest, MultipleArgumentsTest) {
-    char* argv[] = {(char*)"./megaphone", (char*)"Forty", (char*)"Two", (char*)"is", (char*)"awesome"};
-    int argc = 5;
+    char* argv[] = {(char*)"./megaphone",
+                    (char*)"Forty", (char*)"Two", (char*)"is", (char*)"awesome",
+                    nullptr};
+    int argc = 0;
+    while (argv[argc] != nullptr)
+        argc++;
     
     megaphone(argc, argv);
 
@@ -56,8 +61,12 @@ TEST_F(MegaphoneTest, MultipleArgumentsTest) {
 }
 
 TEST_F(MegaphoneTest, ArgumentsWithNumbersTest) {
-    char* argv[] = {(char*)"./megaphone", (char*)"Hi", (char*)"42"};
-    int argc = 3;
+    char* argv[] = {(char*)"./megaphone",
+                    (char*)"Hi", (char*)"42",
+                    nullptr};
+    int argc = 0;
+    while (argv[argc] != nullptr)
+        argc++;
     
     megaphone(argc, argv);
 
