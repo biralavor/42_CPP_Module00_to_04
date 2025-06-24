@@ -2,7 +2,6 @@
 #include "../ex00/headers/Megaphone.hpp"
 
 class MegaphoneTest : public ::testing::Test {
-    protected:
 };
 
 TEST(MegaphoneTest, NoArgumentsTest) {
