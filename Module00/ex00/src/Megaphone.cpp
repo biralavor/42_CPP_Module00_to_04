@@ -6,13 +6,13 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 14:31:21 by umeneses          #+#    #+#             */
-/*   Updated: 2025/06/23 17:42:02 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/06/24 11:47:19 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/Megaphone.hpp"
 
-int megaphone(int argc, char **argv)
+std::string megaphone(int argc, char **argv)
 {
 	std::string result;
 	int			i;
@@ -22,9 +22,7 @@ int megaphone(int argc, char **argv)
 	i = 0;
 	if (argc == 1)
 	{
-		std::cout <<
-		">>> SHOUTING IS BAD <<<" <<
-		std::endl;
+		return ">>> SHOUTING IS BAD <<<";
 	}
 	else
 	{
@@ -36,8 +34,6 @@ int megaphone(int argc, char **argv)
 			if (i < argc - 1)
 				result += ' ';
 		}
-		std::cout
-		<< result << std::flush;
+		return result;
 	}
-	return 0;
 }
