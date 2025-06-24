@@ -5,7 +5,7 @@ class MegaphoneTest : public ::testing::Test {
     protected:
 };
 
-TEST_F(MegaphoneTest, NoArgumentsTest) {
+TEST(MegaphoneTest, NoArgumentsTest) {
     char* argv[] = {(char*)"megaphone"};
     int argc = 1;
     
@@ -14,7 +14,7 @@ TEST_F(MegaphoneTest, NoArgumentsTest) {
     EXPECT_EQ(result, ">>> SHOUTING IS BAD <<<");
 }
 
-TEST_F(MegaphoneTest, SingleArgumentTest) {
+TEST(MegaphoneTest, SingleArgumentTest) {
     char* argv[] = {(char*)"./megaphone", (char*)"hello"};
     int argc = 2;
     
@@ -23,7 +23,7 @@ TEST_F(MegaphoneTest, SingleArgumentTest) {
     EXPECT_EQ(result, "HELLO");
 }
 
-TEST_F(MegaphoneTest, DoubleArgumentsTest) {
+TEST(MegaphoneTest, DoubleArgumentsTest) {
     char* argv[] = {(char*)"./megaphone",
                     (char*)"Forty", (char*)"Two",
                     nullptr};
@@ -35,7 +35,7 @@ TEST_F(MegaphoneTest, DoubleArgumentsTest) {
     EXPECT_EQ(result, "FORTY TWO");
 }
 
-TEST_F(MegaphoneTest, MultipleArgumentsTest) {
+TEST(MegaphoneTest, MultipleArgumentsTest) {
     char* argv[] = {(char*)"./megaphone",
                     (char*)"Forty", (char*)"Two", (char*)"is", (char*)"awesome",
                     nullptr};
@@ -48,7 +48,7 @@ TEST_F(MegaphoneTest, MultipleArgumentsTest) {
     EXPECT_EQ(result, "FORTY TWO IS AWESOME");
 }
 
-TEST_F(MegaphoneTest, ArgumentsWithNumbersTest) {
+TEST(MegaphoneTest, ArgumentsWithNumbersTest) {
     char* argv[] = {(char*)"./megaphone",
                     (char*)"Hi", (char*)"42",
                     nullptr};
