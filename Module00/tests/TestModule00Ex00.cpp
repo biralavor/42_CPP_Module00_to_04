@@ -3,36 +3,24 @@
 
 class MegaphoneTest : public ::testing::Test {
     protected:
-    std::stringstream buffer;
-    std::streambuf* oldCout;
-
-    void SetUp() override {
-        buffer.str("");
-        buffer.clear();
-        oldCout = std::cout.rdbuf(buffer.rdbuf());
-    }
-
-    void TearDown() override {
-        std::cout.rdbuf(oldCout);
-    }
 };
 
 TEST_F(MegaphoneTest, NoArgumentsTest) {
     char* argv[] = {(char*)"megaphone"};
     int argc = 1;
     
-    megaphone(argc, argv);
+    std::string result = megaphone(argc, argv);
 
-    EXPECT_EQ(buffer.str(), ">>> SHOUTING IS BAD <<<\n");
+    EXPECT_EQ(result, ">>> SHOUTING IS BAD <<<");
 }
 
 TEST_F(MegaphoneTest, SingleArgumentTest) {
     char* argv[] = {(char*)"./megaphone", (char*)"hello"};
     int argc = 2;
     
-    megaphone(argc, argv);
+    std::string result = megaphone(argc, argv);
 
-    EXPECT_EQ(buffer.str(), "HELLO");
+    EXPECT_EQ(result, "HELLO");
 }
 
 TEST_F(MegaphoneTest, DoubleArgumentsTest) {
@@ -42,9 +30,9 @@ TEST_F(MegaphoneTest, DoubleArgumentsTest) {
     int argc = 0;
     while (argv[argc] != nullptr)
         argc++;
-    megaphone(argc, argv);
+    std::string result = megaphone(argc, argv);
 
-    EXPECT_EQ(buffer.str(), "FORTY TWO");
+    EXPECT_EQ(result, "FORTY TWO");
 }
 
 TEST_F(MegaphoneTest, MultipleArgumentsTest) {
@@ -55,9 +43,9 @@ TEST_F(MegaphoneTest, MultipleArgumentsTest) {
     while (argv[argc] != nullptr)
         argc++;
     
-    megaphone(argc, argv);
+    std::string result = megaphone(argc, argv);
 
-    EXPECT_EQ(buffer.str(), "FORTY TWO IS AWESOME");
+    EXPECT_EQ(result, "FORTY TWO IS AWESOME");
 }
 
 TEST_F(MegaphoneTest, ArgumentsWithNumbersTest) {
@@ -68,7 +56,7 @@ TEST_F(MegaphoneTest, ArgumentsWithNumbersTest) {
     while (argv[argc] != nullptr)
         argc++;
     
-    megaphone(argc, argv);
+    std::string result = megaphone(argc, argv);
 
-    EXPECT_EQ(buffer.str(), "HI 42");
+    EXPECT_EQ(result, "HI 42");
 }
