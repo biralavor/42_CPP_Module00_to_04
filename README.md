@@ -8,10 +8,23 @@ https://cplusplus.com/doc/tutorial
 
 https://www.learncpp.com/
 
+## Makefile Targets
 
-stream	||	description
-cin			standard input stream
-cout		standard output stream
-cerr		standard error (output) stream
-clog		standard logging (output) stream
+A set of convenient Makefile targets is provided to help you work with Docker and development tasks in this project:
 
+| Target         | Description                                                                                   |
+|----------------|----------------------------------------------------------------------------------------------|
+| **build**      | Build and start the Docker container in detached mode.                                        |
+| **go**         | Build/start the container, run preparations, then open an interactive shell in the app.       |
+| **stop**       | Stop the running Docker container.                                                            |
+| **down**       | Stop and remove the Docker container and associated resources.                                |
+| **reload-docker** | Stop, rebuild, and restart the Docker container.                                             |
+| **ps**         | List all Docker containers.                                                                   |
+| **deep-clean** | Clean up unused Docker builder cache (frees disk space).                                      |
+
+### Usage
+
+To run any of these tasks, use:
+
+```sh
+make <target>
