@@ -44,7 +44,7 @@ const Contact *PhoneBook::getContact(int idx) const
 void PhoneBook::searchContact(int idx) const
 {
     Printers printer;
-    
+    idx--;
     if (idx < 0 || idx >= this->contactCounter)
     {
         std::cout << "Invalid index. Please enter a valid index." << std::endl;
