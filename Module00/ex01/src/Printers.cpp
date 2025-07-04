@@ -3,7 +3,7 @@
 
 const int COLUMN_WIDTH = 10;
 
-void Printers::columnPrinter(const std::string &str) const
+void Printers::oneColumnPrinter(const std::string &str) const
 {
     int size = str.size();
     int startPoint = COLUMN_WIDTH / 2;
@@ -24,12 +24,12 @@ void Printers::columnPrinter(const std::string &str) const
     std::cout << "|";
 }
 
-void Printers::contactDetailsPrinter(const Contact &contact) const
+void Printers::contactDetailsAsARowPrinter(const Contact &contact) const
 {
-    columnPrinter(contact.getName());
-    columnPrinter(contact.getNickName());
-    columnPrinter(contact.getPhoneNumber());
-    // columnPrinter(contact.getDarkestSecret());
+    oneColumnPrinter(contact.getName());
+    oneColumnPrinter(contact.getNickName());
+    oneColumnPrinter(contact.getPhoneNumber());
+    // oneColumnPrinter(contact.getDarkestSecret());
 }
 
 void Printers::headerPrinter() const
@@ -37,10 +37,10 @@ void Printers::headerPrinter() const
     std::cout << "\n\t\tPhoneBook Contacts:" << std::endl;
     std::cout << " ___________________________________________" << std::endl;
     std::cout << "|";
-    columnPrinter("Index");
-    columnPrinter("Name");
-    columnPrinter("Nickname");
-    columnPrinter("Phone Number");
+    oneColumnPrinter("Index");
+    oneColumnPrinter("Name");
+    oneColumnPrinter("Nickname");
+    oneColumnPrinter("Phone Number");
     std::cout << "\n|===========================================|" << std::endl;
 }
 
@@ -53,10 +53,10 @@ void Printers::phoneBookPrinter(const PhoneBook &phoneBook) const
     {
         std::cout << "|";
         idxStr = idx + 48 + 1;
-        columnPrinter(idxStr);
+        oneColumnPrinter(idxStr);
         const Contact *contact = phoneBook.getContact(idx);
         if (contact)
-        contactDetailsPrinter(*contact);
+        contactDetailsAsARowPrinter(*contact);
         else
         std::cout << " ------------------------------ |";
         std::cout << std::endl;
