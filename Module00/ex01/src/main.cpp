@@ -17,6 +17,7 @@ int main()
     phonebook.addContact("9Hank", "Moore", "HankM", "123-123-1234", "Enjoys cooking");
 
     printer.phoneBookPrinter(phonebook);
+    phonebook.searchContact(3);
 
     return 0;
 }

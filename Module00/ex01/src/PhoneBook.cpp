@@ -43,6 +43,13 @@ const Contact *PhoneBook::getContact(int idx) const
 
 void PhoneBook::searchContact(int idx) const
 {
-    // Printers printer;
-    (void)idx; // Suppress unused parameter warning
+    Printers printer;
+    
+    if (idx < 0 || idx >= this->contactCounter)
+    {
+        std::cout << "Invalid index. Please enter a valid index." << std::endl;
+        return;
+    }
+    const Contact contact = *this->getContact(idx);
+    printer.contactDetailsAsAColumnPrinter(idx, contact);
 }
