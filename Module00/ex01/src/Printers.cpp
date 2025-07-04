@@ -52,7 +52,7 @@ void Printers::contactDetailsAsAColumnPrinter(int idx, const Contact &contact) c
     std::cout << "\n";
 }
 
-void Printers::headerPrinter() const
+void Printers::phoneBookHeaderPrinter() const
 {
     std::cout << "\n\t\tPhoneBook Contacts:" << std::endl;
     std::cout << " ___________________________________________" << std::endl;
@@ -68,7 +68,7 @@ void Printers::phoneBookPrinter(const PhoneBook &phoneBook) const
 {
     std::string idxStr;
 
-    headerPrinter();
+    phoneBookHeaderPrinter();
     for (int idx = 0; idx < MAX_CONTACTS; idx++)
     {
         idxStr = idx + 48 + 1;
