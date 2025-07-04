@@ -13,5 +13,6 @@ public:
     void contactDetailsAsARowPrinter(const Contact &contact) const;
     void contactDetailsAsAColumnPrinter(int idx, const Contact &contact) const;
     void phoneBookHeaderPrinter() const;
+    void searchContactHeaderPrinter() const;
     void phoneBookPrinter(const PhoneBook &phoneBook) const;
 };

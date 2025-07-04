@@ -3,12 +3,16 @@
 #include <string.h>
 
 const int COLUMN_WIDTH = 10;
+const char headTitleLayout = '_';
+const char tailTitleLayout = '`';
+const char edgeLayout = '|';
+const char tailLayout = '#';
 
 void Printers::oneColumnPrinter(const std::string &str) const
 {
     int size = str.size();
     int startPoint = COLUMN_WIDTH / 2;
-    std::cout << "|";
+    std::cout << edgeLayout;
     if (size > COLUMN_WIDTH)
         std::cout << str.substr(0, COLUMN_WIDTH - 1) + ".";
     else
@@ -40,16 +44,28 @@ void Printers::contactDetailsAsAColumnPrinter(int idx, const Contact &contact) c
     idxStr = idx + 48;
     oneColumnPrinter("Index");
     oneColumnPrinter(idxStr);
-    std::cout << "\n";
+    std::cout << edgeLayout << std::endl;
+    std::cout << edgeLayout << std::string(COLUMN_WIDTH, '-');
+    std::cout << edgeLayout << std::string(COLUMN_WIDTH, '-')
+    << edgeLayout << std::endl;
     oneColumnPrinter("Name");
     oneColumnPrinter(contact.getName());
-    std::cout << "\n";
+    std::cout << edgeLayout << std::endl;
+    std::cout << edgeLayout << std::string(COLUMN_WIDTH, '-');
+    std::cout << edgeLayout << std::string(COLUMN_WIDTH, '-')
+    << edgeLayout << std::endl;
     oneColumnPrinter("Nickname");
     oneColumnPrinter(contact.getNickName());
-    std::cout << "\n";
+    std::cout << edgeLayout << std::endl;
+    std::cout << edgeLayout << std::string(COLUMN_WIDTH, '-');
+    std::cout << edgeLayout << std::string(COLUMN_WIDTH, '-')
+    << edgeLayout << std::endl;
     oneColumnPrinter("Phone Number");
     oneColumnPrinter(contact.getPhoneNumber());
-    std::cout << "\n";
+    std::cout << edgeLayout << std::endl;
+    std::cout << edgeLayout << std::string(COLUMN_WIDTH, '#');
+    std::cout << edgeLayout << std::string(COLUMN_WIDTH, '#')
+    << edgeLayout << std::endl;
 }
 
 void Printers::phoneBookHeaderPrinter() const
@@ -60,8 +76,20 @@ void Printers::phoneBookHeaderPrinter() const
     oneColumnPrinter("Name");
     oneColumnPrinter("Nickname");
     oneColumnPrinter("Phone Number");
-    std::cout << "|" << std::endl;
+    std::cout << edgeLayout << std::endl;
     std::cout << "|===========================================|" << std::endl;
+}
+
+void Printers::searchContactHeaderPrinter() const
+{
+    std::string title = "Contact Details";
+    
+    int blankSpace = (COLUMN_WIDTH * 2) - title.size() - 2;
+    std::cout << " " << std::string((COLUMN_WIDTH * 2) + 1, headTitleLayout) << " " << std::endl;
+    std::cout << edgeLayout << std::string(blankSpace, ' ');
+    std::cout << title << std::string(blankSpace, ' ') << edgeLayout << std::endl;
+    std::cout << edgeLayout << std::string(COLUMN_WIDTH, tailTitleLayout);
+    std::cout << edgeLayout << std::string(COLUMN_WIDTH, tailTitleLayout) << edgeLayout << std::endl;
 }
 
 void Printers::phoneBookPrinter(const PhoneBook &phoneBook) const
@@ -78,7 +106,7 @@ void Printers::phoneBookPrinter(const PhoneBook &phoneBook) const
             contactDetailsAsARowPrinter(*contact);
         else
             std::cout << " ------------------------------ |";
-        std::cout << "|" << std::endl;
+        std::cout << edgeLayout << std::endl;
     }
-    std::cout << " ########################################### \n" << std::endl;
+    std::cout << std::string((COLUMN_WIDTH * 4) + 4 + 1, tailLayout) << std::endl;
 }
