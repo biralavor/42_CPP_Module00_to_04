@@ -34,19 +34,20 @@ void Printers::contactDetailsPrinter(const Contact &contact) const
 
 void Printers::headerPrinter() const
 {
-    std::cout << "PhoneBook Contacts:" << std::endl;
+    std::cout << "\n\t\tPhoneBook Contacts:" << std::endl;
+    std::cout << " ___________________________________________" << std::endl;
     std::cout << "|";
     columnPrinter("Index");
     columnPrinter("Name");
     columnPrinter("Nickname");
     columnPrinter("Phone Number");
-    std::cout << std::endl;
+    std::cout << "\n|===========================================|" << std::endl;
 }
 
 void Printers::phoneBookPrinter(const PhoneBook &phoneBook) const
 {
     std::string idxStr;
-
+    
     headerPrinter();
     for (int idx = 0; idx < MAX_CONTACTS; idx++)
     {
@@ -55,9 +56,10 @@ void Printers::phoneBookPrinter(const PhoneBook &phoneBook) const
         columnPrinter(idxStr);
         const Contact *contact = phoneBook.getContact(idx);
         if (contact)
-            contactDetailsPrinter(*contact);
+        contactDetailsPrinter(*contact);
         else
-            std::cout << " ------------------------------ |";
+        std::cout << " ------------------------------ |";
         std::cout << std::endl;
     }
+    std::cout << " ########################################### \n" << std::endl;
 }
