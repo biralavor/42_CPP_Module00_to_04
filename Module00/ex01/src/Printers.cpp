@@ -31,6 +31,16 @@ void Printers::oneColumnCenteredPrinter(const std::string &str) const
     }
 }
 
+void Printers::oneColumnPrinter(const std::string &str) const
+{
+    int size = str.size();
+    std::cout << edgeLayout;
+    if (size > COLUMN_WIDTH)
+        std::cout << str.substr(0, COLUMN_WIDTH - 1) + ".";
+    else
+        std::cout << std::setw(COLUMN_WIDTH) << std::right << str;
+}
+
 void Printers::contactDetailsAsARowPrinter(const Contact &contact) const
 {
     oneColumnCenteredPrinter(contact.getFirstName());
@@ -45,26 +55,26 @@ void Printers::contactDetailsAsAColumnPrinter(int idx, const Contact &contact) c
     std::string idxStr;
 
     idxStr = idx + 48;
-    oneColumnCenteredPrinter("Index");
-    oneColumnCenteredPrinter(idxStr);
+    oneColumnPrinter("Index");
+    oneColumnPrinter(idxStr);
     std::cout << edgeLayout << std::endl;
     std::cout << edgeLayout << std::string(COLUMN_WIDTH, lineDivision);
     std::cout << edgeLayout << std::string(COLUMN_WIDTH, lineDivision)
     << edgeLayout << std::endl;
-    oneColumnCenteredPrinter("First Name");
-    oneColumnCenteredPrinter(contact.getFirstName());
+    oneColumnPrinter("First Name");
+    oneColumnPrinter(contact.getFirstName());
     std::cout << edgeLayout << std::endl;
     std::cout << edgeLayout << std::string(COLUMN_WIDTH, lineDivision);
     std::cout << edgeLayout << std::string(COLUMN_WIDTH, lineDivision)
     << edgeLayout << std::endl;
-    oneColumnCenteredPrinter("Last Name");
-    oneColumnCenteredPrinter(contact.getLastName());
+    oneColumnPrinter("Last Name");
+    oneColumnPrinter(contact.getLastName());
     std::cout << edgeLayout << std::endl;
     std::cout << edgeLayout << std::string(COLUMN_WIDTH, lineDivision);
     std::cout << edgeLayout << std::string(COLUMN_WIDTH, lineDivision)
     << edgeLayout << std::endl;
-    oneColumnCenteredPrinter("Nickname");
-    oneColumnCenteredPrinter(contact.getNickName());
+    oneColumnPrinter("Nickname");
+    oneColumnPrinter(contact.getNickName());
     std::cout << edgeLayout << std::endl;
     std::cout << " " << std::string((COLUMN_WIDTH * 2) + 1, '#')
     << std::endl;
