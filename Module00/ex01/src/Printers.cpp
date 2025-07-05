@@ -43,9 +43,9 @@ void Printers::oneColumnPrinter(const std::string &str) const
 
 void Printers::contactDetailsAsARowPrinter(const Contact &contact) const
 {
-    oneColumnCenteredPrinter(contact.getFirstName());
-    oneColumnCenteredPrinter(contact.getLastName());
+    oneColumnCenteredPrinter(contact.getFirstName() + contact.getLastName());
     oneColumnCenteredPrinter(contact.getNickName());
+    oneColumnCenteredPrinter(contact.getPhoneNumber());
 }
 
 void Printers::contactDetailsAsAColumnPrinter(int idx, const Contact &contact) const
