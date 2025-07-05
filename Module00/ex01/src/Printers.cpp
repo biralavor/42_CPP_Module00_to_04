@@ -123,10 +123,11 @@ void Printers::phoneBookPrinter(const PhoneBook &phoneBook) const
         else
         {
             std::cout
-            << edgeLayout << std::string(emptySlotWidth, emptySlot)
-            << edgeLayout << std::endl;
+            << edgeLayout << std::string(emptySlotWidth, emptySlot);
         }
         std::cout << edgeLayout << std::endl;
+        std::cout << edgeLayout << std::string(nbrOfCopies - 2, lineDivision)
+        << edgeLayout << std::endl;
     }
     std::cout << std::string(nbrOfCopies, tailLayout) << std::endl;
 }
