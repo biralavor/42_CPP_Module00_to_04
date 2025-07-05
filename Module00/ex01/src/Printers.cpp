@@ -46,8 +46,6 @@ void Printers::contactDetailsAsARowPrinter(const Contact &contact) const
     oneColumnCenteredPrinter(contact.getFirstName());
     oneColumnCenteredPrinter(contact.getLastName());
     oneColumnCenteredPrinter(contact.getNickName());
-    // oneColumnCenteredPrinter(contact.getPhoneNumber());
-    // oneColumnCenteredPrinter(contact.getDarkestSecret());
 }
 
 void Printers::contactDetailsAsAColumnPrinter(int idx, const Contact &contact) const
