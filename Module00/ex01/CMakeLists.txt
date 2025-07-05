@@ -1,3 +1,6 @@
+set(CMAKE_CXX_STANDARD 98)
+set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
+
 add_library(phonebook_lib
     src/Contact.cpp
     src/PhoneBook.cpp

@@ -1,4 +1,7 @@
 # Create library for testing (without main function)
+set(CMAKE_CXX_STANDARD 98)
+set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
+
 add_library(megaphone_lib
     src/Megaphone.cpp
 )
