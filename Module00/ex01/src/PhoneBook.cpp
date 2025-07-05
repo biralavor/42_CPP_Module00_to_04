@@ -67,19 +67,43 @@ std::string PhoneBook::getInputToFillContact(const std::string &inputType)
 const Contact *PhoneBook::getContact(int idx) const
 {
     if (idx < 0 || idx >= this->contactCounter)
-    {
         return NULL;
-    }
     return this->allContacts[idx];
+}
+
+bool PhoneBook::isActionStillOn(bool &isActionOn, const std::string &action)
+{
+    std::string userInput;
+
+    while (isActionOn)
+    {
+        std::cout << "Do you want to " << action << " another contact? (Y/N): ";
+        std::cin >> userInput;
+        if (userInput == "N" || userInput == "n")
+        {
+            isActionOn = false;
+        }
+        else if (userInput == "Y" || userInput == "y")
+        {
+            isActionOn = true;
+            break;
+        }
+        else
+        {
+            std::cerr << "Invalid input [" << userInput << "]. "
+            << "Please enter 'Y' or 'N'." << std::endl;
+        }
+    }
+    return isActionOn;
 }
 
 void PhoneBook::addContactManager(void)
 {
-    bool        isAddContactOn = true;
+    bool        isActionOn = true;
     std::string userInput;
     std::string firstName, lastName, nickName, phoneNumber, darkestSecret;
 
-    while (isAddContactOn)
+    while (isActionOn)
     {
         firstName = getInputToFillContact("First Name");
         lastName = getInputToFillContact("Last Name");
@@ -88,17 +112,14 @@ void PhoneBook::addContactManager(void)
         darkestSecret = getInputToFillContact("Darkest Secret");
         this->addContact(firstName, lastName, nickName, phoneNumber, darkestSecret);
         std::cout << "Contact added successfully!" << std::endl;
-        std::cout << "Do you want to add another contact? (Y/N): ";
-        std::cin >> userInput;
-        if (userInput == "N" || userInput == "n")
-            isAddContactOn = false;
+        isActionOn = isActionStillOn(isActionOn, "add");
     }
 }
 
-void PhoneBook::searchContactManager() const
+void PhoneBook::searchContactManager(void)
 {
     int         inputAsInt;
-    bool        isSearchOn = true;
+    bool        isActionOn = true;
     std::string userInput;
     Printers    printer;
 
@@ -107,7 +128,7 @@ void PhoneBook::searchContactManager() const
         std::cerr << "No contacts available. Please add a contact first." << std::endl;
         return;
     }
-    while (isSearchOn)
+    while (isActionOn)
     {
         std::cout << "Enter the index of the contact you want to search [1: "
         << this->contactCounter << "] (or type '!' to exit): ";
@@ -115,7 +136,7 @@ void PhoneBook::searchContactManager() const
         if (userInput == "!")
         {
             std::cout << "Exiting search." << std::endl;
-            isSearchOn = false;
+            isActionOn = false;
             break;
         }
         if (userInput[0] < '0' || userInput[0] > '0' + this->contactCounter)
@@ -129,10 +150,7 @@ void PhoneBook::searchContactManager() const
             const Contact contact = *this->getContact(inputAsInt);
             printer.searchContactHeaderPrinter();
             printer.searchContactDetailsPrinter(inputAsInt, contact);
-            std::cout << "Do you want to search another contact? (Y/N): ";
-            std::cin >> userInput;
-            if (userInput == "N" || userInput == "n")
-                isSearchOn = false;
+            isActionOn = isActionStillOn(isActionOn, "search for");
         }
     }
 }

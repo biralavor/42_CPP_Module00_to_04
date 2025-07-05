@@ -16,8 +16,9 @@ private:
     std::string getInputToFillContact(const std::string &inputType);
     int userInputAsANumber(std::string &userInput, int &appState);
     int userInputAsAWord(std::string &userInput, int &appState);
-    void searchContactManager() const;
+    void searchContactManager(void);
     void addContactManager(void);
+    bool isActionStillOn(bool &isActionOn, const std::string &action);
 
 public:
     PhoneBook();
