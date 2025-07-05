@@ -9,7 +9,7 @@ class Contact;
 class Printers
 {
 public:
-    void oneColumnPrinter(const std::string &str) const;
+    void oneColumnCenteredPrinter(const std::string &str) const;
     void contactDetailsAsARowPrinter(const Contact &contact) const;
     void contactDetailsAsAColumnPrinter(int idx, const Contact &contact) const;
     void phoneBookHeaderPrinter() const;
