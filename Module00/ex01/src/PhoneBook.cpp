@@ -59,10 +59,19 @@ void PhoneBook::searchContact(int idx) const
     printer.searchContactDetailsPrinter(idx, contact);
 }
 
-bool PhoneBook::userInputAsANumber(std::string &userInput)
+std::string PhoneBook::getUserInput()
 {
-    bool isAppRunning = true;
+    std::string userInput;
 
+    std::cout << "Please, choose an option: ";
+    std::cin >> userInput;
+    for (unsigned int idx = 0; idx < userInput.size(); idx++)
+        userInput[idx] = toupper(userInput[idx]);
+    return userInput;
+}
+
+int PhoneBook::userInputAsANumber(std::string &userInput, bool &isAppRunning)
+{
     while (isAppRunning)
     {
         switch (userInput[0])
@@ -78,19 +87,14 @@ bool PhoneBook::userInputAsANumber(std::string &userInput)
                 isAppRunning = false;
                 break;
             default:
-                std::cerr << "Invalid option. Try again." << std::endl;
-                std::cin >> userInput;
-                userInput = toupper(userInput[0]);
-                break;
+                return 2;
         }
     }
     return isAppRunning;
 }
 
-bool PhoneBook::userInputAsAWord(std::string &userInput)
+int PhoneBook::userInputAsAWord(std::string &userInput, bool &isAppRunning)
 {
-    bool isAppRunning = true;
-
     while (isAppRunning)
     {
         if (userInput == "ADD")
@@ -107,11 +111,7 @@ bool PhoneBook::userInputAsAWord(std::string &userInput)
             isAppRunning = false;
         }
         else
-        {
-            std::cerr << "Invalid option. Try again." << std::endl;
-            std::cin >> userInput;
-            userInput = toupper(userInput[0]);
-        }
+            return 2;
     }
     return isAppRunning;
 }
@@ -121,17 +121,18 @@ void PhoneBook::phoneBookManager(void)
     Printers    printer;
     std::string userInput;
     bool        isAppRunning = true;
+    int         appState = 0;
 
     printer.phoneBookPrinter(*this);
     printer.phoneBookMainMenuPrinter();
-    std::cin >> userInput;
-    for (unsigned int idx = 0; idx < userInput.size(); idx++)
-        userInput[idx] = toupper(userInput[idx]);
     while (isAppRunning)
     {
+        userInput = getUserInput();
         if (userInput.size() == 1 && isdigit(userInput[0]))
-            isAppRunning = userInputAsANumber(userInput);
-        else
-            isAppRunning = userInputAsAWord(userInput);
+            appState = userInputAsANumber(userInput, isAppRunning);
+        else if (userInput.size() > 1)
+            appState = userInputAsAWord(userInput, isAppRunning);
+        if (appState == 2)
+            std::cerr << "Invalid option [" << userInput << "]. Try again." << std::endl;
     }
 }
