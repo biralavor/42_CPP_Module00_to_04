@@ -5,7 +5,7 @@ PhoneBook::PhoneBook()
 {
     this->contactCounter = 0;
     this->nextSlotIdx = 0;
-    std::cout << "Phonebook Constructor" << std::endl;
+    std::cout << "Phonebook Constructor were activated." << std::endl;
     for (int i = 0; i < MAX_CONTACTS; i++)
         this->allContacts[i] = NULL;
 }
@@ -17,7 +17,7 @@ PhoneBook::~PhoneBook()
         if (this->allContacts[i] != NULL)
             delete this->allContacts[i];
     }
-    std::cout << "Phonebook Destructor" << std::endl;
+    std::cout << "Phonebook Destructor were activated." << std::endl;
 }
 
 void PhoneBook::addContact(const std::string &firstName,
@@ -47,8 +47,8 @@ void PhoneBook::searchContact(int idx) const
     idx--;
     if (idx < 0 || idx >= this->contactCounter)
     {
-        std::cerr << "Invalid Contact index. "
-        << "Please enter a valid index." << std::endl;
+        std::cerr << "Invalid Contact index[" << idx + 1 << "]. "
+        << "Please enter a valid Contact position." << std::endl;
         return;
     }
     const Contact contact = *this->getContact(idx);

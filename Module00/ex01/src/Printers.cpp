@@ -52,7 +52,7 @@ void Printers::searchContactDetailsPrinter(int idx, const Contact &contact) cons
 {
     std::string idxStr;
 
-    idxStr = idx + 48;
+    idxStr = idx + 48 + 1;
     oneCellAlignToRightPrinter("Index");
     oneCellAlignToRightPrinter(idxStr);
     std::cout << edgeLayout << std::endl;
