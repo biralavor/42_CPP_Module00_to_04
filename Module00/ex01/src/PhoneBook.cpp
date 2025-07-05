@@ -47,7 +47,8 @@ void PhoneBook::searchContact(int idx) const
     idx--;
     if (idx < 0 || idx >= this->contactCounter)
     {
-        std::cout << "Invalid index. Please enter a valid index." << std::endl;
+        std::cerr << "Invalid Contact index. "
+        << "Please enter a valid index." << std::endl;
         return;
     }
     const Contact contact = *this->getContact(idx);
