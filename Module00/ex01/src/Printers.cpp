@@ -1,12 +1,13 @@
 #include "Printers.hpp"
 #include "PhoneBook.hpp"
-#include <string.h>
 
 const int COLUMN_WIDTH = 10;
+const int TOTAL_COLUMNS = 4;
 const char headTitleLayout = '_';
 const char tailTitleLayout = '`';
 const char edgeLayout = '|';
 const char tailLayout = '#';
+const char emptySlot = '*';
 
 void Printers::oneColumnPrinter(const std::string &str) const
 {
@@ -63,38 +64,52 @@ void Printers::contactDetailsAsAColumnPrinter(int idx, const Contact &contact) c
     oneColumnPrinter("Phone Number");
     oneColumnPrinter(contact.getPhoneNumber());
     std::cout << edgeLayout << std::endl;
-    std::cout << edgeLayout << std::string(COLUMN_WIDTH, '#');
-    std::cout << edgeLayout << std::string(COLUMN_WIDTH, '#')
-    << edgeLayout << std::endl;
+    std::cout << " " << std::string((COLUMN_WIDTH * 2) + 1, '#')
+    << std::endl;
 }
 
 void Printers::phoneBookHeaderPrinter() const
 {
-    std::cout << "\n\t\tPhoneBook Contacts:" << std::endl;
-    std::cout << " ___________________________________________" << std::endl;
+    std::string title = "PhoneBook Contacts";
+    int blankSpace = ((COLUMN_WIDTH * TOTAL_COLUMNS) - title.size() + 1) / 2;
+    int nbrOfCopies = (COLUMN_WIDTH * TOTAL_COLUMNS) + TOTAL_COLUMNS - 1;
+    std::cout << "\n"
+    << edgeLayout << std::string(blankSpace + 1, headTitleLayout)
+    << title << std::string(blankSpace + 1, headTitleLayout) << edgeLayout << "\n";
     oneColumnPrinter("Index");
     oneColumnPrinter("Name");
     oneColumnPrinter("Nickname");
     oneColumnPrinter("Phone Number");
-    std::cout << edgeLayout << std::endl;
-    std::cout << "|===========================================|" << std::endl;
+    std::cout
+    << edgeLayout << "\n"
+    << edgeLayout << std::string(nbrOfCopies, tailTitleLayout)
+    << edgeLayout << std::endl;
 }
 
 void Printers::searchContactHeaderPrinter() const
 {
     std::string title = "Contact Details";
-    
     int blankSpace = (COLUMN_WIDTH * 2) - title.size() - 2;
-    std::cout << " " << std::string((COLUMN_WIDTH * 2) + 1, headTitleLayout) << " " << std::endl;
-    std::cout << edgeLayout << std::string(blankSpace, ' ');
-    std::cout << title << std::string(blankSpace, ' ') << edgeLayout << std::endl;
-    std::cout << edgeLayout << std::string(COLUMN_WIDTH, tailTitleLayout);
-    std::cout << edgeLayout << std::string(COLUMN_WIDTH, tailTitleLayout) << edgeLayout << std::endl;
+
+    std::cout
+    << " " 
+    << std::string((COLUMN_WIDTH * 2) + 1, headTitleLayout) << " " << "\n";
+
+    std::cout
+    << edgeLayout << std::string(blankSpace, ' ')
+    << title << std::string(blankSpace, ' ') << edgeLayout << "\n";
+
+    std::cout
+    << edgeLayout << std::string(COLUMN_WIDTH, tailTitleLayout)
+    << edgeLayout << std::string(COLUMN_WIDTH, tailTitleLayout)
+    << edgeLayout << std::endl;
 }
 
 void Printers::phoneBookPrinter(const PhoneBook &phoneBook) const
 {
     std::string idxStr;
+    int nbrOfCopies = (COLUMN_WIDTH * TOTAL_COLUMNS) + TOTAL_COLUMNS + 1;
+    int emptySlotWidth = COLUMN_WIDTH * (TOTAL_COLUMNS - 1) + (TOTAL_COLUMNS / 2);
 
     phoneBookHeaderPrinter();
     for (int idx = 0; idx < MAX_CONTACTS; idx++)
@@ -105,8 +120,12 @@ void Printers::phoneBookPrinter(const PhoneBook &phoneBook) const
         if (contact)
             contactDetailsAsARowPrinter(*contact);
         else
-            std::cout << " ------------------------------ |";
+        {
+            std::cout
+            << edgeLayout << std::string(emptySlotWidth, emptySlot)
+            << edgeLayout << std::endl;
+        }
         std::cout << edgeLayout << std::endl;
     }
-    std::cout << std::string((COLUMN_WIDTH * 4) + 4 + 1, tailLayout) << std::endl;
+    std::cout << std::string(nbrOfCopies, tailLayout) << std::endl;
 }
