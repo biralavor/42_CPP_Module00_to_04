@@ -9,10 +9,10 @@ class Contact;
 class Printers
 {
 public:
-    void oneColumnCenteredPrinter(const std::string &str) const;
-    void oneColumnPrinter(const std::string &str) const;
+    void oneCellAlignToCenterPrinter(const std::string &str) const;
+    void oneCellAlignToRightPrinter(const std::string &str) const;
     void contactDetailsAsARowPrinter(const Contact &contact) const;
-    void contactDetailsAsAColumnPrinter(int idx, const Contact &contact) const;
+    void searchContactDetailsPrinter(int idx, const Contact &contact) const;
     void phoneBookHeaderPrinter() const;
     void searchContactHeaderPrinter() const;
     void phoneBookPrinter(const PhoneBook &phoneBook) const;

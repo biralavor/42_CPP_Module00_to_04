@@ -53,5 +53,5 @@ void PhoneBook::searchContact(int idx) const
     }
     const Contact contact = *this->getContact(idx);
     printer.searchContactHeaderPrinter();
-    printer.contactDetailsAsAColumnPrinter(idx, contact);
+    printer.searchContactDetailsPrinter(idx, contact);
 }
