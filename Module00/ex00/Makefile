@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/20 16:02:28 by umeneses          #+#    #+#              #
-#    Updated: 2025/06/24 14:09:30 by umeneses         ###   ########.fr        #
+#    Updated: 2025/07/05 18:59:16 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,32 +71,33 @@ ALL_HEADERS		:= -I$(HEADERS_DIR)
 all: $(NAME)
 
 $(NAME): $(OBJ_F) | $(BIN_DIR)
-	@printf "$(GREEN)Compiling C++ Files -> $(YELLOW)$(notdir $<)\n"
+	@printf "$(BLUE)Linking Objects      ->  $(notdir $@)\n$(RESET)"
 	@$(COMPILER) $(FLAGS) $(LIMITATIONS) $(DEBUG) $^ -o $@
-	@printf "$(GREEN)C++ Program Ready!$(RESET)"
+	@printf "$(GREEN)C++ Program Ready!\n$(RESET)"
 
 $(BUILD_DIR)%.o: $(SRC_DIR)%.cpp $(HEADERS_F) | $(BUILD_DIR)
-	$(COMPILER) $(FLAGS) $(LIMITATIONS) $(ALL_HEADERS) -c -o $@ $<
+	@printf "$(CYAN)Compiling C++ Files  ->  $(YELLOW)$(notdir $@)\n$(RESET)"
+	@$(COMPILER) $(FLAGS) $(LIMITATIONS) $(ALL_HEADERS) -c -o $@ $<
 
 $(BUILD_DIR) $(BIN_DIR):
 	@$(MKDIR) $@
 
 .PHONY: clean
 clean:
-	@printf "$(RED)Objects Cleaning -> $(YELLOW)$(BUILD_DIR)"
+	@printf "$(RED)Objects Cleaning     ->	$(YELLOW)$(BUILD_DIR)\n"
 	@$(RM) $(BUILD_DIR)
 	@printf "$(RESET)"
 
 .PHONY: fclean
 fclean: clean
-	@printf "$(RED)Full Cleaning -> $(YELLOW)$(BIN_DIR)"
+	@printf "$(RED)Full Cleaning        ->	$(YELLOW)$(BIN_DIR)\n"
 	@$(RM) $(BIN_DIR)
 	@printf "$(RESET)"
 
 .PHONY: re
 re:		fclean all
-	@printf "$(PURPLE)>>>>>>>>>>>>>>>>>>>>>>>"
-	@printf "$(CYAN)Program just rebuilt -> $(YELLOW)$(NAME) $(RESET)"
+	@printf "$(PURPLE)::::::::::::::::::::: \n"
+	@printf "$(CYAN)Program just rebuilt -> $(YELLOW)$(NAME)\n$(RESET)"
 
 .PHONY: go
 go:	all
