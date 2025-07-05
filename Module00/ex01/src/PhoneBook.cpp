@@ -5,7 +5,8 @@ PhoneBook::PhoneBook()
 {
     this->contactCounter = 0;
     this->nextSlotIdx = 0;
-    std::cout << "Phonebook Constructor" << std::endl;
+
+    std::cout << "Phonebook Constructor was activated." << std::endl;
     for (int i = 0; i < MAX_CONTACTS; i++)
         this->allContacts[i] = NULL;
 }
@@ -17,7 +18,7 @@ PhoneBook::~PhoneBook()
         if (this->allContacts[i] != NULL)
             delete this->allContacts[i];
     }
-    std::cout << "Phonebook Destructor" << std::endl;
+    std::cout << "Phonebook Destructor was activated." << std::endl;
 }
 
 void PhoneBook::addContact(const std::string &firstName,
@@ -32,25 +33,179 @@ void PhoneBook::addContact(const std::string &firstName,
         this->contactCounter++;
 }
 
+std::string PhoneBook::getUserInput()
+{
+    std::string userInput;
+
+    std::cout << "Please, choose an option: ";
+    std::cin >> userInput;
+    for (unsigned int idx = 0; idx < userInput.size(); idx++)
+        userInput[idx] = toupper(userInput[idx]);
+    return userInput;
+}
+
+std::string PhoneBook::getInputToFillContact(const std::string &inputType)
+{
+    std::string input;
+
+    std::cout << "Enter " << inputType << ": ";
+    std::cin >> input;
+    if (input.empty())
+    {
+        std::cerr << "Input cannot be empty. Please try again." << std::endl;
+        return getInputToFillContact(inputType);
+    }
+    if (input.size() < 3)
+    {
+        std::cerr << "[" << inputType << "] is too short. "
+        << "It has to be at least 3 characters." << std::endl;
+        return getInputToFillContact(inputType);
+    }
+    return input;
+}
+
 const Contact *PhoneBook::getContact(int idx) const
 {
     if (idx < 0 || idx >= this->contactCounter)
-    {
         return NULL;
-    }
     return this->allContacts[idx];
 }
 
-void PhoneBook::searchContact(int idx) const
+bool PhoneBook::isActionStillOn(bool &isActionOn, const std::string &action)
 {
-    Printers printer;
-    idx--;
-    if (idx < 0 || idx >= this->contactCounter)
+    std::string userInput;
+
+    while (isActionOn)
     {
-        std::cout << "Invalid index. Please enter a valid index." << std::endl;
+        std::cout << "Do you want to " << action << " another contact? (Y/N): ";
+        std::cin >> userInput;
+        if (userInput == "N" || userInput == "n")
+            isActionOn = false;
+        else if (userInput == "Y" || userInput == "y")
+        {
+            isActionOn = true;
+            break;
+        }
+        else
+        {
+            std::cerr << "Invalid input [" << userInput << "]. "
+            << "Please enter 'Y' or 'N'." << std::endl;
+        }
+    }
+    return isActionOn;
+}
+
+void PhoneBook::addContactManager(void)
+{
+    bool        isActionOn = true;
+    std::string userInput;
+    std::string firstName, lastName, nickName, phoneNumber, darkestSecret;
+
+    while (isActionOn)
+    {
+        firstName = getInputToFillContact("First Name");
+        lastName = getInputToFillContact("Last Name");
+        nickName = getInputToFillContact("Nickname");
+        phoneNumber = getInputToFillContact("Phone Number");
+        darkestSecret = getInputToFillContact("Darkest Secret");
+        this->addContact(firstName, lastName, nickName, phoneNumber, darkestSecret);
+        std::cout << "Contact added successfully!" << std::endl;
+        isActionOn = isActionStillOn(isActionOn, "add");
+    }
+}
+
+void PhoneBook::searchContactManager(void)
+{
+    int         inputAsInt;
+    bool        isActionOn = true;
+    std::string userInput;
+    Printers    printer;
+
+    if (this->contactCounter == 0)
+    {
+        std::cerr << "No contacts available. Please add a contact first." << std::endl;
         return;
     }
-    const Contact contact = *this->getContact(idx);
-    printer.searchContactHeaderPrinter();
-    printer.contactDetailsAsAColumnPrinter(idx, contact);
+    while (isActionOn)
+    {
+        std::cout << "Enter the index of the contact you want to search [1: "
+        << this->contactCounter << "] (or type '!' to exit): ";
+        std::cin >> userInput;
+        if (userInput == "!")
+        {
+            std::cout << "Exiting search." << std::endl;
+            isActionOn = false;
+            break;
+        }
+        if (userInput[0] < '0' || userInput[0] > '0' + this->contactCounter)
+        {
+            std::cerr << "Invalid Contact index[" << userInput << "]. "
+            << "Please enter a valid Contact position." << std::endl;
+        }
+        else
+        {
+            inputAsInt = userInput[0] - '0' - 1;
+            const Contact contact = *this->getContact(inputAsInt);
+            printer.searchContactHeaderPrinter();
+            printer.searchContactDetailsPrinter(inputAsInt, contact);
+            isActionOn = isActionStillOn(isActionOn, "search for");
+        }
+    }
+}
+
+int PhoneBook::userInputAsANumber(std::string &userInput, int &appState)
+{
+    switch (userInput[0])
+    {
+        case '1':
+            addContactManager();
+            break;
+        case '2':
+            searchContactManager();
+            break;
+        case '3':
+            std::cout << "Exiting PhoneBook Application." << std::endl;
+            appState = 0;
+            break;
+        default:
+            appState =  2;
+            break;
+    }
+    return appState;
+}
+
+int PhoneBook::userInputAsAWord(std::string &userInput, int &appState)
+{
+    if (userInput == "ADD")
+        addContactManager();
+    else if (userInput == "SEARCH")
+        searchContactManager();
+    else if (userInput == "EXIT")
+    {
+        std::cout << "Exiting PhoneBook Application." << std::endl;
+        appState = 0;
+    }
+    else
+        appState = 2;
+    return appState;
+}
+
+void PhoneBook::phoneBookManager(void)
+{
+    int         appState = 1;
+    Printers    printer;
+    std::string userInput;
+
+    while (appState != 0)
+    {
+        printer.phoneBookPrinter(*this);
+        printer.phoneBookMainMenuPrinter();
+        userInput = getUserInput();
+        if (userInput.size() == 1 && isdigit(userInput[0]))
+            appState = userInputAsANumber(userInput, appState);
+        else if (userInput.size() > 1)
+            appState = userInputAsAWord(userInput, appState);
+        if (appState == 2)
+            std::cerr << "Invalid option [" << userInput << "]. Try again." << std::endl;
+    }
 }

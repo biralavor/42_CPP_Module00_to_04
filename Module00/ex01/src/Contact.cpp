@@ -42,4 +42,3 @@ std::string Contact::getDarkestSecret() const
 {
     return this->darkestSecret;
 }
-
