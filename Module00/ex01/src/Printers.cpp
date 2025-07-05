@@ -90,7 +90,7 @@ void Printers::phoneBookHeaderPrinter() const
 void Printers::searchContactHeaderPrinter() const
 {
     std::string title = "Contact Details";
-    int blankSpace = (COLUMN_WIDTH * 2) - title.size() - 2;
+    int blankSpace = ((COLUMN_WIDTH * 2) - title.size() + 1) / 2;
 
     std::cout
     << " " 
