@@ -18,9 +18,14 @@ Contact::~Contact(void)
     << std::endl;
 }
 
-std::string Contact::getName() const
+std::string Contact::getFirstName() const
 {
-    return this->firstName + " " + this->lastName;
+    return this->firstName;
+}
+
+std::string Contact::getLastName() const
+{
+    return this->lastName;
 }
 
 std::string Contact::getNickName() const

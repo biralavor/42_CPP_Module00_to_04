@@ -15,7 +15,8 @@ public:
         std::string nickName, std::string phoneNumber,
         std::string darkestSecret);
     ~Contact(void);
-    std::string getName() const;
+    std::string getFirstName() const;
+    std::string getLastName() const;
     std::string getNickName() const;
     std::string getPhoneNumber() const;
     std::string getDarkestSecret() const;
