@@ -129,5 +129,5 @@ void Printers::phoneBookPrinter(const PhoneBook &phoneBook) const
         std::cout << edgeLayout << std::string(nbrOfCopies - 2, lineDivision)
         << edgeLayout << std::endl;
     }
-    std::cout << std::string(nbrOfCopies, tailLayout) << std::endl;
+    std::cout << " " << std::string(nbrOfCopies - 2, tailLayout) << " " << std::endl;
 }
