@@ -140,3 +140,9 @@ void Printers::phoneBookPrinter(const PhoneBook &phoneBook) const
     }
     std::cout << " " << std::string(nbrOfCopies - 2, tailLayout) << " " << std::endl;
 }
+
+void Printers::phoneBookMenuPrinter() const
+{
+    std::cout << "Welcome to the PhoneBook Application!" << std::endl;
+    std::cout << "Please choose an option:" << std::endl;
+}
