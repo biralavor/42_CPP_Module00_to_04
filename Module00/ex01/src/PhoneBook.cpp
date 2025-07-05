@@ -80,9 +80,7 @@ bool PhoneBook::isActionStillOn(bool &isActionOn, const std::string &action)
         std::cout << "Do you want to " << action << " another contact? (Y/N): ";
         std::cin >> userInput;
         if (userInput == "N" || userInput == "n")
-        {
             isActionOn = false;
-        }
         else if (userInput == "Y" || userInput == "y")
         {
             isActionOn = true;
@@ -179,13 +177,9 @@ int PhoneBook::userInputAsANumber(std::string &userInput, int &appState)
 int PhoneBook::userInputAsAWord(std::string &userInput, int &appState)
 {
     if (userInput == "ADD")
-    {
         addContactManager();
-    }
     else if (userInput == "SEARCH")
-    {
         searchContactManager();
-    }
     else if (userInput == "EXIT")
     {
         std::cout << "Exiting PhoneBook Application." << std::endl;
