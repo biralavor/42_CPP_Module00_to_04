@@ -11,10 +11,11 @@ Contact::Contact(std::string firstName, std::string lastName,
     this->darkestSecret = darkestSecret;
 }
 
-Contact::~Contact(void)
+Contact::~Contact()
 {
     std::cout
-    << "Contact " << this->firstName << " " << this->lastName << " is being destroyed."
+    << "Contact " << this->firstName << " "
+    << this->lastName << " is being destroyed."
     << std::endl;
 }
 

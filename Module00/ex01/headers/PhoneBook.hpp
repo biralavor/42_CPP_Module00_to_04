@@ -7,8 +7,8 @@ const int MAX_CONTACTS = 8;
 
 class PhoneBook
 {
-    int contactCounter;
-    int nextSlotIdx;
+    int     contactCounter;
+    int     nextSlotIdx;
     Contact *allContacts[MAX_CONTACTS];
 
 private:

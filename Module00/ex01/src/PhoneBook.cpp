@@ -13,12 +13,12 @@ PhoneBook::PhoneBook()
 
 PhoneBook::~PhoneBook()
 {
+    std::cout << "Phonebook Destructor was activated." << std::endl;
     for (int i = 0; i < MAX_CONTACTS; i++)
     {
         if (this->allContacts[i] != NULL)
             delete this->allContacts[i];
     }
-    std::cout << "Phonebook Destructor was activated." << std::endl;
 }
 
 void PhoneBook::addContact(const std::string &firstName,
@@ -27,7 +27,8 @@ void PhoneBook::addContact(const std::string &firstName,
 {
     if (this->allContacts[this->nextSlotIdx] != NULL)
         delete this->allContacts[this->nextSlotIdx];
-    this->allContacts[this->nextSlotIdx] = new Contact(firstName, lastName, nickName, phoneNumber, darkestSecret);
+    this->allContacts[this->nextSlotIdx] = new Contact(firstName, lastName,
+        nickName, phoneNumber, darkestSecret);
     this->nextSlotIdx = (this->nextSlotIdx + 1) % MAX_CONTACTS;
     if (this->contactCounter < MAX_CONTACTS)
         this->contactCounter++;
@@ -123,7 +124,8 @@ void PhoneBook::searchContactManager(void)
 
     if (this->contactCounter == 0)
     {
-        std::cerr << "No contacts available. Please add a contact first." << std::endl;
+        std::cerr << "No contacts available. Please add a contact first."
+        << std::endl;
         return;
     }
     while (isActionOn)
@@ -164,7 +166,7 @@ int PhoneBook::userInputAsANumber(std::string &userInput, int &appState)
             searchContactManager();
             break;
         case '3':
-            std::cout << "Exiting PhoneBook Application." << std::endl;
+            std::cout << "Exiting PhoneBook Application.\n" << std::endl;
             appState = 0;
             break;
         default:
@@ -182,7 +184,7 @@ int PhoneBook::userInputAsAWord(std::string &userInput, int &appState)
         searchContactManager();
     else if (userInput == "EXIT")
     {
-        std::cout << "Exiting PhoneBook Application." << std::endl;
+        std::cout << "Exiting PhoneBook Application.\n" << std::endl;
         appState = 0;
     }
     else
@@ -206,6 +208,7 @@ void PhoneBook::phoneBookManager(void)
         else if (userInput.size() > 1)
             appState = userInputAsAWord(userInput, appState);
         if (appState == 2)
-            std::cerr << "Invalid option [" << userInput << "]. Try again." << std::endl;
+            std::cerr << "Invalid option [" << userInput << "]. "
+            << "Try again." << std::endl;
     }
 }
