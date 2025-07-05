@@ -8,6 +8,7 @@ const char tailTitleLayout = '`';
 const char edgeLayout = '|';
 const char tailLayout = '#';
 const char emptySlot = '*';
+const char lineDivision = '-';
 
 void Printers::oneColumnPrinter(const std::string &str) const
 {
@@ -46,20 +47,20 @@ void Printers::contactDetailsAsAColumnPrinter(int idx, const Contact &contact) c
     oneColumnPrinter("Index");
     oneColumnPrinter(idxStr);
     std::cout << edgeLayout << std::endl;
-    std::cout << edgeLayout << std::string(COLUMN_WIDTH, '-');
-    std::cout << edgeLayout << std::string(COLUMN_WIDTH, '-')
+    std::cout << edgeLayout << std::string(COLUMN_WIDTH, lineDivision);
+    std::cout << edgeLayout << std::string(COLUMN_WIDTH, lineDivision)
     << edgeLayout << std::endl;
     oneColumnPrinter("Name");
     oneColumnPrinter(contact.getName());
     std::cout << edgeLayout << std::endl;
-    std::cout << edgeLayout << std::string(COLUMN_WIDTH, '-');
-    std::cout << edgeLayout << std::string(COLUMN_WIDTH, '-')
+    std::cout << edgeLayout << std::string(COLUMN_WIDTH, lineDivision);
+    std::cout << edgeLayout << std::string(COLUMN_WIDTH, lineDivision)
     << edgeLayout << std::endl;
     oneColumnPrinter("Nickname");
     oneColumnPrinter(contact.getNickName());
     std::cout << edgeLayout << std::endl;
-    std::cout << edgeLayout << std::string(COLUMN_WIDTH, '-');
-    std::cout << edgeLayout << std::string(COLUMN_WIDTH, '-')
+    std::cout << edgeLayout << std::string(COLUMN_WIDTH, lineDivision);
+    std::cout << edgeLayout << std::string(COLUMN_WIDTH, lineDivision)
     << edgeLayout << std::endl;
     oneColumnPrinter("Phone Number");
     oneColumnPrinter(contact.getPhoneNumber());
