@@ -12,9 +12,10 @@ class PhoneBook
     Contact *allContacts[MAX_CONTACTS];
 
 private:
-    int userInputAsANumber(std::string &userInput, bool &isAppRunning);
-    int userInputAsAWord(std::string &userInput, bool &isAppRunning);
+    int userInputAsANumber(std::string &userInput, int &appState);
+    int userInputAsAWord(std::string &userInput, int &appState);
     std::string getUserInput();
+    void searchContactManager() const;
 
 public:
     PhoneBook();
@@ -23,6 +24,5 @@ public:
         const std::string &lastName, const std::string &nickName,
         const std::string &phoneNumber, const std::string &darkestSecret);
     const Contact *getContact(int idx) const;
-    void searchContact(int idx) const;
     void phoneBookManager(void);
 };

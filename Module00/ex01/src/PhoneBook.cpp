@@ -6,10 +6,9 @@ PhoneBook::PhoneBook()
     this->contactCounter = 0;
     this->nextSlotIdx = 0;
 
-    std::cout << "Phonebook Constructor were activated." << std::endl;
+    std::cout << "Phonebook Constructor was activated." << std::endl;
     for (int i = 0; i < MAX_CONTACTS; i++)
         this->allContacts[i] = NULL;
-    phoneBookManager();
 }
 
 PhoneBook::~PhoneBook()
@@ -19,7 +18,7 @@ PhoneBook::~PhoneBook()
         if (this->allContacts[i] != NULL)
             delete this->allContacts[i];
     }
-    std::cout << "Phonebook Destructor were activated." << std::endl;
+    std::cout << "Phonebook Destructor was activated." << std::endl;
 }
 
 void PhoneBook::addContact(const std::string &firstName,
@@ -43,20 +42,46 @@ const Contact *PhoneBook::getContact(int idx) const
     return this->allContacts[idx];
 }
 
-void PhoneBook::searchContact(int idx) const
+void PhoneBook::searchContactManager() const
 {
-    Printers printer;
+    int         inputAsInt;
+    bool        isSearchOn = true;
+    std::string userInput;
+    Printers    printer;
 
-    idx--;
-    if (idx < 0 || idx >= this->contactCounter)
+    if (this->contactCounter == 0)
     {
-        std::cerr << "Invalid Contact index[" << idx + 1 << "]. "
-        << "Please enter a valid Contact position." << std::endl;
+        std::cerr << "No contacts available. Please add a contact first." << std::endl;
         return;
     }
-    const Contact contact = *this->getContact(idx);
-    printer.searchContactHeaderPrinter();
-    printer.searchContactDetailsPrinter(idx, contact);
+    while (isSearchOn)
+    {
+        std::cout << "Enter the index of the contact you want to search [1: "
+        << this->contactCounter << "] (or type '!' to exit): ";
+        std::cin >> userInput;
+        if (userInput == "!")
+        {
+            std::cout << "Exiting search." << std::endl;
+            isSearchOn = false;
+            break;
+        }
+        if (userInput[0] < '0' || userInput[0] > '0' + this->contactCounter)
+        {
+            std::cerr << "Invalid Contact index[" << userInput << "]. "
+            << "Please enter a valid Contact position." << std::endl;
+        }
+        else
+        {
+            inputAsInt = userInput[0] - '0' - 1;
+            const Contact contact = *this->getContact(inputAsInt);
+            printer.searchContactHeaderPrinter();
+            printer.searchContactDetailsPrinter(inputAsInt, contact);
+            std::cout << "Do you want to search another contact? (Y/N): ";
+            std::cin >> userInput;
+            if (userInput == "N" || userInput == "n")
+                isSearchOn = false;
+        }
+    }
 }
 
 std::string PhoneBook::getUserInput()
@@ -70,68 +95,62 @@ std::string PhoneBook::getUserInput()
     return userInput;
 }
 
-int PhoneBook::userInputAsANumber(std::string &userInput, bool &isAppRunning)
+int PhoneBook::userInputAsANumber(std::string &userInput, int &appState)
 {
-    while (isAppRunning)
+    switch (userInput[0])
     {
-        switch (userInput[0])
-        {
-            case '1':
-                // Add Contact
-                break;
-            case '2':
-                // Search Contact
-                break;
-            case '3':
-                std::cout << "Exiting PhoneBook Application." << std::endl;
-                isAppRunning = false;
-                break;
-            default:
-                return 2;
-        }
+        case '1':
+            // Add Contact
+            break;
+        case '2':
+            searchContactManager();
+            break;
+        case '3':
+            std::cout << "Exiting PhoneBook Application." << std::endl;
+            appState = 0;
+            break;
+        default:
+            appState =  2;
+            break;
     }
-    return isAppRunning;
+    return appState;
 }
 
-int PhoneBook::userInputAsAWord(std::string &userInput, bool &isAppRunning)
+int PhoneBook::userInputAsAWord(std::string &userInput, int &appState)
 {
-    while (isAppRunning)
+    if (userInput == "ADD")
     {
-        if (userInput == "ADD")
-        {
-            // Add Contact
-        }
-        else if (userInput == "SEARCH")
-        {
-            // Search Contact
-        }
-        else if (userInput == "EXIT")
-        {
-            std::cout << "Exiting PhoneBook Application." << std::endl;
-            isAppRunning = false;
-        }
-        else
-            return 2;
+        // Add Contact
     }
-    return isAppRunning;
+    else if (userInput == "SEARCH")
+    {
+        searchContactManager();
+    }
+    else if (userInput == "EXIT")
+    {
+        std::cout << "Exiting PhoneBook Application." << std::endl;
+        appState = 0;
+    }
+    else
+        appState = 2;
+    return appState;
 }
 
 void PhoneBook::phoneBookManager(void)
 {
+    int         appState = 1;
     Printers    printer;
     std::string userInput;
-    bool        isAppRunning = true;
-    int         appState = 0;
 
-    printer.phoneBookPrinter(*this);
-    printer.phoneBookMainMenuPrinter();
-    while (isAppRunning)
+    while (appState != 0)
     {
+        printer.phoneBookPrinter(*this);
+        printer.phoneBookMainMenuPrinter();
         userInput = getUserInput();
         if (userInput.size() == 1 && isdigit(userInput[0]))
-            appState = userInputAsANumber(userInput, isAppRunning);
+            appState = userInputAsANumber(userInput, appState);
         else if (userInput.size() > 1)
-            appState = userInputAsAWord(userInput, isAppRunning);
+            appState = userInputAsAWord(userInput, appState);
         if (appState == 2)
             std::cerr << "Invalid option [" << userInput << "]. Try again." << std::endl;
     }
