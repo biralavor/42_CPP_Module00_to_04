@@ -14,6 +14,7 @@ void Printers::oneCellAlignToCenterPrinter(const std::string &str) const
 {
     int size = str.size();
     int startPoint = COLUMN_WIDTH / 2;
+
     std::cout << edgeLayout;
     if (size > COLUMN_WIDTH)
         std::cout << str.substr(0, COLUMN_WIDTH - 1) + ".";
@@ -34,6 +35,7 @@ void Printers::oneCellAlignToCenterPrinter(const std::string &str) const
 void Printers::oneCellAlignToRightPrinter(const std::string &str) const
 {
     int size = str.size();
+
     std::cout << edgeLayout;
     if (size > COLUMN_WIDTH)
         std::cout << str.substr(0, COLUMN_WIDTH - 1) + ".";
@@ -83,6 +85,7 @@ void Printers::phoneBookHeaderPrinter() const
     std::string title = "PhoneBook Contacts";
     int blankSpace = ((COLUMN_WIDTH * TOTAL_COLUMNS) - title.size() + 1) / 2;
     int nbrOfCopies = (COLUMN_WIDTH * TOTAL_COLUMNS) + TOTAL_COLUMNS - 1;
+
     std::cout << "\n"
     << edgeLayout << std::string(blankSpace + 1, headTitleLayout)
     << title << std::string(blankSpace + 1, headTitleLayout) << edgeLayout << "\n";

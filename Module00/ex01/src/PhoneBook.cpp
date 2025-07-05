@@ -5,6 +5,7 @@ PhoneBook::PhoneBook()
 {
     this->contactCounter = 0;
     this->nextSlotIdx = 0;
+
     std::cout << "Phonebook Constructor were activated." << std::endl;
     for (int i = 0; i < MAX_CONTACTS; i++)
         this->allContacts[i] = NULL;
@@ -45,6 +46,7 @@ const Contact *PhoneBook::getContact(int idx) const
 void PhoneBook::searchContact(int idx) const
 {
     Printers printer;
+
     idx--;
     if (idx < 0 || idx >= this->contactCounter)
     {
@@ -57,29 +59,10 @@ void PhoneBook::searchContact(int idx) const
     printer.searchContactDetailsPrinter(idx, contact);
 }
 
-void PhoneBook::phoneBookManager(void)
-{
-    Printers    printer;
-    std::string userInput;
-    bool isAppRunning = true;
-
-    printer.phoneBookPrinter(*this);
-    printer.phoneBookMainMenuPrinter();
-    std::cin >> userInput;
-    for (unsigned int idx = 0; idx < userInput.size(); idx++)
-        userInput[idx] = toupper(userInput[idx]);
-    while (isAppRunning)
-    {
-        if (userInput.size() == 1 && isdigit(userInput[0]))
-            isAppRunning = userInputAsANumber(userInput);
-        else
-            isAppRunning = userInputAsAWord(userInput);
-    }
-}
-
 bool PhoneBook::userInputAsANumber(std::string &userInput)
 {
     bool isAppRunning = true;
+
     while (isAppRunning)
     {
         switch (userInput[0])
@@ -107,6 +90,7 @@ bool PhoneBook::userInputAsANumber(std::string &userInput)
 bool PhoneBook::userInputAsAWord(std::string &userInput)
 {
     bool isAppRunning = true;
+
     while (isAppRunning)
     {
         if (userInput == "ADD")
@@ -130,4 +114,24 @@ bool PhoneBook::userInputAsAWord(std::string &userInput)
         }
     }
     return isAppRunning;
+}
+
+void PhoneBook::phoneBookManager(void)
+{
+    Printers    printer;
+    std::string userInput;
+    bool        isAppRunning = true;
+
+    printer.phoneBookPrinter(*this);
+    printer.phoneBookMainMenuPrinter();
+    std::cin >> userInput;
+    for (unsigned int idx = 0; idx < userInput.size(); idx++)
+        userInput[idx] = toupper(userInput[idx]);
+    while (isAppRunning)
+    {
+        if (userInput.size() == 1 && isdigit(userInput[0]))
+            isAppRunning = userInputAsANumber(userInput);
+        else
+            isAppRunning = userInputAsAWord(userInput);
+    }
 }
