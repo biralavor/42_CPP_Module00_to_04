@@ -33,6 +33,37 @@ void PhoneBook::addContact(const std::string &firstName,
         this->contactCounter++;
 }
 
+std::string PhoneBook::getUserInput()
+{
+    std::string userInput;
+
+    std::cout << "Please, choose an option: ";
+    std::cin >> userInput;
+    for (unsigned int idx = 0; idx < userInput.size(); idx++)
+        userInput[idx] = toupper(userInput[idx]);
+    return userInput;
+}
+
+std::string PhoneBook::getInputToFillContact(const std::string &inputType)
+{
+    std::string input;
+
+    std::cout << "Enter " << inputType << ": ";
+    std::cin >> input;
+    if (input.empty())
+    {
+        std::cerr << "Input cannot be empty. Please try again." << std::endl;
+        return getInputToFillContact(inputType);
+    }
+    if (input.size() < 3)
+    {
+        std::cerr << "[" << inputType << "] is too short. "
+        << "It has to be at least 3 characters." << std::endl;
+        return getInputToFillContact(inputType);
+    }
+    return input;
+}
+
 const Contact *PhoneBook::getContact(int idx) const
 {
     if (idx < 0 || idx >= this->contactCounter)
@@ -40,6 +71,28 @@ const Contact *PhoneBook::getContact(int idx) const
         return NULL;
     }
     return this->allContacts[idx];
+}
+
+void PhoneBook::addContactManager(void)
+{
+    bool        isAddContactOn = true;
+    std::string userInput;
+    std::string firstName, lastName, nickName, phoneNumber, darkestSecret;
+
+    while (isAddContactOn)
+    {
+        firstName = getInputToFillContact("First Name");
+        lastName = getInputToFillContact("Last Name");
+        nickName = getInputToFillContact("Nickname");
+        phoneNumber = getInputToFillContact("Phone Number");
+        darkestSecret = getInputToFillContact("Darkest Secret");
+        this->addContact(firstName, lastName, nickName, phoneNumber, darkestSecret);
+        std::cout << "Contact added successfully!" << std::endl;
+        std::cout << "Do you want to add another contact? (Y/N): ";
+        std::cin >> userInput;
+        if (userInput == "N" || userInput == "n")
+            isAddContactOn = false;
+    }
 }
 
 void PhoneBook::searchContactManager() const
@@ -84,23 +137,12 @@ void PhoneBook::searchContactManager() const
     }
 }
 
-std::string PhoneBook::getUserInput()
-{
-    std::string userInput;
-
-    std::cout << "Please, choose an option: ";
-    std::cin >> userInput;
-    for (unsigned int idx = 0; idx < userInput.size(); idx++)
-        userInput[idx] = toupper(userInput[idx]);
-    return userInput;
-}
-
 int PhoneBook::userInputAsANumber(std::string &userInput, int &appState)
 {
     switch (userInput[0])
     {
         case '1':
-            // Add Contact
+            addContactManager();
             break;
         case '2':
             searchContactManager();
@@ -120,7 +162,7 @@ int PhoneBook::userInputAsAWord(std::string &userInput, int &appState)
 {
     if (userInput == "ADD")
     {
-        // Add Contact
+        addContactManager();
     }
     else if (userInput == "SEARCH")
     {
