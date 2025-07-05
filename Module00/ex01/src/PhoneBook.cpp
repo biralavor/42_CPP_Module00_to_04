@@ -3,11 +3,15 @@
 
 PhoneBook::PhoneBook()
 {
+    Printers printer;
     this->contactCounter = 0;
     this->nextSlotIdx = 0;
     std::cout << "Phonebook Constructor were activated." << std::endl;
     for (int i = 0; i < MAX_CONTACTS; i++)
         this->allContacts[i] = NULL;
+    
+    printer.phoneBookPrinter(*this);
+    printer.phoneBookMenuPrinter();
 }
 
 PhoneBook::~PhoneBook()
