@@ -10,6 +10,11 @@ class PhoneBook
     int contactCounter;
     int nextSlotIdx;
     Contact *allContacts[MAX_CONTACTS];
+
+private:
+    bool userInputAsANumber(std::string &userInput);
+    bool userInputAsAWord(std::string &userInput);
+
 public:
     PhoneBook();
     ~PhoneBook();
@@ -18,4 +23,5 @@ public:
         const std::string &phoneNumber, const std::string &darkestSecret);
     const Contact *getContact(int idx) const;
     void searchContact(int idx) const;
+    void phoneBookManager(void);
 };

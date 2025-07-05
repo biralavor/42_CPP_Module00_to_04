@@ -16,5 +16,5 @@ public:
     void phoneBookHeaderPrinter() const;
     void searchContactHeaderPrinter() const;
     void phoneBookPrinter(const PhoneBook &phoneBook) const;
-    void phoneBookMenuPrinter() const;
+    void phoneBookMainMenuPrinter() const;
 };
