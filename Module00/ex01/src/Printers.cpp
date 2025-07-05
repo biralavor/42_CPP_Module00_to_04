@@ -151,6 +151,5 @@ void Printers::phoneBookMainMenuPrinter() const
     << ">> MENU OPTIONS <<\n"
     << "1. ADD Contact\n"
     << "2. SEARCH Contact\n"
-    << "3. EXIT\n\n"
-    << "Please, choose an option: ";
+    << "3. EXIT\n\n";
 }
