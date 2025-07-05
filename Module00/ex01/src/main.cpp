@@ -5,9 +5,11 @@ int main()
 {
     PhoneBook phonebook;
 
-    // phonebook.addContact("1John", "Doe", "JoD", "123-456-7890", "Loves pizza");
-    // phonebook.addContact("2Jane", "Smith", "JayS", "987-654-3210", "Hates spiders");
-    // phonebook.addContact("3Bob", "Johnson", "BobJ", "555-555-5555", "Afraid of heights");
+    phonebook.addContact("1John", "Doe", "JoD", "123-456-7890", "Loves pizza");
+    phonebook.addContact("2Jane", "Smith", "JayS", "987-654-3210", "Hates spiders");
+    phonebook.addContact("3Bob", "Johnson", "BobJ", "555-555-5555", "Afraid of heights");
+    phonebook.phoneBookManager();
+    
     // phonebook.addContact("4Alice", "Williams", "AliW", "444-444-4444", "Loves cats");
     // phonebook.addContact("5Charlie", "Brown", "CharB", "333-333-3333", "Collects stamps");
     // phonebook.addContact("6Eve", "Davis", "EveD", "222-222-2222", "Enjoys hiking");
@@ -16,6 +18,5 @@ int main()
     // phonebook.addContact("9Hank", "Moore", "HankM", "123-123-1234", "Enjoys cooking");
 
     // phonebook.searchContact(1);
-
     return 0;
 }
