@@ -4,12 +4,10 @@
 int main(void)
 {
     Zombie *heapLazyZombie;
-    Zombie fasterZombie;
+    Zombie fasterZombie("Faster Zed");
 
-    heapLazyZombie = NULL;
-    heapLazyZombie = heapLazyZombie->newZombie("Heap Lazy Zed");
-    fasterZombie.randomChump("Faster Zed");
+    heapLazyZombie = newZombie("Heap Lazy Zed");
     delete heapLazyZombie;
-    
+
     return 0;
 }

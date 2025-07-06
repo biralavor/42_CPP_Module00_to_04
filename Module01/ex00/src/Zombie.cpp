@@ -6,52 +6,41 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 17:39:29 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/06 18:42:06 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/06 19:35:55 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie::Zombie(void)
+Zombie::Zombie(const std::string &name)
 {
+    this->name = name;
+    this->announce();
 }
 
 Zombie::~Zombie(void)
 {
     std::cout
-    << this->getName()
+    << this->name
     << ": is dead, again. Actually, it was never alive."
     << std::endl;
-}
-
-std::string Zombie::getName(void) const
-{
-    return this->name;
-}
-
-void Zombie::setName(const std::string &name)
-{
-    this->name = name;
 }
 
 void Zombie::announce(void)
 {
     std::cout
-    << this->getName()
+    << this->name
     << ": BraiiiiiiinnnzzzZ..."
     << std::endl;
 }
 
-Zombie *Zombie::newZombie(std::string name)
+Zombie *newZombie(std::string name)
 {
-    Zombie *lazyZombie = new Zombie();
-    lazyZombie->setName(name);
-    lazyZombie->announce();
+    Zombie *lazyZombie = new Zombie(name);
     return lazyZombie;
 }
 
-void Zombie::randomChump(std::string name)
+void randomChump(std::string name)
 {
-    this->setName(name);
-    this->announce();
+    Zombie fastZombie(name);
 }
