@@ -13,6 +13,7 @@ RESET  = \e[0m
 # **************************************************************************** #
 BUILD_DIR   := build
 CMAKE_FLAGS := -DCMAKE_BUILD_TYPE=Debug
+EXERCISE_DIRS := $(wildcard ex*)
 
 # **************************************************************************** #
 #                                 TARGETS                                      #
@@ -60,19 +61,31 @@ re: clean all
 .PHONY: build_exercises
 build_exercises:
 	@printf "$(CYAN)Building individual exercises...$(RESET)\n"
-	@$(MAKE) -C ex00
+	@for dir in $(EXERCISE_DIRS); do \
+		if [ -d $$dir ]; then \
+			$(MAKE) -C $$dir; \
+		fi; \
+	done
 	@printf "$(GREEN)All exercises built successfully!$(RESET)\n"
 
 .PHONY: clean_exercises
 clean_exercises:
 	@printf "$(YELLOW)Cleaning individual exercises...$(RESET)\n"
-	@$(MAKE) -C ex00 clean
+	@for dir in $(EXERCISE_DIRS); do \
+		if [ -d $$dir ]; then \
+			$(MAKE) -C $$dir clean; \
+		fi; \
+	done
 	@printf "$(GREEN)Individual exercise cleaned$(RESET)\n"
 
 .PHONY: fclean_exercises
 fclean_exercises:
 	@printf "$(CYAN)Forcing clean of individual exercise program files...$(RESET)\n"
-	@$(MAKE) -C ex00 fclean
+	@for dir in $(EXERCISE_DIRS); do \
+		if [ -d $$dir ]; then \
+			$(MAKE) -C $$dir fclean; \
+		fi; \
+	done
 
 .PHONY: build_all
 build_all: build_cmake build_exercises
