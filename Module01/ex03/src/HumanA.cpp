@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:28:19 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/07 14:56:43 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:37:37 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ HumanA::~HumanA()
 {
 }
 
-void HumanA::attack()
+void HumanA::attack(void) const
 {
     std::cout
     << this->name << " attacks with their "
