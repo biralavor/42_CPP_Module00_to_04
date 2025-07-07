@@ -6,11 +6,12 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:10:17 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/07 18:13:59 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/07 19:16:10 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DatabaseManager.hpp"
+#include "ReplaceManager.hpp"
 
 int main(int argc, char **argv)
 {
@@ -34,11 +35,10 @@ int main(int argc, char **argv)
     s2 = argv[3];
     if (databaseLoader(filename, originalContent))
     {
-        // Process the data
-    }
-    if (outputFileCreator(outputFile, filename))
-    {
-        // Process the data
+        if (outputFileCreator(outputFile, filename))
+        {
+            replaceManager(originalContent, s1, s2, outputFile);
+        }
     }
     outputFile.close();
     return 0;
