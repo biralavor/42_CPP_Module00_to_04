@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 13:54:22 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/07 15:37:30 by umeneses         ###   ########.fr       */
+/*   Created: 2025/07/07 15:00:33 by umeneses          #+#    #+#             */
+/*   Updated: 2025/07/07 15:36:28 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "Weapon.hpp"
 
-class HumanA
+class HumanB
 {
     std::string name;
-    Weapon &weapon;
+    Weapon *weapon;
 public:
     void attack(void) const;
-    HumanA(std::string name, Weapon &weapon);
-    ~HumanA();
+    void setWeapon(Weapon &weapon);
+    HumanB(std::string name);
+    ~HumanB();
 };

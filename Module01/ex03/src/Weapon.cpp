@@ -6,13 +6,13 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 14:26:30 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/07 14:57:14 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:39:02 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 
-Weapon::Weapon(std::string type)
+Weapon::Weapon(const std::string &type)
     : type(type)
 {
     // Initialization list used to avoid unnecessary copies
