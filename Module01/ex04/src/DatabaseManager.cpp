@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:23:23 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/07 17:50:18 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/07 19:10:00 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ bool databaseLoader(const std::string &filename,
     }
     while(std::getline(file, line))
     {
-        originalContent.push_back(line);
+        originalContent.push_back(line + "\n");
         words_counter++;
     }
     if (words_counter == 0)
