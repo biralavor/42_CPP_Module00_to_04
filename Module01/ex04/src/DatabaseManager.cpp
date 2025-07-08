@@ -6,11 +6,12 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:23:23 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/07 19:10:00 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/07 19:46:59 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DatabaseManager.hpp"
+#include "ReplaceManager.hpp"
 
 bool databaseLoader(const std::string &filename,
     std::vector<std::string> &originalContent)
@@ -55,4 +56,25 @@ bool outputFileCreator(std::ofstream &outputFile,
         return false;
     }
     return true;
+}
+
+void databaseManager(char **argv)
+{
+    std::string filename;
+    std::string s1;
+    std::string s2;
+    std::vector<std::string> originalContent;
+    std::ofstream outputFile;
+
+    filename = argv[1];
+    s1 = argv[2];
+    s2 = argv[3];
+    if (databaseLoader(filename, originalContent))
+    {
+        if (outputFileCreator(outputFile, filename))
+        {
+            replaceManager(originalContent, s1, s2, outputFile);
+        }
+    }
+    outputFile.close();
 }
