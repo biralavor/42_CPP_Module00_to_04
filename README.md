@@ -1,6 +1,6 @@
 # CPP Lists -> Modules 0 to 4
 
-| ![cpp-list-0to4](https://github.com/user-attachments/assets/04a63315-559b-4bc3-a222-ce8323b7baee "CPP Lists 0 to 4") | WIP project list about C++ Modules (0 to 4), from 42 school - @42sp | Grade: not evaluated yet |
+| ![cpp-list-0to4](https://github.com/user-attachments/assets/04a63315-559b-4bc3-a222-ce8323b7baee "CPP Lists 0 to 4") | WIP project list about C++ Modules (0 to 4), from 42 school - @42sp | Grade: <br> not evaluated yet |
 | :-: | :-: | :-: |
 
 
