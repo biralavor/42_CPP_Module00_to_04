@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 14:59:42 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/08 18:29:29 by umeneses         ###   ########.fr       */
+/*   Created: 2025/07/08 18:28:11 by umeneses          #+#    #+#             */
+/*   Updated: 2025/07/08 20:06:35 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,32 @@ void Harl::debug(void)
 void Harl::complain(std::string level)
 {
     std::string actualLevel[MAX_ACTIONS] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-
+    int idx = 0;
+    
     for (size_t idxChar = 0; idxChar < level.length(); idxChar++)
         level[idxChar] = toupper(level[idxChar]);
-    for (int idx = 0; idx < MAX_ACTIONS; idx++)
+    for (idx = 0; idx < MAX_ACTIONS; idx++)
     {
         if (level == actualLevel[idx])
-        {
-            (this->*complainAction[idx])();
-            return;
-        }
+            break;
+    }
+    switch (idx)
+    {
+        case 0:
+            this->debug();
+            break;
+        case 1:
+            this->info();
+            break;
+        case 2:
+            this->warning();
+            break;
+        case 3:
+            this->error();
+            break;
+        default:
+            std::cerr
+            << "Invalid level: " << level << std::endl;
+            break;
     }
 }
