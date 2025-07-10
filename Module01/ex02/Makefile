@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/20 16:02:28 by umeneses          #+#    #+#              #
-#    Updated: 2025/07/07 12:21:20 by umeneses         ###   ########.fr        #
+#    Updated: 2025/07/10 18:37:07 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,3 +102,8 @@ re:		fclean all
 .PHONY: go
 go:	all
 	@./$(NAME) $*
+
+.PHONY: val
+val: all
+	@valgrind ./$(NAME)
+
