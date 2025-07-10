@@ -23,7 +23,7 @@ ReplaceThisWithThat::~ReplaceThisWithThat()
     // Default destructor
 }
 
-std::string ReplaceThisWithThat::replaceLineRunner(std::string &fullLine,
+std::string ReplaceThisWithThat::replaceLineRunner(const std::string &fullLine,
     const std::string &s1, const std::string &s2)
 {
     std::string modifiedLine;
