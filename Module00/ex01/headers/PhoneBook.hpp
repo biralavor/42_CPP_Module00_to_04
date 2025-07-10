@@ -6,13 +6,14 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 18:51:26 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/10 09:47:59 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/10 12:13:17 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
 #include <string>
+#include <cstdlib>
 #include "Contact.hpp"
 
 const int MAX_CONTACTS = 8;
