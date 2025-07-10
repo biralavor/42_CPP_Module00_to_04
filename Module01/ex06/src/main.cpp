@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:29:21 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/10 13:00:35 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/10 18:35:42 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int main(int argc, char **argv)
     if (argc != 2)
     {
         std::cerr
-        << "Error. Usage: " << argv[0] << " <level>"
+        << "Error. Invalid Arguments."
+        << "Usage: " << argv[0] << " <level>"
         << std::endl;
         return 1;
     }
