@@ -15,17 +15,15 @@
 
 class ReplaceThisWithThat
 {
-    std::string _s1;
-    std::string _s2;
-    Database    _database;
-
-    std::string replaceLineRunner(std::string &fullLine,
-        const std::string &s1, const std::string &s2);
-
-public:
     std::string     _inputContent;
     std::ofstream   _outputFile;
+    std::string     _s1;
+    std::string     _s2;
+    Database        _database;
 
+    std::string replaceLineRunner(const std::string &fullLine,
+        const std::string &s1, const std::string &s2);
+public:
     ReplaceThisWithThat();
     ~ReplaceThisWithThat();
     void replaceManager(char **argv);
