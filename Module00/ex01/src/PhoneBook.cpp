@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 18:51:11 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/10 12:16:31 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/10 16:22:11 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,11 @@ std::string PhoneBook::getInputToFillContact(const std::string &inputType)
     std::string input;
 
     std::cout << "Enter " << inputType << ": ";
-    std::cin >> input;
+    if (!(std::cin >> input))
+    {
+        if (std::cin.eof())
+            return "EOF";
+    }
     if (input.empty())
     {
         std::cerr << "Input cannot be empty. Please try again." << std::endl;
@@ -95,9 +99,11 @@ bool PhoneBook::isActionStillOn(bool &isActionOn, const std::string &action)
     while (isActionOn)
     {
         std::cout << "Do you want to " << action << " another contact? (Y/N): ";
-        std::cin >> userInput;
-        if (userInput == "N" || userInput == "n")
-            isActionOn = false;
+        if (!(std::cin >> userInput))
+        {
+            if (std::cin.eof() || userInput == "N" || userInput == "n")
+                isActionOn = false;
+        }
         else if (userInput == "Y" || userInput == "y")
         {
             isActionOn = true;
@@ -125,6 +131,14 @@ void PhoneBook::addContactManager(void)
         nickName = getInputToFillContact("Nickname");
         phoneNumber = getInputToFillContact("Phone Number");
         darkestSecret = getInputToFillContact("Darkest Secret");
+        if (firstName == "EOF" || lastName == "EOF" ||
+            nickName == "EOF" || phoneNumber == "EOF" ||
+            darkestSecret == "EOF")
+        {
+            std::cout << "\nEnd of input detected. Exiting." << std::endl;
+            isActionOn = false;
+            break ;
+        }
         this->addContact(firstName, lastName, nickName, phoneNumber, darkestSecret);
         std::cout << "Contact added successfully!" << std::endl;
         isActionOn = isActionStillOn(isActionOn, "add");
@@ -148,7 +162,11 @@ void PhoneBook::searchContactManager(void)
     {
         std::cout << "Enter the index of the contact you want to search [1: "
         << this->contactCounter << "] (or type '!' to exit): ";
-        std::cin >> userInput;
+        if (!(std::cin >> userInput))
+        {
+            if (std::cin.eof())
+                break ;
+        }
         if (userInput == "!")
         {
             std::cout << "Exiting search." << std::endl;
@@ -221,7 +239,7 @@ void PhoneBook::phoneBookManager(void)
         userInput = getUserInput();
         if (userInput == "EOF")
         {
-            std::cout << "End of input detected. Exiting." << std::endl;
+            std::cout << "\nEnd of input detected. Exiting." << std::endl;
             appState = 0;
             break;
         }
