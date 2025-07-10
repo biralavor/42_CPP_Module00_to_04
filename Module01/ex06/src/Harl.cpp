@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:28:11 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/08 20:06:35 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/10 09:42:54 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void Harl::complain(std::string level)
     int idx = 0;
     
     for (size_t idxChar = 0; idxChar < level.length(); idxChar++)
-        level[idxChar] = toupper(level[idxChar]);
+        level[idxChar] = std::toupper(level[idxChar]);
     for (idx = 0; idx < MAX_ACTIONS; idx++)
     {
         if (level == actualLevel[idx])

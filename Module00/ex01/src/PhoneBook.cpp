@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 18:51:11 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/05 18:51:12 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/10 09:41:24 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ std::string PhoneBook::getUserInput()
     std::cout << "Please, choose an option: ";
     std::cin >> userInput;
     for (unsigned int idx = 0; idx < userInput.size(); idx++)
-        userInput[idx] = toupper(userInput[idx]);
+        userInput[idx] = std::toupper(userInput[idx]);
     return userInput;
 }
 

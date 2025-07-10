@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 14:31:21 by umeneses          #+#    #+#             */
-/*   Updated: 2025/06/24 11:47:19 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/10 09:28:28 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ std::string megaphone(int argc, char **argv)
 		{
 			j = -1;
 			while (argv[i][++j])
-				result += toupper(argv[i][j]);
+				result += std::toupper(argv[i][j]);
 			if (i < argc - 1)
 				result += ' ';
 		}
