@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 18:51:11 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/10 09:41:24 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/10 09:47:59 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,7 @@ void PhoneBook::searchContactManager(void)
     }
 }
 
-int PhoneBook::userInputAsANumber(std::string &userInput, int &appState)
+int PhoneBook::userInputAsNumber(std::string &userInput, int &appState)
 {
     switch (userInput[0])
     {
@@ -188,7 +188,7 @@ int PhoneBook::userInputAsANumber(std::string &userInput, int &appState)
     return appState;
 }
 
-int PhoneBook::userInputAsAWord(std::string &userInput, int &appState)
+int PhoneBook::userInputAsWord(std::string &userInput, int &appState)
 {
     if (userInput == "ADD")
         addContactManager();
@@ -216,9 +216,9 @@ void PhoneBook::phoneBookManager(void)
         printer.phoneBookMainMenuPrinter();
         userInput = getUserInput();
         if (userInput.size() == 1 && isdigit(userInput[0]))
-            appState = userInputAsANumber(userInput, appState);
+            appState = userInputAsNumber(userInput, appState);
         else if (userInput.size() > 1)
-            appState = userInputAsAWord(userInput, appState);
+            appState = userInputAsWord(userInput, appState);
         if (appState == 2)
             std::cerr << "Invalid option [" << userInput << "]. "
             << "Try again." << std::endl;
