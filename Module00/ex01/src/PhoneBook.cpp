@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 18:51:11 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/10 11:20:12 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/10 12:16:31 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,11 @@ std::string PhoneBook::getUserInput()
     std::string userInput;
 
     std::cout << "Please, choose an option: ";
-    std::cin >> userInput;
+    if (!(std::cin >> userInput))
+    {
+        if (std::cin.eof())
+            return "EOF";
+    }
     for (unsigned int idx = 0; idx < userInput.size(); idx++)
         userInput[idx] = std::toupper(userInput[idx]);
     return userInput;
@@ -215,7 +219,13 @@ void PhoneBook::phoneBookManager(void)
         printer.phoneBookPrinter(*this);
         printer.phoneBookMainMenuPrinter();
         userInput = getUserInput();
-        if (userInput.size() == 1 && isdigit(userInput[0]))
+        if (userInput == "EOF")
+        {
+            std::cout << "End of input detected. Exiting." << std::endl;
+            appState = 0;
+            break;
+        }
+        if (userInput.size() == 1)
             appState = userInputAsNumber(userInput, appState);
         else if (userInput.size() > 1)
             appState = userInputAsWord(userInput, appState);
