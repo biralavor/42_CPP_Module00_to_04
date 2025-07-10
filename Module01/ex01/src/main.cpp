@@ -1,6 +1,6 @@
 #include <iostream>
-#include "zombie.hpp"
-#include "zombieHorde.hpp"
+#include "Zombie.hpp"
+#include "ZombieHorde.hpp"
 
 int main(void)
 {
