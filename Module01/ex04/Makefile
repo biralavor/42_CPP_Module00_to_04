@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/20 16:02:28 by umeneses          #+#    #+#              #
-#    Updated: 2025/07/07 15:59:02 by umeneses         ###   ########.fr        #
+#    Updated: 2025/07/10 18:08:00 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ MV_OBJS			:= find . -type f \( -name '.o' -o -name '.a'\) -exec mv {} \
 
 AUTHOR			:= umeneses
 COMPILER		:= c++
-FLAGS			:= -Wall -Wextra -Werror
+FLAGS			:= -Wall -Wextra -Werror -pedantic
 LIMITATIONS		:= -std=c++98
 DEBUG			:= -g3
 ALL_HEADERS		:= -I$(HEADERS_DIR)
