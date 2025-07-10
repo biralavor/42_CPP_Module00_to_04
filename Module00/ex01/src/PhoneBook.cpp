@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 18:51:11 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/10 09:47:59 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/10 11:20:12 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ void PhoneBook::searchContactManager(void)
             isActionOn = false;
             break;
         }
-        if (userInput[0] < '0' || userInput[0] > '0' + this->contactCounter)
+        if (userInput[0] <= '0' || userInput[0] > '0' + this->contactCounter)
         {
             std::cerr << "Invalid Contact index[" << userInput << "]. "
             << "Please enter a valid Contact position." << std::endl;
