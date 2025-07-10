@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ReplaceManager.hpp                                 :+:      :+:    :+:   */
+/*   Database.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 18:23:22 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/08 13:18:10 by umeneses         ###   ########.fr       */
+/*   Created: 2025/07/07 16:17:28 by umeneses          #+#    #+#             */
+/*   Updated: 2025/07/10 18:07:20 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#include "DatabaseManager.hpp"
+#include <fstream>
+#include <iostream>
+#include <string>
 
-void replaceManager(std::vector<std::string> &originalContent,
-    const std::string &s1, const std::string &s2,
-    std::ofstream &outputFile);
+class Database
+{
 
-std::string replaceLineRunner(std::string &originalLine,
-    const std::string &s1, const std::string &s2);
+public:
+    bool databaseLoader(const std::string &filename, 
+        std::string &inputContent);
+    
+    bool outputFileCreator(std::ofstream &outputFile,
+        const std::string &filename);
+    
+    bool databaseManager(char **argv, std::string &_inputContent,
+        std::ofstream &_outputFile);
+    Database();
+    ~Database();
+};
