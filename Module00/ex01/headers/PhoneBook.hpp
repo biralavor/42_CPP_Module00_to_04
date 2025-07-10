@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 18:51:26 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/05 18:51:27 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/10 09:47:59 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ class PhoneBook
 private:
     std::string getUserInput();
     std::string getInputToFillContact(const std::string &inputType);
-    int userInputAsANumber(std::string &userInput, int &appState);
-    int userInputAsAWord(std::string &userInput, int &appState);
+    int userInputAsNumber(std::string &userInput, int &appState);
+    int userInputAsWord(std::string &userInput, int &appState);
     void searchContactManager(void);
     void addContactManager(void);
     bool isActionStillOn(bool &isActionOn, const std::string &action);
