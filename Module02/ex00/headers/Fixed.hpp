@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 20:41:00 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/09 21:42:02 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/11 11:58:42 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ public:
      * @param rightSideValue The Fixed object to add to the current object.
      * @return A new Fixed object that is the sum of the two.
      */
-    Fixed Fixed::operator+(Fixed const &rightSideValue) const;
+    Fixed operator+(Fixed const &rightSideValue) const;
 
     /**
      * @brief Get the raw bits of the fixed-point value
