@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/20 16:02:28 by umeneses          #+#    #+#              #
-#    Updated: 2025/07/11 12:04:21 by umeneses         ###   ########.fr        #
+#    Updated: 2025/07/11 15:08:53 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ HEADERS_DIR		:= ./headers/
 #								FILES										   #
 # **************************************************************************** #
 
-NAME			:= $(BIN_DIR)fixed-point-numbers
+NAME			:= $(BIN_DIR)fixed-point-numbers-orthodox
 SRC_F			:= $(wildcard $(SRC_DIR)*.cpp)
 OBJ_F			:= $(patsubst $(SRC_DIR)%.cpp, $(BUILD_DIR)%.o, $(SRC_F))
 HEADERS_F		:= $(wildcard $(HEADERS_DIR)*.hpp)
