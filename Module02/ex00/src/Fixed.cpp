@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 20:41:27 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/11 11:53:37 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/11 12:19:11 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Fixed::Fixed(Fixed const &src)
 
 Fixed &Fixed::operator=(Fixed const &rightSideValue)
 {
-    std::cout << "Assignation operator called" << std::endl;
+    std::cout << "Copy assignment operator called" << std::endl;
     if (this != &rightSideValue) // Check for self-assignment
         this->_fixedPointValue = rightSideValue.getRawBits();
     return *this;
@@ -39,7 +39,7 @@ Fixed &Fixed::operator=(Fixed const &rightSideValue)
 
 Fixed Fixed::operator+(Fixed const &rightSideValue) const
 {
-    std::cout << "Addition operator called" << std::endl;
+    std::cout << "Copy addition operator called" << std::endl;
     Fixed result;
     result.setRawBits(this->_fixedPointValue + rightSideValue.getRawBits());
     return result;
