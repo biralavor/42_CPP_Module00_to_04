@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 20:41:27 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/09 21:41:56 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/11 11:53:37 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ Fixed &Fixed::operator=(Fixed const &rightSideValue)
 Fixed Fixed::operator+(Fixed const &rightSideValue) const
 {
     std::cout << "Addition operator called" << std::endl;
-    return Fixed(this->_fixedPointValue + rightSideValue.getRawBits());
+    Fixed result;
+    result.setRawBits(this->_fixedPointValue + rightSideValue.getRawBits());
+    return result;
 }
 
 int Fixed::getRawBits(void) const
