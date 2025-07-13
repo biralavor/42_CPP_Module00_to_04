@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 18:29:48 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/13 19:57:37 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/13 20:02:35 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,5 @@ public:
 	~ScavTrap();
 	ScavTrap &operator=(ScavTrap const &rightSide);
 
-protected:
 	void guardGate();
 };
