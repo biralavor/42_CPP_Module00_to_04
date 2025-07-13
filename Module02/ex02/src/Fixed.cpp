@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 20:41:27 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/13 12:20:55 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/13 12:23:59 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,7 @@ Fixed Fixed::operator-(Fixed const &rightSideValue) const
 Fixed Fixed::operator*(Fixed const &rightSideValue) const
 {
     std::cout << "Copy multiplication operator called" << std::endl;
-    Fixed result;
-    result.setRawBits(this->toFloat() * rightSideValue.toFloat());
-    return result;
+    return Fixed(this->toFloat() * rightSideValue.toFloat());
 }
 
 Fixed Fixed::operator/(Fixed const &rightSideValue) const
