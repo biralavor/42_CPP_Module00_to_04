@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:12:41 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/13 18:25:49 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/13 18:45:08 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,32 @@ ClapTrap::~ClapTrap()
 	std::cout
 	<< RED << "ᛝᛝᛝ " << "ClapTrap " << YELLOW << _name
 	<< RED <<" destroyed. ᛝᛝᛝ" << RESET << std::endl;
+}
+
+ClapTrap::ClapTrap(ClapTrap const &src)
+	: _name(src._name),
+	  _hitPoints(src._hitPoints),
+	  _energyPoints(src._energyPoints),
+	  _attackDamage(src._attackDamage)
+{
+	std::cout
+	<< "ClapTrap copy constructor called for: " << YELLOW << _name << RESET
+	<< std::endl;
+}
+
+ClapTrap &ClapTrap::operator=(ClapTrap const &rightSide)
+{
+	std::cout
+	<< "ClapTrap assignment operator called for: " << YELLOW << _name << RESET
+	<< std::endl;
+	if (this != &rightSide)
+	{
+		_name = rightSide._name;
+		_hitPoints = rightSide._hitPoints;
+		_energyPoints = rightSide._energyPoints;
+		_attackDamage = rightSide._attackDamage;
+	}
+	return *this;
 }
 
 void ClapTrap::statusConstructorPrinter(std::string type, int value) const
