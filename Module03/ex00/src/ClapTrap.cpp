@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:12:41 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/13 19:04:01 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/13 19:22:37 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,11 @@ ClapTrap::~ClapTrap()
 }
 
 ClapTrap::ClapTrap(ClapTrap const &src)
-	: _name(src._name),
-	  _hitPoints(src._hitPoints),
-	  _energyPoints(src._energyPoints),
-	  _attackDamage(src._attackDamage)
 {
 	std::cout
 	<< "ClapTrap copy constructor called for: " << YELLOW << _name << RESET
 	<< std::endl;
+	*this = src;
 }
 
 ClapTrap &ClapTrap::operator=(ClapTrap const &rightSide)
