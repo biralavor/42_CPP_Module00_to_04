@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:12:41 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/13 18:45:08 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/13 18:56:19 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,7 @@ ClapTrap &ClapTrap::operator=(ClapTrap const &rightSide)
 void ClapTrap::statusConstructorPrinter(std::string type, int value) const
 {
 	std::cout
-	<< "| "
-	<< std::setw(13) << type << " :::: "
-	<< "[" << value << "]\n"
+	<< "| " << std::setw(13) << type << " :::: " << "[" << value << "]\n"
 	<< "---------------------------"
 	<< std::endl;
 }
@@ -79,8 +77,7 @@ void ClapTrap::statusEmojizerPrinter(std::string type, int value) const
 	else
 		emoji = "❓";
 	std::cout
-	<< "| "
-	<< std::setw(7) << type << " :::: " << "[";
+	<< "| " << std::setw(7) << type << " :::: " << "[";
 	while(idx++ < value)
 		std::cout << emoji;
 	while(idx++ <= 10)
@@ -125,8 +122,6 @@ void ClapTrap::takeDamage(unsigned int amount)
 		statusEmojizerPrinter("hit", _hitPoints);
 		statusEmojizerPrinter("energy", _energyPoints);
 		std::cout << std::string(42,'/') << "\n" << std::endl;
-
-
 	}
 }
 
@@ -143,7 +138,6 @@ void ClapTrap::beRepaired(unsigned int amount)
 		statusEmojizerPrinter("hit", _hitPoints);
 		statusEmojizerPrinter("energy", _energyPoints);
 		std::cout << std::string(42,'/') << "\n" << std::endl;
-
 	}
 	else
 	{
