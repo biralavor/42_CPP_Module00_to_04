@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:12:41 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/13 18:56:19 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/13 19:04:01 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,46 @@ ClapTrap &ClapTrap::operator=(ClapTrap const &rightSide)
 		_attackDamage = rightSide._attackDamage;
 	}
 	return *this;
+}
+
+void ClapTrap::setName(std::string &name)
+{
+	this->_name = name;
+}
+
+void ClapTrap::setHitPoints(int hitPoints)
+{
+	this->_hitPoints = hitPoints;
+}
+
+void ClapTrap::setEnergyPoints(int energyPoints)
+{
+	this->_energyPoints = energyPoints;
+}
+
+void ClapTrap::setAttackDamage(int attackDamage)
+{
+	this->_attackDamage = attackDamage;
+}
+
+std::string ClapTrap::getName(void) const
+{
+	return this->_name;
+}
+
+int ClapTrap::getHitPoints(void) const
+{
+	return this->_hitPoints;
+}
+
+int ClapTrap::getEnergyPoints(void) const
+{
+	return this->_energyPoints;
+}
+
+int ClapTrap::getAttackDamage(void) const
+{
+	return this->_attackDamage;
 }
 
 void ClapTrap::statusConstructorPrinter(std::string type, int value) const
