@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 20:41:27 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/11 19:44:45 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/13 12:20:55 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ Fixed::~Fixed(void)
 }
 
 Fixed::Fixed(const int rawAsInteger)
+    : _fixedPointValue(rawAsInteger << this->_raw)
 {
     std::cout << "Integer constructor called" << std::endl;
-    this->_fixedPointValue = rawAsInteger << this->_raw;
 }
 
 Fixed::Fixed(const float rawAsFloat)
+    : _fixedPointValue(roundf(rawAsFloat * (1 << this->_raw)))
 {
     std::cout << "Float constructor called" << std::endl;
-    this->_fixedPointValue = roundf(rawAsFloat * (1 << this->_raw));
 }
 
 int Fixed::toInt(void) const
@@ -163,25 +163,25 @@ Fixed Fixed::operator--(int)
 Fixed const &Fixed::max(Fixed const &nbrA, Fixed const &nbrB)
 {
     std::cout << "Max function called for consts references" << std::endl;
-    return (nbrA > nbrB) ? nbrA : nbrB;
+    return (nbrA.getRawBits() > nbrB.getRawBits()) ? nbrA : nbrB;
 }
 
 Fixed &Fixed::max(Fixed &nbrA, Fixed &nbrB)
 {
     std::cout << "Max function called" << std::endl;
-    return (nbrA > nbrB) ? nbrA : nbrB;
+    return (nbrA.getRawBits() > nbrB.getRawBits()) ? nbrA : nbrB;
 }
 
 Fixed const &Fixed::min(Fixed const &nbrA, Fixed const &nbrB)
 {
     std::cout << "Min function called for consts references" << std::endl;
-    return (nbrA < nbrB) ? nbrA : nbrB;
+    return (nbrA.getRawBits() < nbrB.getRawBits()) ? nbrA : nbrB;
 }
 
 Fixed &Fixed::min(Fixed &nbrA, Fixed &nbrB)
 {
     std::cout << "Min function called" << std::endl;
-    return (nbrA < nbrB) ? nbrA : nbrB;
+    return (nbrA.getRawBits() < nbrB.getRawBits()) ? nbrA : nbrB;
 }
 
 int Fixed::getRawBits(void) const
