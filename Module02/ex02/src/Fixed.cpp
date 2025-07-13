@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 20:41:27 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/13 12:23:59 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/13 12:31:58 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ Fixed Fixed::operator/(Fixed const &rightSideValue) const
     if (rightSideValue.getRawBits() == 0)
         return Fixed(0);
     Fixed result;
-    result.setRawBits((this->_fixedPointValue << this->_raw)
+    result.setRawBits((long long)(this->_fixedPointValue << this->_raw)
         / rightSideValue.getRawBits());
     return result;
 }
