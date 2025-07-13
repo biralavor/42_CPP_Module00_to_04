@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:12:41 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/13 19:22:37 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/13 19:25:38 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,8 +141,8 @@ void ClapTrap::attack(const std::string &target)
 	else
 	{
 		std::cout
-		<< "ClapTrap " << YELLOW << _name << RESET
-		<< " has no energy left to attack!\n"
+		<< RED << "ClapTrap " << YELLOW << _name
+		<< " has no energy left to attack!\n" << RESET
 		<< std::endl;
 	}
 }
@@ -159,6 +159,13 @@ void ClapTrap::takeDamage(unsigned int amount)
 		statusEmojizerPrinter("hit", _hitPoints);
 		statusEmojizerPrinter("energy", _energyPoints);
 		std::cout << std::string(42,'/') << "\n" << std::endl;
+	}
+	else
+	{
+		std::cout
+		<< RED << "ClapTrap " << YELLOW << _name
+		<< " is already dead!\n" << RESET
+		<< std::endl;
 	}
 }
 
@@ -179,8 +186,8 @@ void ClapTrap::beRepaired(unsigned int amount)
 	else
 	{
 		std::cout
-		<< "ClapTrap " << YELLOW << _name << RESET
-		<< " has no energy left to repair!\n"
+		<< RED << "ClapTrap " << YELLOW << _name
+		<< " has no energy left to repair!\n" << RESET
 		<< std::endl;
 	}
 }
