@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:12:41 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 13:44:26 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 17:56:01 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ void ClapTrap::attack(const std::string &target)
 		statusEmojizerPrinter("attack", _attackDamage + 1);
 		std::cout << std::string(42,'/') << "\n" << std::endl;
 	}
-	else
+	if (_energyPoints <= 0)
 	{
 		std::cout
 		<< RED << "ClapTrap " << YELLOW << _name
@@ -161,7 +161,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 		statusEmojizerPrinter("energy", _energyPoints);
 		std::cout << std::string(42,'/') << "\n" << std::endl;
 	}
-	else
+	if (_hitPoints <= 0)
 	{
 		std::cout
 		<< RED << "ClapTrap " << YELLOW << _name
@@ -184,7 +184,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 		statusEmojizerPrinter("energy", _energyPoints);
 		std::cout << std::string(42,'/') << "\n" << std::endl;
 	}
-	else
+	if (_energyPoints <= 0)
 	{
 		std::cout
 		<< RED << "ClapTrap " << YELLOW << _name
