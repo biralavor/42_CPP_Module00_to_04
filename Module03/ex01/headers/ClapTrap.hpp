@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:13:22 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 13:44:53 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 19:03:38 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include "Utils.hpp"
 
-const std::string RESET = "\e[0m";
-const std::string YELLOW = "\e[33m";
-const std::string RED = "\e[31m";
-const std::string GREEN = "\e[32m";
-const std::string BLUE = "\e[34m";
 class ClapTrap
 {
 	std::string _name;
 	int			_hitPoints;
 	int			_energyPoints;
 	int			_attackDamage;
+
+protected:
+	std::string _classType;
+
+public:
+	Utils		_printer;
 
 public:
 	ClapTrap(std::string name);
@@ -43,6 +45,4 @@ public:
 	void attack(const std::string &target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
-	void statusConstructorPrinter(std::string type, int value) const;
-	void statusEmojizerPrinter(std::string type, int value) const;
 };
