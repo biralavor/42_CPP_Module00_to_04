@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:12:41 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 18:28:05 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 18:49:09 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 ClapTrap::ClapTrap(std::string name)
 	: _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
-	std::cout << ">> ClapTrap created: [" << YELLOW
-	<< _name << RESET << "]" << std::endl;
+	_printer.constructorTitlePrinter("ClapTrap", _name);
 	_printer.statusConstructorPrinter("hit points", _hitPoints);
 	_printer.statusConstructorPrinter("energy points", _energyPoints);
 	_printer.statusConstructorPrinter("attack damage", _attackDamage);
@@ -24,9 +23,7 @@ ClapTrap::ClapTrap(std::string name)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout
-	<< RED << "ᛝᛝᛝ " << "ClapTrap " << YELLOW << _name
-	<< RED <<" destroyed. ᛝᛝᛝ" << RESET << std::endl;
+	_printer.destructorTitlePrinter("ClapTrap", _name);
 }
 
 ClapTrap::ClapTrap(ClapTrap const &src)

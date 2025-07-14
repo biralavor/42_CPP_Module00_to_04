@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 17:25:58 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 18:27:25 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 18:48:33 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ const std::string BLUE = "\e[34m";
 class Utils
 {
     public:
+        void constructorTitlePrinter(std::string type, std::string objectName) const;
+        void destructorTitlePrinter(std::string type, std::string objectName) const;
         void statusConstructorPrinter(std::string type, int value) const;
 	    void statusEmojizerPrinter(std::string type, int value) const;
         void roundTitlePrinter(std::string title) const;
