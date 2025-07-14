@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:12:41 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/13 19:25:38 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 13:44:26 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 ClapTrap::ClapTrap(std::string name)
 	: _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
-	std::cout << ">> ClapTrap created: [" << _name << "]" << std::endl;
+	std::cout << ">> ClapTrap created: [" << YELLOW
+	<< _name << RESET << "]" << std::endl;
 	statusConstructorPrinter("hit points", _hitPoints);
 	statusConstructorPrinter("energy points", _energyPoints);
 	statusConstructorPrinter("attack damage", _attackDamage);
@@ -131,11 +132,11 @@ void ClapTrap::attack(const std::string &target)
 		std::cout
 		<< "ClapTrap " << YELLOW << _name << RESET << " attacks "
 		<< YELLOW << target << RESET <<", causing [" << RED
-		<< _attackDamage << RESET  << "] points of damage!"
+		<< _attackDamage + 1 << RESET  << "] points of damage!"
 		<< std::endl;
 		statusEmojizerPrinter("hit", _hitPoints);;
 		statusEmojizerPrinter("energy", _energyPoints);
-		statusEmojizerPrinter("attack", _attackDamage);
+		statusEmojizerPrinter("attack", _attackDamage + 1);
 		std::cout << std::string(42,'/') << "\n" << std::endl;
 	}
 	else

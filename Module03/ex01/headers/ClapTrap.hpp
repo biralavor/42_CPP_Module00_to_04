@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:13:22 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 13:33:50 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 13:44:53 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ const std::string YELLOW = "\e[33m";
 const std::string RED = "\e[31m";
 const std::string GREEN = "\e[32m";
 const std::string BLUE = "\e[34m";
-
 class ClapTrap
 {
 	std::string _name;
