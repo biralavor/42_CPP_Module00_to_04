@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:12:58 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/13 19:55:45 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 13:36:38 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,27 @@ int main(void)
 	ClapTrap sandwich("Sandwich");
 
 	ScavTrap scavTrap("Scavenger");
-	
-	// peanut.attack("Sandwich");
-	// peanut.takeDamage(3);
-	// peanut.beRepaired(3);
 
-	// sandwich.attack("Peanut Butter");
-	// sandwich.takeDamage(8);
-	// sandwich.beRepaired(5);
+	std::cout << BLUE << std::string(30, ':')
+	<< " ROUND 01 " << std::string(30, ':')
+	<< RESET << std::endl;
+	peanut.attack("Sandwich");
+	peanut.takeDamage(3);
+	peanut.beRepaired(3);
 
+	std::cout << BLUE << std::string(30, ':')
+	<< " ROUND 02 " << std::string(30, ':')
+	<< RESET << std::endl;
+	sandwich.attack("Peanut Butter");
+	sandwich.takeDamage(8);
+	sandwich.beRepaired(5);
+
+	std::cout << BLUE << std::string(30, ':')
+	<< " ROUND 03 " << std::string(30, ':')
+	<< RESET << std::endl;
 	scavTrap.attack("Peanut Butter");
-	scavTrap.takeDamage(5);
-	scavTrap.beRepaired(3);
+	scavTrap.takeDamage(2);
+	scavTrap.beRepaired(1);
 	scavTrap.guardGate();
 
 
