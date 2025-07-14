@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:12:41 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 18:49:09 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 19:01:19 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,7 @@ void ClapTrap::attack(const std::string &target)
 		std::cout << std::string(42,'/') << "\n" << std::endl;
 	}
 	if (_energyPoints <= 0)
-	{
-		std::cout
-		<< RED << "ClapTrap " << YELLOW << _name
-		<< " has no energy left to attack!\n" << RESET
-		<< std::endl;
-	}
+		_printer.zeroPointsPrinter("ClapTrap", "energy", _name);
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
@@ -127,12 +122,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 		std::cout << std::string(42,'/') << "\n" << std::endl;
 	}
 	if (_hitPoints <= 0)
-	{
-		std::cout
-		<< RED << "ClapTrap " << YELLOW << _name << " is already "
-		<< RED << "dead!\n" << RESET
-		<< std::endl;
-	}
+		_printer.zeroPointsPrinter("ClapTrap", "hit", _name);
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
@@ -150,11 +140,5 @@ void ClapTrap::beRepaired(unsigned int amount)
 		std::cout << std::string(42,'/') << "\n" << std::endl;
 	}
 	if (_energyPoints <= 0)
-	{
-		std::cout
-		<< RED << "ClapTrap " << YELLOW << _name
-		<< " has no energy left to repair! In other words: it is "
-		<< RED << "dead!\n" << RESET
-		<< std::endl;
-	}
+		_printer.zeroPointsPrinter("ClapTrap", "energy", _name);
 }

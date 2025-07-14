@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 17:25:15 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 18:48:46 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 19:00:05 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,24 @@ void Utils::roundTitlePrinter(std::string title) const
 	<< " " + title + " " << std::string(paddingSize, paddingChar) << std::endl;
     std::cout << std::string(width * 2, paddingChar)
 	<< RESET << std::endl;
+}
+
+void Utils::zeroPointsPrinter(std::string classType, std::string pointsType,
+    std::string objectName) const
+{
+    std::cout << RED << classType << " " << YELLOW << objectName;
+    if (pointsType == "hit")
+    {
+        std::cout
+        << " is already "
+		<< RED << "dead!\n" << RESET
+		<< std::endl;
+    }
+    else if (pointsType == "energy")
+    {
+        std::cout
+		<< " has no energy left to repair! In other words: it is "
+		<< RED << "dead!\n" << RESET
+		<< std::endl;
+    }
 }
