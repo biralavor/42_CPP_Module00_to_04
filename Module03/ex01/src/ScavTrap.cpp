@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 18:31:24 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/13 19:29:21 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 13:29:27 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-	std::cout << ">> ScavTrap created: [" << name << "]" << std::endl;
+	std::cout << ">> ScavTrap created: [" << YELLOW
+	<< name << RESET << "]" << std::endl;
 }
 
 ScavTrap::~ScavTrap()
