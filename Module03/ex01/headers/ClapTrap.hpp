@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:13:22 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 19:03:38 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 20:42:10 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,11 @@
 
 class ClapTrap
 {
+protected:
 	std::string _name;
 	int			_hitPoints;
 	int			_energyPoints;
 	int			_attackDamage;
-
-protected:
 	std::string _classType;
 
 public:
