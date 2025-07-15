@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 18:31:24 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 22:03:19 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 23:25:55 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ ScavTrap::~ScavTrap()
 
 void ScavTrap::guardGate()
 {
+	this->_energyPoints--;
 	std::cout << "ScavTrap " << YELLOW << this->getName() << RESET
 	<< " is now in Gate Keeper mode!" << std::endl;
 }

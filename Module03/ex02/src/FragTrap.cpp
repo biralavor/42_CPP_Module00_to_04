@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 13:49:57 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 23:16:54 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 23:25:23 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ FragTrap::~FragTrap()
 
 void FragTrap::highFivesGuys(void) const
 {
+	this->_energyPoints--;
 	std::cout << "🤜🤛 " << _classType << " " << YELLOW << this->getName() << RESET
 	<< " is requesting a high five! 🙌🙌🙌🙌🙌"
 	<< std::endl;
