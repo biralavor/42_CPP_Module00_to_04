@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/20 16:02:28 by umeneses          #+#    #+#              #
-#    Updated: 2025/07/10 19:05:04 by umeneses         ###   ########.fr        #
+#    Updated: 2025/07/15 14:15:55 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,9 +39,12 @@ HEADERS_DIR		:= ./headers/
 # **************************************************************************** #
 
 NAME			:= $(BIN_DIR)sed-is-for-losers
-SRC_F			:= $(wildcard $(SRC_DIR)*.cpp)
-OBJ_F			:= $(patsubst $(SRC_DIR)%.cpp, $(BUILD_DIR)%.o, $(SRC_F))
-HEADERS_F		:= $(wildcard $(HEADERS_DIR)*.hpp)
+SRC_F			+= main.cpp \
+					Database.cpp \
+					ReplaceThisWithThat.cpp
+SRC_F_ALL		:= $(addprefix $(SRC_DIR), $(SRC_F))
+OBJ_F			:= $(patsubst $(SRC_DIR)%.cpp, $(BUILD_DIR)%.o, $(SRC_F_ALL))
+ALL_HEADERS		:= $(addprefix -I, $(HEADERS_DIR))
 
 # **************************************************************************** #
 #								COMMANDS									   #
@@ -61,7 +64,6 @@ COMPILER		:= c++
 FLAGS			:= -Wall -Wextra -Werror -pedantic
 LIMITATIONS		:= -std=c++98
 DEBUG			:= -g3
-ALL_HEADERS		:= -I$(HEADERS_DIR)
 
 # **************************************************************************** #
 #								VARIABLE									   #
