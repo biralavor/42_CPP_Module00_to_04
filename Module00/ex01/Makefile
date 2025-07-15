@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/20 16:02:28 by umeneses          #+#    #+#              #
-#    Updated: 2025/07/04 17:37:47 by umeneses         ###   ########.fr        #
+#    Updated: 2025/07/15 14:20:13 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,9 +39,13 @@ HEADERS_DIR		:= ./headers/
 # **************************************************************************** #
 
 NAME			:= $(BIN_DIR)phonebook
-SRC_F			:= $(wildcard $(SRC_DIR)*.cpp)
-OBJ_F			:= $(patsubst $(SRC_DIR)%.cpp, $(BUILD_DIR)%.o, $(SRC_F))
-HEADERS_F		:= $(wildcard $(HEADERS_DIR)*.hpp)
+SRC_F			+= main.cpp \
+					Contact.cpp \
+					Printers.cpp \
+					PhoneBook.cpp
+SRC_F_ALL		:= $(addprefix $(SRC_DIR), $(SRC_F))
+OBJ_F			:= $(patsubst $(SRC_DIR)%.cpp, $(BUILD_DIR)%.o, $(SRC_F_ALL))
+ALL_HEADERS		:= $(addprefix -I, $(HEADERS_DIR))
 
 # **************************************************************************** #
 #								COMMANDS									   #
@@ -61,7 +65,6 @@ COMPILER		:= c++
 FLAGS			:= -Wall -Wextra -Werror
 LIMITATIONS		:= -std=c++98
 DEBUG			:= -g3
-ALL_HEADERS		:= -I$(HEADERS_DIR)
 
 # **************************************************************************** #
 #								TARGETS										   #

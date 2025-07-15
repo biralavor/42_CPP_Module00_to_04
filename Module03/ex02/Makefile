@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/20 16:02:28 by umeneses          #+#    #+#              #
-#    Updated: 2025/07/14 23:36:05 by umeneses         ###   ########.fr        #
+#    Updated: 2025/07/15 14:09:50 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,9 +39,14 @@ HEADERS_DIR		:= ./headers/
 # **************************************************************************** #
 
 NAME			:= $(BIN_DIR)claptrap-repetitive
-SRC_F			:= $(wildcard $(SRC_DIR)*.cpp)
-OBJ_F			:= $(patsubst $(SRC_DIR)%.cpp, $(BUILD_DIR)%.o, $(SRC_F))
-HEADERS_F		:= $(wildcard $(HEADERS_DIR)*.hpp)
+SRC_F			+= main.cpp \
+					ClapTrap.cpp \
+					Utils.cpp \
+					ScavTrap.cpp \
+					FragTrap.cpp
+SRC_F_ALL		:= $(addprefix $(SRC_DIR), $(SRC_F))
+OBJ_F			:= $(patsubst $(SRC_DIR)%.cpp, $(BUILD_DIR)%.o, $(SRC_F_ALL))
+ALL_HEADERS		:= $(addprefix -I, $(HEADERS_DIR))
 
 # **************************************************************************** #
 #								COMMANDS									   #
@@ -61,14 +66,13 @@ COMPILER		:= c++
 FLAGS			:= -Wall -Wextra -Werror
 LIMITATIONS		:= -std=c++98
 DEBUG			:= -g3
-ALL_HEADERS		:= -I$(HEADERS_DIR)
 
 # **************************************************************************** #
 #								VARIABLE									   #
 # **************************************************************************** #
 
 define args_for_testing
-	"info"
+	""
 endef
 
 # **************************************************************************** #
