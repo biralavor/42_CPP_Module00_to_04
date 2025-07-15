@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:12:41 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 22:55:09 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 23:16:47 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ ClapTrap::ClapTrap(std::string name)
 	: _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
 	_classType = "ClapTrap";
+	_maxHit = 10;
+	_maxEnergy = 10;
+	_maxDamage = 0;
+	this->setHitPoints(_maxHit);
+	this->setEnergyPoints(_maxEnergy);
+	this->setAttackDamage(_maxDamage);
 	_printer.constructorTitlePrinter(_classType, _name);
 	_printer.statusConstructorPrinter("hit points", _hitPoints);
 	_printer.statusConstructorPrinter("energy points", _energyPoints);
@@ -100,9 +106,9 @@ void ClapTrap::attack(const std::string &target)
 		<< YELLOW << target << RESET <<", causing [" << RED
 		<< _attackDamage << RESET  << "] points of damage!"
 		<< std::endl;
-		_printer.statusEmojizerPrinter("hit", _hitPoints);;
-		_printer.statusEmojizerPrinter("energy", _energyPoints);
-		_printer.statusEmojizerPrinter("attack", _attackDamage);
+		_printer.statusEmojizerPrinter("hit", _hitPoints, _maxHit);
+		_printer.statusEmojizerPrinter("energy", _energyPoints, _maxEnergy);
+		_printer.statusEmojizerPrinter("attack", _attackDamage, _maxDamage);
 		std::cout << std::string(42,'/') << "\n" << std::endl;
 	}
 	if (_energyPoints <= 0)
@@ -118,8 +124,8 @@ void ClapTrap::takeDamage(unsigned int amount)
 		<< _classType << " " << YELLOW << _name << RESET <<" takes ["
 		<< RED << amount << RESET << "] points of damage!"
 		<< std::endl;
-		_printer.statusEmojizerPrinter("hit", _hitPoints);
-		_printer.statusEmojizerPrinter("energy", _energyPoints);
+		_printer.statusEmojizerPrinter("hit", _hitPoints, _maxHit);
+		_printer.statusEmojizerPrinter("energy", _energyPoints, _maxEnergy);
 		std::cout << std::string(42,'/') << "\n" << std::endl;
 	}
 	if (_hitPoints <= 0)
@@ -136,8 +142,8 @@ void ClapTrap::beRepaired(unsigned int amount)
 		<< _classType << " " << YELLOW << _name << RESET
 		<< " repairs itself for [" << GREEN << amount << RESET << "] points!"
 		<< std::endl;
-		_printer.statusEmojizerPrinter("hit", _hitPoints);
-		_printer.statusEmojizerPrinter("energy", _energyPoints);
+		_printer.statusEmojizerPrinter("hit", _hitPoints, _maxHit);
+		_printer.statusEmojizerPrinter("energy", _energyPoints, _maxEnergy);
 		std::cout << std::string(42,'/') << "\n" << std::endl;
 	}
 	if (_energyPoints <= 0)

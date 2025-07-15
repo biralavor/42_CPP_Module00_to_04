@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/13 18:29:48 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 21:21:51 by umeneses         ###   ########.fr       */
+/*   Created: 2025/07/14 13:49:21 by umeneses          #+#    #+#             */
+/*   Updated: 2025/07/14 23:15:28 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
-class ScavTrap : public ClapTrap
+class FragTrap : public ClapTrap
 {
+	
 
-public:
-	ScavTrap(std::string name);
-	~ScavTrap();
-	ScavTrap &operator=(ScavTrap const &rightSide);
+	public:
+		FragTrap(std::string name);
+		~FragTrap();
+		FragTrap &operator=(FragTrap const &rightSide);
 
-	void guardGate();
+		void highFivesGuys(void) const;
 };
