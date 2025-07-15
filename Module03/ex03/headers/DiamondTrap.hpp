@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/14 13:49:21 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 23:46:05 by umeneses         ###   ########.fr       */
+/*   Created: 2025/07/14 23:51:03 by umeneses          #+#    #+#             */
+/*   Updated: 2025/07/15 15:30:15 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-class FragTrap : public ClapTrap
+#define SUFIX "_clap_name"
+
+class DiamondTrap : public ScavTrap, public FragTrap
 {
-	
+    std::string _name;
 
-	public:
-		FragTrap(std::string name);
-		~FragTrap();
-		FragTrap &operator=(FragTrap const &rightSide);
+public:
+    DiamondTrap(std::string name);
+    ~DiamondTrap();
+    DiamondTrap(DiamondTrap const &src);
+    DiamondTrap &operator=(DiamondTrap const & rightSide);
 
-		void highFivesGuys(void);
+    void whoAmI();
 };
