@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 13:49:21 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 23:15:28 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 23:45:18 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ class FragTrap : public ClapTrap
 		~FragTrap();
 		FragTrap &operator=(FragTrap const &rightSide);
 
-		void highFivesGuys(void) const;
+		void highFivesGuys(void);
 };

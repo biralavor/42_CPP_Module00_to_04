@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 13:49:57 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 23:25:23 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 23:45:25 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ FragTrap::~FragTrap()
 	_printer.destructorTitlePrinter(_classType, _name);
 }
 
-void FragTrap::highFivesGuys(void) const
+void FragTrap::highFivesGuys(void)
 {
 	this->_energyPoints--;
 	std::cout << "🤜🤛 " << _classType << " " << YELLOW << this->getName() << RESET
