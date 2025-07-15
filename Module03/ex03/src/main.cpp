@@ -6,11 +6,11 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:12:58 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/15 00:39:45 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/15 15:31:34 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main(void)
 {
@@ -19,7 +19,9 @@ int main(void)
 
 	// ScavTrap gateKeeper("Triton");
 	
-	FragTrap subRoutine("Fragmented");
+	// FragTrap subRoutine("Fragmented");
+
+	DiamondTrap diamond("Diamond");
 
 	// peanut._printer.roundTitlePrinter("ROUND 01");
 	// peanut.attack("Sandwich");
@@ -47,12 +49,18 @@ int main(void)
 	// gateKeeper.beRepaired(1);
 	// gateKeeper.guardGate();
 	
-	subRoutine._printer.roundTitlePrinter("ROUND 04");
-	subRoutine.attack("Peanut Butter");
-	subRoutine.takeDamage(2);
-	subRoutine.beRepaired(1);
-	subRoutine.highFivesGuys();
-	subRoutine.takeDamage(105);
+	// subRoutine._printer.roundTitlePrinter("ROUND 04");
+	// subRoutine.attack("Peanut Butter");
+	// subRoutine.takeDamage(2);
+	// subRoutine.beRepaired(1);
+	// subRoutine.highFivesGuys();
+	// subRoutine.takeDamage(105);
+
+	diamond._printer.roundTitlePrinter("ROUND 05");
+	diamond.attack("Peanut Butter");
+	diamond.takeDamage(2);
+	diamond.beRepaired(1);
+	diamond.whoAmI();
 
 	return 0;
 }
