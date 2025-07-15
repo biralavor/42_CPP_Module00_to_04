@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 18:31:24 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 20:31:53 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 22:03:19 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << RED << "ᛝᛝᛝ " << "ScavTrap " << YELLOW << this->getName()
-	<< RED <<" destroyed. ᛝᛝᛝ" << RESET << std::endl;
+	_printer.destructorTitlePrinter(_classType, _name);
 }
 
 void ScavTrap::guardGate()
