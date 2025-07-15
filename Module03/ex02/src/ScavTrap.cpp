@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 18:31:24 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 13:29:27 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 20:31:53 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-	std::cout << ">> ScavTrap created: [" << YELLOW
-	<< name << RESET << "]" << std::endl;
+	_classType = "ScavTrap";
+	_printer.constructorTitlePrinter(_classType, _name);
+	_printer.statusConstructorPrinter("hit points", _hitPoints);
+	_printer.statusConstructorPrinter("energy points", _energyPoints);
+	_printer.statusConstructorPrinter("attack damage", _attackDamage);
 }
 
 ScavTrap::~ScavTrap()

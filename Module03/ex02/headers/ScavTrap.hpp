@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 18:29:48 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/13 20:02:35 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 21:21:51 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 class ScavTrap : public ClapTrap
 {
+
 public:
 	ScavTrap(std::string name);
 	~ScavTrap();

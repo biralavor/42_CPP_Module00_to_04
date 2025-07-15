@@ -6,12 +6,11 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:12:58 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 13:50:14 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 20:55:23 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
-#include "FragTrap.hpp"
 
 int main(void)
 {
@@ -20,28 +19,31 @@ int main(void)
 
 	ScavTrap scavTrap("Scavenger");
 
-	std::cout << BLUE << std::string(30, ':')
-	<< " ROUND 01 " << std::string(30, ':')
-	<< RESET << std::endl;
+	peanut._printer.roundTitlePrinter("ROUND 01");
 	peanut.attack("Sandwich");
 	peanut.takeDamage(3);
-	peanut.beRepaired(3);
+	peanut.beRepaired(2);
+	peanut.takeDamage(10);
+	peanut.takeDamage(3);
 
-	std::cout << BLUE << std::string(30, ':')
-	<< " ROUND 02 " << std::string(30, ':')
-	<< RESET << std::endl;
+	sandwich._printer.roundTitlePrinter("ROUND 02");
 	sandwich.attack("Peanut Butter");
 	sandwich.takeDamage(8);
 	sandwich.beRepaired(5);
+	sandwich.attack("Peanut Butter");
+	sandwich.attack("Peanut Butter");
+	sandwich.attack("Peanut Butter");
+	sandwich.attack("Peanut Butter");
+	sandwich.attack("Peanut Butter");
+	sandwich.attack("Peanut Butter");
+	sandwich.beRepaired(1);
+	sandwich.beRepaired(1);
 
-	std::cout << BLUE << std::string(30, ':')
-	<< " ROUND 03 " << std::string(30, ':')
-	<< RESET << std::endl;
+	scavTrap._printer.roundTitlePrinter("ROUND 03");
 	scavTrap.attack("Peanut Butter");
 	scavTrap.takeDamage(2);
 	scavTrap.beRepaired(1);
 	scavTrap.guardGate();
-
 
 	return 0;
 }
