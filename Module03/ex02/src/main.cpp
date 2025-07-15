@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:12:58 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 22:49:23 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 23:23:20 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int main(void)
 	subRoutine.takeDamage(2);
 	subRoutine.beRepaired(1);
 	subRoutine.highFivesGuys();
+	subRoutine.takeDamage(105);
 
 	return 0;
 }
