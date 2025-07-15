@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 17:25:15 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 19:00:05 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 23:13:21 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void Utils::statusConstructorPrinter(std::string type, int value) const
 	<< std::endl;
 }
 
-void Utils::statusEmojizerPrinter(std::string type, int value) const
+void Utils::statusEmojizerPrinter(std::string type, int value, int maxValue) const
 {
 	std::string emoji;
 	std::string emptySlot = "⬛";
@@ -53,7 +53,7 @@ void Utils::statusEmojizerPrinter(std::string type, int value) const
 	<< "| " << std::setw(7) << type << " :::: " << "[";
 	while(idx++ < value)
 		std::cout << emoji;
-	while(idx++ <= 10)
+	while(idx++ <= maxValue)
 		std::cout << emptySlot;
 	std::cout << "]"
 	<< std::endl;

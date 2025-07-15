@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 17:25:58 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 18:57:32 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 23:13:45 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ class Utils
         void statusConstructorPrinter(std::string type, int value) const;
         void zeroPointsPrinter(std::string classType, std::string pointsType, 
             std::string objectName) const;
-	    void statusEmojizerPrinter(std::string type, int value) const;
+	    void statusEmojizerPrinter(std::string type, int value, int maxValue) const;
         void roundTitlePrinter(std::string title) const;
 };
