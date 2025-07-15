@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/20 16:02:28 by umeneses          #+#    #+#              #
-#    Updated: 2025/07/13 18:27:34 by umeneses         ###   ########.fr        #
+#    Updated: 2025/07/14 23:36:05 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ HEADERS_DIR		:= ./headers/
 #								FILES										   #
 # **************************************************************************** #
 
-NAME			:= $(BIN_DIR)claptrap-serena
+NAME			:= $(BIN_DIR)claptrap-repetitive
 SRC_F			:= $(wildcard $(SRC_DIR)*.cpp)
 OBJ_F			:= $(patsubst $(SRC_DIR)%.cpp, $(BUILD_DIR)%.o, $(SRC_F))
 HEADERS_F		:= $(wildcard $(HEADERS_DIR)*.hpp)
