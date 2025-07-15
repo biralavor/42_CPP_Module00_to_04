@@ -6,11 +6,11 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:12:58 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 22:13:00 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/14 22:49:23 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main(void)
 {
@@ -18,6 +18,8 @@ int main(void)
 	ClapTrap sandwich("Sandwich");
 
 	ScavTrap gateKeeper("Triton");
+	
+	FragTrap subRoutine("Fragmented");
 
 	peanut._printer.roundTitlePrinter("ROUND 01");
 	peanut.attack("Sandwich");
@@ -44,6 +46,12 @@ int main(void)
 	gateKeeper.takeDamage(2);
 	gateKeeper.beRepaired(1);
 	gateKeeper.guardGate();
+	
+	subRoutine._printer.roundTitlePrinter("ROUND 04");
+	subRoutine.attack("Peanut Butter");
+	subRoutine.takeDamage(2);
+	subRoutine.beRepaired(1);
+	subRoutine.highFivesGuys();
 
 	return 0;
 }
