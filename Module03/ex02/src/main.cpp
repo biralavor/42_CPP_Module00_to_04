@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:12:58 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 23:23:20 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/16 15:52:08 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 int main(void)
 {
 	ClapTrap peanut("Peanut Butter");
-	ClapTrap sandwich("Sandwich");
-
-	ScavTrap gateKeeper("Triton");
-	
-	FragTrap subRoutine("Fragmented");
 
 	peanut._printer.roundTitlePrinter("ROUND 01");
 	peanut.attack("Sandwich");
@@ -28,6 +23,8 @@ int main(void)
 	peanut.takeDamage(10);
 	peanut.takeDamage(3);
 
+	ClapTrap sandwich("Sandwich");
+	
 	sandwich._printer.roundTitlePrinter("ROUND 02");
 	sandwich.attack("Peanut Butter");
 	sandwich.takeDamage(8);
@@ -41,11 +38,15 @@ int main(void)
 	sandwich.beRepaired(1);
 	sandwich.beRepaired(1);
 
+	ScavTrap gateKeeper("Triton");
+
 	gateKeeper._printer.roundTitlePrinter("ROUND 03");
 	gateKeeper.attack("Peanut Butter");
 	gateKeeper.takeDamage(2);
 	gateKeeper.beRepaired(1);
 	gateKeeper.guardGate();
+	
+	FragTrap subRoutine("Fragmented");
 	
 	subRoutine._printer.roundTitlePrinter("ROUND 04");
 	subRoutine.attack("Peanut Butter");

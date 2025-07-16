@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:13:22 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 20:42:10 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/16 14:26:17 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,20 @@
 
 class ClapTrap
 {
+	std::string _classType;
 protected:
 	std::string _name;
 	int			_hitPoints;
 	int			_energyPoints;
 	int			_attackDamage;
-	std::string _classType;
 
 public:
 	Utils		_printer;
 
 public:
+	ClapTrap(void);
 	ClapTrap(std::string name);
-	~ClapTrap();
+	virtual ~ClapTrap(void);
 	ClapTrap(ClapTrap const &src);
 	ClapTrap &operator=(ClapTrap const &rightSide);
 	void setName(std::string &name);
