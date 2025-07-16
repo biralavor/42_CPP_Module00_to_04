@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/20 16:02:28 by umeneses          #+#    #+#              #
-#    Updated: 2025/07/15 14:10:53 by umeneses         ###   ########.fr        #
+#    Updated: 2025/07/16 11:32:22 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,4 +116,4 @@ go:	all
 
 .PHONY: val
 val: all
-	@./$(NAME) $(call args_for_testing)
+	valgrind ./$(NAME) $(call args_for_testing)
