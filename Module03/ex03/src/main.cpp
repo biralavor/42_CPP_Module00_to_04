@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:12:58 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/15 15:31:34 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/15 21:32:10 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main(void)
 	
 	// FragTrap subRoutine("Fragmented");
 
-	DiamondTrap diamond("Diamond");
+	DiamondTrap diamond("little-tester");
 
 	// peanut._printer.roundTitlePrinter("ROUND 01");
 	// peanut.attack("Sandwich");
@@ -57,9 +57,10 @@ int main(void)
 	// subRoutine.takeDamage(105);
 
 	diamond._printer.roundTitlePrinter("ROUND 05");
+	std::cout << "Diamond name: " << diamond.getName() << std::endl;
 	diamond.attack("Peanut Butter");
-	diamond.takeDamage(2);
-	diamond.beRepaired(1);
+	// diamond.takeDamage(2);
+	// diamond.beRepaired(1);
 	diamond.whoAmI();
 
 	return 0;
