@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:13:22 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 19:03:38 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/16 14:25:54 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ public:
 	Utils		_printer;
 
 public:
+	ClapTrap(void);
 	ClapTrap(std::string name);
-	~ClapTrap();
+	virtual ~ClapTrap(void);
 	ClapTrap(ClapTrap const &src);
 	ClapTrap &operator=(ClapTrap const &rightSide);
 	void setName(std::string &name);

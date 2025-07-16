@@ -6,11 +6,27 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:12:41 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/15 21:26:50 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/16 15:39:27 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+
+ClapTrap::ClapTrap(void)
+	: _name("Default"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
+{
+	_classType = "ClapTrap";
+	_maxHit = 10;
+	_maxEnergy = 10;
+	_maxDamage = 0;
+	this->setHitPoints(_maxHit);
+	this->setEnergyPoints(_maxEnergy);
+	this->setAttackDamage(_maxDamage);
+	_printer.constructorTitlePrinter(_classType, _name);
+	_printer.statusConstructorPrinter("hit points", _hitPoints);
+	_printer.statusConstructorPrinter("energy points", _energyPoints);
+	_printer.statusConstructorPrinter("attack damage", _attackDamage);
+}
 
 ClapTrap::ClapTrap(std::string name)
 	: _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
@@ -28,7 +44,7 @@ ClapTrap::ClapTrap(std::string name)
 	_printer.statusConstructorPrinter("attack damage", _attackDamage);
 }
 
-ClapTrap::~ClapTrap()
+ClapTrap::~ClapTrap(void)
 {
 	_printer.destructorTitlePrinter(_classType, _name);
 }
@@ -36,7 +52,8 @@ ClapTrap::~ClapTrap()
 ClapTrap::ClapTrap(ClapTrap const &src)
 {
 	std::cout
-	<< _classType << " copy constructor called for: " << YELLOW << _name << RESET
+	<< _classType << " copy constructor called for: "
+	<< YELLOW << _name << RESET
 	<< std::endl;
 	*this = src;
 }
@@ -44,7 +61,8 @@ ClapTrap::ClapTrap(ClapTrap const &src)
 ClapTrap &ClapTrap::operator=(ClapTrap const &rightSide)
 {
 	std::cout
-	<< _classType << " assignment operator called for: " << YELLOW << _name << RESET
+	<< _classType << " assignment operator called for: "
+	<< YELLOW << _name << RESET
 	<< std::endl;
 	if (this != &rightSide)
 	{

@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:12:58 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 22:10:45 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/16 15:53:57 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 int main(void)
 {
 	ClapTrap peanut("Peanut Butter");
-	ClapTrap sandwich("Sandwich");
-
-	ScavTrap gateKeeper("Triton");
 
 	peanut._printer.roundTitlePrinter("ROUND 01");
 	peanut.attack("Sandwich");
@@ -25,6 +22,8 @@ int main(void)
 	peanut.beRepaired(2);
 	peanut.takeDamage(10);
 	peanut.takeDamage(3);
+
+	ClapTrap sandwich("Sandwich");
 
 	sandwich._printer.roundTitlePrinter("ROUND 02");
 	sandwich.attack("Peanut Butter");
@@ -38,6 +37,8 @@ int main(void)
 	sandwich.attack("Peanut Butter");
 	sandwich.beRepaired(1);
 	sandwich.beRepaired(1);
+
+	ScavTrap gateKeeper("Triton");
 
 	gateKeeper._printer.roundTitlePrinter("ROUND 03");
 	gateKeeper.attack("Peanut Butter");
