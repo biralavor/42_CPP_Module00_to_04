@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:12:41 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/16 15:57:34 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/16 16:25:35 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ void ClapTrap::attack(const std::string &target)
 		_printer.statusEmojizerPrinter("attack", _attackDamage, _maxDamage);
 		std::cout << std::string(42,'/') << "\n" << std::endl;
 	}
-	if (_energyPoints <= 0)
+	else
 		_printer.zeroPointsPrinter(_classType, "energy", _name);
 }
 
@@ -145,8 +145,10 @@ void ClapTrap::takeDamage(unsigned int amount)
 		_printer.statusEmojizerPrinter("hit", _hitPoints, _maxHit);
 		_printer.statusEmojizerPrinter("energy", _energyPoints, _maxEnergy);
 		std::cout << std::string(42,'/') << "\n" << std::endl;
+		if (_hitPoints <= 0)
+			_printer.zeroPointsPrinter(_classType, "hit", _name);
 	}
-	if (_hitPoints <= 0)
+	else
 		_printer.zeroPointsPrinter(_classType, "hit", _name);
 }
 
@@ -164,6 +166,6 @@ void ClapTrap::beRepaired(unsigned int amount)
 		_printer.statusEmojizerPrinter("energy", _energyPoints, _maxEnergy);
 		std::cout << std::string(42,'/') << "\n" << std::endl;
 	}
-	if (_energyPoints <= 0)
+	else
 		_printer.zeroPointsPrinter(_classType, "energy", _name);
 }

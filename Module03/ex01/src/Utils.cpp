@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 17:25:15 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 19:00:05 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/16 16:29:32 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,7 @@ void Utils::zeroPointsPrinter(std::string classType, std::string pointsType,
     if (pointsType == "hit")
     {
         std::cout
-        << " is already "
-		<< RED << "dead!\n" << RESET
+        << RED << " is " << "dead!\n" << RESET
 		<< std::endl;
     }
     else if (pointsType == "energy")

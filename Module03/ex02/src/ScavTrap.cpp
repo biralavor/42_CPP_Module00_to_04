@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 18:31:24 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/16 15:45:53 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/16 16:15:04 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,6 @@ void ScavTrap::attack(const std::string &target)
 		_printer.statusEmojizerPrinter("attack", _attackDamage, _maxDamage);
 		std::cout << std::string(42,'/') << "\n" << std::endl;
 	}
-	if (_energyPoints <= 0)
+	else
 		_printer.zeroPointsPrinter(_classType, "energy", _name);
 }

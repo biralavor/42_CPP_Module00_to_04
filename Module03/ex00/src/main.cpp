@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:12:58 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/14 20:01:56 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/16 16:09:31 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int main(void)
 {
 	ClapTrap peanut("Peanut Butter");
-	ClapTrap sandwich("Sandwich");
 
 	peanut._printer.roundTitlePrinter("ROUND 01");
 	peanut.attack("Sandwich");
@@ -24,6 +23,8 @@ int main(void)
 	peanut.takeDamage(10);
 	peanut.takeDamage(3);
 	
+	ClapTrap sandwich("Sandwich");
+
 	sandwich._printer.roundTitlePrinter("ROUND 02");
 	sandwich.attack("Peanut Butter");
 	sandwich.takeDamage(8);
