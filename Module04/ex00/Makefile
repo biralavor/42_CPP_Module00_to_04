@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/20 16:02:28 by umeneses          #+#    #+#              #
-#    Updated: 2025/07/17 12:08:32 by umeneses         ###   ########.fr        #
+#    Updated: 2025/07/17 16:45:19 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,9 @@ SRC_F			+= main.cpp \
 					Utils.cpp \
 					Animal.cpp \
 					Dog.cpp \
-					Cat.cpp
+					Cat.cpp \
+					WrongAnimal.cpp \
+					WrongCat.cpp
 SRC_F_ALL		:= $(addprefix $(SRC_DIR), $(SRC_F))
 OBJ_F			:= $(patsubst $(SRC_DIR)%.cpp, $(BUILD_DIR)%.o, $(SRC_F_ALL))
 ALL_HEADERS		:= $(addprefix -I, $(HEADERS_DIR))
