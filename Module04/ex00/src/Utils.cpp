@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 10:45:13 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/17 15:27:49 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/17 17:32:57 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,43 +36,6 @@ void Utils::statusConstructorPrinter(std::string type,
 	std::cout
 	<< "| " << std::setw(13) << type << " :::: " << "[" << value << "]\n"
 	<< "---------------------------"
-	<< std::endl;
-}
-
-void Utils::animalMakeSoundPrinter(std::string type) const
-{
-	std::cout
-	<< GREEN
-	<< " __     ," << std::endl
-	<< "(__).o.@c" << std::endl
-	<< " /  |  \\  says: " << YELLOW << ":::!!!:::" << std::endl
-	<< type << RESET
-	<< std::endl;
-}
-
-void Utils::dogMakeSoundPrinter(std::string type) const
-{
-	std::cout
-	<< GREEN
-	<< "   / \\__" << std::endl
-	<< "  (    @\\___" << std::endl
-	<< "  /         O" << std::endl
-	<< " /   (_____/" << std::endl
-	<< "/_____/   U   says: " << YELLOW << "BARK! BARK!" << std::endl
-	<< type << RESET
-	<< std::endl;
-}
-
-void Utils::catMakeSoundPrinter(std::string type) const
-{
-	std::cout
-	<< GREEN
-	<< " _._     _,-'""`-._" << std::endl
-	<< "(,-.`._,'(       |\\`-/|" << std::endl
-	<< "    `-.-' \\ )-`( , o o)" << std::endl
-	<< "          `-    \\`_`\"'-\" says: "
-	<< YELLOW << "MEEOOOOW!!" << std::endl
-	<< type << RESET
 	<< std::endl;
 }
 

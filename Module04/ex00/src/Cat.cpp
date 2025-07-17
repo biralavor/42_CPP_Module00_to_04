@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 19:02:32 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/17 15:28:28 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/17 17:37:07 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,13 @@ Cat &Cat::operator=(Cat const &rightSide)
 
 void Cat::makeSound(void) const
 {
-	_printer.catMakeSoundPrinter(_type);
+	std::cout
+	<< GREEN
+	<< " _._     _,-'""`-._" << std::endl
+	<< "(,-.`._,'(       |\\`-/|" << std::endl
+	<< "    `-.-' \\ )-`( , o o)" << std::endl
+	<< "          `-    \\`_`\"'-\" says "
+	<< YELLOW << "MEEOOOOW!!" << std::endl
+	<< this->_type << RESET
+	<< std::endl;
 }

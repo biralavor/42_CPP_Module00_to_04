@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 19:02:32 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/17 15:29:01 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/17 17:37:04 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,13 @@ Dog &Dog::operator=(Dog const &rightSide)
 
 void Dog::makeSound(void) const
 {
-	_printer.dogMakeSoundPrinter(_type);
+	std::cout
+	<< GREEN
+	<< "   / \\__" << std::endl
+	<< "  (    @\\___" << std::endl
+	<< "  /         O" << std::endl
+	<< " /   (_____/" << std::endl
+	<< "/_____/   U   says " << YELLOW << "BARK! BARK!" << std::endl
+	<< this->_type << RESET
+	<< std::endl;
 }

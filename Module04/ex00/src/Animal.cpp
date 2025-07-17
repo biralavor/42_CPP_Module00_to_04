@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:15:00 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/17 15:29:07 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/17 17:37:10 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,12 @@ std::string Animal::getType(void) const
 
 void Animal::makeSound(void) const
 {
-	_printer.animalMakeSoundPrinter(_type);
+	std::cout
+	<< GRAY
+	<< " __     ," << std::endl
+	<< "(__).o.@c" << std::endl
+	<< " /  |  \\  says "
+	<< "::no::hearable::sound::" << std::endl
+	<< YELLOW << this->_type << RESET
+	<< std::endl;
 }
