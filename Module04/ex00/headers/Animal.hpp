@@ -6,18 +6,23 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:14:42 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/16 19:18:07 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/17 14:38:44 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
 #include <string>
+#include "Utils.hpp"
 
 class Animal
 {
+	std::string _className;
 protected:
-	std::string type;
+	std::string _type;
+
+public:
+	Utils _printer;
 
 public:
 	Animal(void);

@@ -6,62 +6,60 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:15:00 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/16 19:17:55 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/17 15:29:07 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
-Animal::Animal(void) : type("Unknown") {
-	std::cout
-	<< "Animal default constructor called."
-	<< std::endl;
+Animal::Animal(void)
+	: _className("Animal"),
+	_type("Weird Animal")
+{
+	_printer.constructorTitlePrinter(_className, _type);
 }
 
-Animal::Animal(std::string type) : type(type)
+Animal::Animal(std::string type)
+	: _className("Animal"),
+	_type("Weird Animal")
 {
-	std::cout
-	<< "Animal parameterized constructor called with type: "
-	<< type << std::endl;
+	_printer.constructorTitlePrinter(_className, type);
 }
 
 Animal::~Animal(void)
 {
-	std::cout
-	<< "Animal destructor called for type: " << type
-	<< std::endl;
+	_printer.destructorTitlePrinter(_className, _type);
 }
 
 Animal::Animal(Animal const &src)
+	: _className(src._className),
+	_type(src._type)
 {
-	std::cout
-	<< "Animal copy constructor called for type: "
-	<< src.type << std::endl;
-	*this = src; // Use assignment operator to copy
+	_printer.copyConstructorPrinter(_className, src._type);
+	*this = src;
 }
 
 Animal &Animal::operator=(Animal const &rightSide)
 {
-	std::cout
-	<< "Animal assignment operator called for type: "
-	<< rightSide.type << std::endl;
-	if (this != &rightSide) {
-		type = rightSide.type; // Copy the type
+	_printer.operatorPrinter(_className, rightSide._type);
+	if (this != &rightSide)
+	{
+		_type = rightSide._type;
 	}
 	return *this;
 }
 
 void Animal::setType(const std::string newType)
 {
-	this->type = newType;
+	this->_type = newType;
 }
 
 std::string Animal::getType(void) const
 {
-	return type;
+	return _type;
 }
 
 void Animal::makeSound(void) const
 {
-	std::cout << "Animal makes a sound." << std::endl;
+	_printer.animalMakeSoundPrinter(_type);
 }
