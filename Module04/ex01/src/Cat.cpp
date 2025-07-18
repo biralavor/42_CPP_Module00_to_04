@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 19:02:32 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/17 19:56:32 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/18 09:59:26 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ Cat::~Cat(void)
 	_printer.destructorTitlePrinter(_className, _type);
 }
 
-Cat::Cat(Cat const &src)
-	: _className(src._className)
+Cat::Cat(Cat const &src) : Animal(src._type), _className(src._className)
 {
 	_printer.copyConstructorPrinter(_className, src._type);
 	*this = src;

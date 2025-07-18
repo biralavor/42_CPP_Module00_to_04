@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 19:02:32 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/17 19:55:55 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/18 09:59:02 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ Dog::~Dog(void)
 	_printer.destructorTitlePrinter(_className, _type);
 }
 
-Dog::Dog(Dog const &src)
-	: _className(src._className)
+Dog::Dog(Dog const &src) : Animal(src._type), _className(src._className)
 {
 	_myBrain = new Brain(*src._myBrain);
 	_printer.copyConstructorPrinter(_className, src._type);
