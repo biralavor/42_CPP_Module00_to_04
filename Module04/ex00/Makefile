@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/20 16:02:28 by umeneses          #+#    #+#              #
-#    Updated: 2025/07/17 16:45:19 by umeneses         ###   ########.fr        #
+#    Updated: 2025/07/18 11:17:21 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,4 +119,4 @@ go:	all
 
 .PHONY: val
 val: all
-	valgrind ./$(NAME) $(call args_for_testing)
+	valgrind --leak-check=full ./$(NAME) $(call args_for_testing)
