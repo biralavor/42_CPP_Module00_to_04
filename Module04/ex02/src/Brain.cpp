@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 19:05:00 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/18 16:26:26 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/18 17:25:11 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 Brain::Brain(void)
 {
-	_printer.constructorTitlePrinter("Default Brain", "");
+	_printer.constructorTitlePrinter("Default Brain",
+		"brand new -> no ideias detected");
 }
 
 Brain::~Brain(void)
 {
-	_printer.destructorTitlePrinter("Default Brain", "");
+	_printer.destructorTitlePrinter("Default Brain", "maybe bad ideas");
 }
 
 Brain::Brain(Brain const &src)
