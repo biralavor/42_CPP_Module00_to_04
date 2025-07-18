@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 10:45:13 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/17 17:32:57 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/18 16:30:00 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void Utils::constructorTitlePrinter(std::string _className,
 	std::string type) const
 {
 	std::cout
-    << ":: " << _className << " created: [" << YELLOW
-	<< type << RESET << "]"
+    << BLUE << ":: " << _className << " created: [" << YELLOW
+	<< type << BLUE << "]" << RESET
     << std::endl;
 }
 
