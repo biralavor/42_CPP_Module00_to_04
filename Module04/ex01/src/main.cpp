@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 18:25:44 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/17 20:00:11 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/18 11:32:29 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,32 @@ int main(void)
 	for (int idx = 0; idx < size; idx++)
 		hungryAnimal[idx]->makeSound();
 	
-	Dog Lancelot;
+	std::cout << RED << "The food has gone!" << std::endl;
+	for (int idx = 0; idx < size; idx++)
+		delete hungryAnimal[idx];
 	
-	Lancelot.getBrain()->setIdea(0, "Sit");
-	Lancelot.getBrain()->setIdea(1, "Babar");
-	Lancelot.getBrain()->setIdea(2, "Bark");
+	Dog lancelot;
+	
+	lancelot.getBrain()->setIdea(0, "Sit");
+	lancelot.getBrain()->setIdea(1, "Slobber");
+	lancelot.getBrain()->setIdea(2, "Bark");
 	
 	for (int idx = 0; idx < 3; idx++)
 	{
-		std::cout << "\n show the ideias: "
-		<< Lancelot.getBrain()->getIdea(idx) << std::endl;
+		std::cout << "show Dog's mind: "
+		<< lancelot.getBrain()->getIdea(idx) << std::endl;
 	}
+
+	Cat lili;
 	
+	lili.getBrain()->setIdea(0, "Give a slice of Tuna");
+	lili.getBrain()->setIdea(1, "Acctualy, could be three big slices of Tuna");
+	lili.getBrain()->setIdea(2, "NOW I WANT AN ENTIRE TUNA!! ..... >('> ");
+
+	for (int idx = 0; idx < 3; idx++)
+	{
+		std::cout << "show Cat's mind: "
+		<< lili.getBrain()->getIdea(idx) << std::endl;
+	}
 	return 0;
 }
