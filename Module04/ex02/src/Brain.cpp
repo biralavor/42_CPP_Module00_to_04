@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 19:05:00 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/17 19:38:58 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/18 16:26:26 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,12 @@
 
 Brain::Brain(void)
 {
-	_printer.constructorTitlePrinter("Default Brain", "--type--");
+	_printer.constructorTitlePrinter("Default Brain", "");
 }
-
-// Brain::Brain(std::string idea)
-// {
-
-// }
 
 Brain::~Brain(void)
 {
-	_printer.destructorTitlePrinter("Default Brain", "--type--");
+	_printer.destructorTitlePrinter("Default Brain", "");
 }
 
 Brain::Brain(Brain const &src)

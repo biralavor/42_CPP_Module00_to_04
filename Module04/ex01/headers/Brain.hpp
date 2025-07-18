@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 18:58:14 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/17 19:28:53 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/18 16:25:48 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ protected:
 
 public:
 	Brain(void);
-	// Brain(std::string ideia);
 	virtual ~Brain(void);
 	Brain(Brain const &src);
 	Brain &operator=(const Brain &rightSide);
