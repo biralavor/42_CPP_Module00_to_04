@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:15:00 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/17 17:37:10 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/18 16:59:32 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Animal::Animal(void)
 
 Animal::Animal(std::string type)
 	: _className("Animal"),
-	_type("Weird Animal")
+	_type(type)
 {
 	_printer.constructorTitlePrinter(_className, type);
 }

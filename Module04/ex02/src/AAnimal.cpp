@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 12:21:05 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/18 12:21:10 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/18 16:59:45 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ AAnimal::AAnimal(void)
 
 AAnimal::AAnimal(std::string type)
 	: _className("AAnimal"),
-	_type("Weird AAnimal")
+	_type(type)
 {
 	_printer.constructorTitlePrinter(_className, type);
 }
