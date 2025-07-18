@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 19:02:32 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/18 09:59:02 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/18 11:16:42 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ Dog::Dog(std::string type) : Animal(type), _className("Dog")
 Dog::~Dog(void)
 {
 	_printer.destructorTitlePrinter(_className, _type);
+	delete _myBrain;
 }
 
 Dog::Dog(Dog const &src) : Animal(src._type), _className(src._className)

@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 19:02:32 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/18 09:59:26 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/18 11:31:35 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,25 @@
 
 Cat::Cat(void) : Animal(), _className("Cat")
 {
+	_myBrain = new Brain();
 	_printer.constructorTitlePrinter(_className, "Weird Cat");
 }
 
 Cat::Cat(std::string type) : Animal(type), _className("Cat")
 {
+	_myBrain = new Brain();
 	_printer.constructorTitlePrinter(_className, type);
 }
 
 Cat::~Cat(void)
 {
 	_printer.destructorTitlePrinter(_className, _type);
+	delete _myBrain;
 }
 
 Cat::Cat(Cat const &src) : Animal(src._type), _className(src._className)
 {
+	_myBrain = new Brain(*src._myBrain);
 	_printer.copyConstructorPrinter(_className, src._type);
 	*this = src;
 }
@@ -39,6 +43,8 @@ Cat &Cat::operator=(Cat const &rightSide)
 	if (this != &rightSide)
 	{
 		_type = rightSide._type;
+		delete _myBrain;
+		_myBrain = new Brain(*rightSide._myBrain);
 	}
 	return *this;
 }
