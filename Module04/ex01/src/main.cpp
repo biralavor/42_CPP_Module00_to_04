@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 18:25:44 by umeneses          #+#    #+#             */
-/*   Updated: 2025/07/18 11:32:29 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/07/18 11:38:59 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,9 @@ int main(void)
 		std::cout << "show Cat's mind: "
 		<< lili.getBrain()->getIdea(idx) << std::endl;
 	}
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
+	delete j;
+	delete i;
 	return 0;
 }
