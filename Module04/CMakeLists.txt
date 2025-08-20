@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(CPP_Module00 VERSION 1.0)
+project(CPP_Module04 VERSION 1.0)
 
 # Set project-wide properties
 set(CMAKE_CXX_STANDARD 98)
