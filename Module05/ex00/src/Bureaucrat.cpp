@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 14:59:45 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/20 18:00:23 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/21 15:15:59 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,20 @@ Bureaucrat::Bureaucrat(Bureaucrat const &src)
     *this = src;
 }
 
+Bureaucrat &Bureaucrat::operator=(Bureaucrat const &rightSide)
+{
+    std::cout
+    << "Assignment operator called for: "
+    << YELLOW << rightSide.getName() << RESET
+    << std::endl;
+    if (this != &rightSide)
+    {
+        // this->_name = rightSide.getName();
+        this->_grade = rightSide.getGrade();
+    }
+    return *this;
+}
+
 std::string Bureaucrat::getName(void) const
 {
     return this->_name;
@@ -58,11 +72,21 @@ void Bureaucrat::decrementGrade(void)
     this->_grade++;
 }
 
+std::exception Bureaucrat::GradeTooHighException(void) const
+{
+    return std::exception();
+}
+
+std::exception Bureaucrat::GradeTooLowException(void) const
+{
+    return std::exception();
+}
+
 void Bureaucrat::setGrade(int grade)
 {
-    if (grade < 1)
+    if (grade < HIGHEST_GRADE)
         throw Bureaucrat::GradeTooHighException();
-    else if (grade > 150)
+    else if (grade > LOWEST_GRADE)
         throw Bureaucrat::GradeTooLowException();
     else
         this->_grade = grade;
