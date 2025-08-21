@@ -6,22 +6,23 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 14:59:45 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/21 15:15:59 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/21 15:34:36 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(void)
-    : _name("Default"), _grade(150)
+    : _name("Default"), _grade(42)
 {
     std::cout << "Default constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade)
-    : _name(name), _grade(grade)
+Bureaucrat::Bureaucrat(const std::string name, int grade)
+    : _name(name)
 {
     std::cout << "Parameterized constructor called" << std::endl;
+    setGrade(grade);
 }
 
 Bureaucrat::~Bureaucrat(void)
