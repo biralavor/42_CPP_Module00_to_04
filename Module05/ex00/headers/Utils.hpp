@@ -6,13 +6,14 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 15:50:06 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/20 15:54:09 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/21 15:11:06 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 const std::string RESET = "\e[0m";
 const std::string RED = "\e[31m";
