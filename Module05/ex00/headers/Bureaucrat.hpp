@@ -13,7 +13,6 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "Utils.hpp"
 #include <exception>
 
 class Bureaucrat
@@ -22,8 +21,8 @@ class Bureaucrat
     int                 _grade;
 
 public:
-    static const int HIGHEST_GRADE = 1;
-    static const int LOWEST_GRADE = 150;
+    static const int    HIGHEST_GRADE = 1;
+    static const int    LOWEST_GRADE = 150;
 
 public:
     Bureaucrat(void);
@@ -31,14 +30,23 @@ public:
     ~Bureaucrat(void);
     Bureaucrat(Bureaucrat const &src);
     Bureaucrat &operator=(Bureaucrat const &rightSide);
-    std::exception GradeTooHighException(void) const;
-    std::exception GradeTooLowException(void) const;
     std::string getName(void) const;
     int getGrade(void) const;
-    void setGrade(int grade);
+
     void incrementGrade(void);
     void decrementGrade(void);
 
-public:
-    Utils _printer;
+    class GradeTooHighException : public std::exception
+    {
+    public:
+        virtual const char* what() const throw();
+    };
+
+    class GradeTooLowException : public std::exception
+    {
+    public:
+        virtual const char* what() const throw();
+    };
 };
+
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat);

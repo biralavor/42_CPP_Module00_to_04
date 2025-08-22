@@ -6,23 +6,29 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 14:59:45 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/21 15:34:36 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/22 15:57:46 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
+const int Bureaucrat::HIGHEST_GRADE;
+const int Bureaucrat::LOWEST_GRADE;
+
 Bureaucrat::Bureaucrat(void)
-    : _name("Default"), _grade(42)
+    : _name("Default"), _grade(LOWEST_GRADE)
 {
     std::cout << "Default constructor called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string name, int grade)
-    : _name(name)
+    : _name(name), _grade(grade)
 {
     std::cout << "Parameterized constructor called" << std::endl;
-    setGrade(grade);
+    if (grade < HIGHEST_GRADE)
+        throw Bureaucrat::GradeTooHighException();
+    if (grade > LOWEST_GRADE)
+        throw Bureaucrat::GradeTooLowException();
 }
 
 Bureaucrat::~Bureaucrat(void)
@@ -31,23 +37,19 @@ Bureaucrat::~Bureaucrat(void)
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &src)
+    : _name(src._name)
 {
-    std::cout
-    << "Copy constructor called for: "
-    << YELLOW << _name << RESET
-    << std::endl;
+    std::cout << "Copy constructor called for: " << _name << std::endl;
     *this = src;
 }
 
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &rightSide)
 {
-    std::cout
-    << "Assignment operator called for: "
-    << YELLOW << rightSide.getName() << RESET
-    << std::endl;
+    std::cout << "Assignment operator called for: " << rightSide.getName() << std::endl;
     if (this != &rightSide)
     {
-        // this->_name = rightSide.getName();
+        // _name is const, so it cannot be changed after construction.
+        // Only non-const members can be assigned.
         this->_grade = rightSide.getGrade();
     }
     return *this;
@@ -65,30 +67,30 @@ int Bureaucrat::getGrade(void) const
 
 void Bureaucrat::incrementGrade(void)
 {
+    if (this->_grade - 1 < HIGHEST_GRADE)
+        throw Bureaucrat::GradeTooHighException();
     this->_grade--;
 }
 
 void Bureaucrat::decrementGrade(void)
 {
+    if (this->_grade + 1 > LOWEST_GRADE)
+        throw Bureaucrat::GradeTooLowException();
     this->_grade++;
 }
 
-std::exception Bureaucrat::GradeTooHighException(void) const
+const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-    return std::exception();
+    return "Grade is too high";
 }
 
-std::exception Bureaucrat::GradeTooLowException(void) const
+const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-    return std::exception();
+    return "Grade is too low";
 }
 
-void Bureaucrat::setGrade(int grade)
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat)
 {
-    if (grade < HIGHEST_GRADE)
-        throw Bureaucrat::GradeTooHighException();
-    else if (grade > LOWEST_GRADE)
-        throw Bureaucrat::GradeTooLowException();
-    else
-        this->_grade = grade;
+    out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
+    return out;
 }
