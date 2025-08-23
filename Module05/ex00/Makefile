@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/19 16:42:48 by umeneses          #+#    #+#              #
-#    Updated: 2025/08/21 15:15:07 by umeneses         ###   ########.fr        #
+#    Updated: 2025/08/23 16:33:26 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,7 @@ all: $(NAME)
 $(NAME): $(OBJ_F) | $(BIN_DIR)
 	@printf "$(BLUE)Linking Objects      ->  $(notdir $@)\n$(RESET)"
 	@$(COMPILER) $(FLAGS) $(LIMITATIONS) $(DEBUG) $^ -o $@
-	@printf "$(GREEN)C++ Program Ready!\n$(RESET)"
+	@printf "$(GREEN)C++ Program Ready!\n\n$(RESET)"
 
 $(BUILD_DIR)%.o: $(SRC_DIR)%.cpp $(HEADERS_F) | $(BUILD_DIR)
 	@printf "$(CYAN)Compiling C++ Files  ->  $(YELLOW)$(notdir $@)\n$(RESET)"
