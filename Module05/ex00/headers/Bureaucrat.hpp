@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 15:06:59 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/21 15:22:51 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/23 18:46:43 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ public:
 public:
     Bureaucrat(void);
     Bureaucrat(const std::string name, int grade);
-    ~Bureaucrat(void);
     Bureaucrat(Bureaucrat const &src);
     Bureaucrat &operator=(Bureaucrat const &rightSide);
+    ~Bureaucrat(void);
     std::string getName(void) const;
     int getGrade(void) const;
 

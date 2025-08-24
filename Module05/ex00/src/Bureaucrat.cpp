@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 14:59:45 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/23 18:08:53 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/23 18:42:24 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ Bureaucrat::Bureaucrat(Bureaucrat const &src)
 
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &rightSide)
 {
-    std::cout << "Assignment operator called for: " << rightSide.getName() << std::endl;
+    std::cout << "Assignment operator called for: "
+    << rightSide.getName() << std::endl;
     if (this != &rightSide)
     {
         // _name is const, so it cannot be changed after construction.
@@ -94,6 +95,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat)
 {
-    out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
+    out << bureaucrat.getName() << ", bureaucrat grade "
+    << bureaucrat.getGrade();
     return out;
 }
