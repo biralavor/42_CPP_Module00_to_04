@@ -6,15 +6,12 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 14:59:45 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/25 13:46:17 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/25 13:50:24 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
-
-const int Bureaucrat::HIGHEST_GRADE;
-const int Bureaucrat::LOWEST_GRADE;
 
 Bureaucrat::Bureaucrat(void)
     : _name("Default"), _grade(LOWEST_GRADE)
