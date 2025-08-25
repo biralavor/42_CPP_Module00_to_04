@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 14:59:45 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/23 22:23:09 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/25 13:46:17 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,17 @@ Bureaucrat::Bureaucrat(const std::string name, int grade)
 
 Bureaucrat::~Bureaucrat(void)
 {
-    std::cout << "Bureaucrat destructor for " << _name << " called" << std::endl;
+    std::cout
+    << "Bureaucrat destructor for "
+    << _name << " called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &src)
     : _name(src._name)
 {
-    std::cout << "Bureaucrat copy constructor called for: " << _name << std::endl;
+    std::cout
+    << "Bureaucrat copy constructor called for: "
+    << _name << std::endl;
     *this = src;
 }
 
