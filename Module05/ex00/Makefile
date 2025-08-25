@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/19 16:42:48 by umeneses          #+#    #+#              #
-#    Updated: 2025/08/23 16:33:26 by umeneses         ###   ########.fr        #
+#    Updated: 2025/08/25 13:38:52 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,6 @@ HEADERS_DIR		:= ./headers/
 NAME			:= $(BIN_DIR)bureaucrat
 SRC_F			+= main.cpp
 SRC_F			+= Bureaucrat.cpp
-SRC_F			+= Utils.cpp
 
 SRC_F_ALL		:= $(addprefix $(SRC_DIR), $(SRC_F))
 OBJ_F			:= $(patsubst $(SRC_DIR)%.cpp, $(BUILD_DIR)%.o, $(SRC_F_ALL))

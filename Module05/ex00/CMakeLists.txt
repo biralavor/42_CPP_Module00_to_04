@@ -3,7 +3,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 add_library(Bureaucrat_lib
 	src/Bureaucrat.cpp
-	src/Utils.cpp
 )
 
 target_include_directories(Bureaucrat_lib PUBLIC
