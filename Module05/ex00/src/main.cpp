@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 15:06:13 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/23 17:13:20 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/25 13:38:01 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int main (void)
         std::cout << "After increment: " << GREEN << b1 << RESET << std::endl;
         b1.decrementGrade();
         std::cout << "After decrement: " << GREEN << b1 << RESET << std::endl;
-        std::cout << "This should not be printed." << std::endl;
     }
     catch (const std::exception& e) {
         std::cerr
@@ -47,7 +46,6 @@ int main (void)
         std::cout << "After increment: " << GREEN << b2 << RESET << std::endl;
         b2.decrementGrade();
         std::cout << "After decrement: " << GREEN << b2 << RESET << std::endl;
-        std::cout << "This should not be printed." << std::endl;
     }
     catch (const std::exception& e) {
         std::cerr
@@ -71,7 +69,8 @@ int main (void)
         << RESET << std::endl;
     }
     std::cout
-    << BLUE << "::: trying grade as 151, then incrementing :::" << RESET << std::endl;
+    << BLUE << "::: trying grade as 151, then incrementing :::"
+    << RESET << std::endl;
     try
     {
         Bureaucrat b4("Again", 151);
@@ -100,7 +99,8 @@ int main (void)
         << RESET << std::endl;
     }
     std::cout
-    << BLUE << "::: trying grade as 0, then decrementing :::" << RESET << std::endl;
+    << BLUE << "::: trying grade as 0, then decrementing :::"
+    << RESET << std::endl;
     try
     {
         Bureaucrat b6("Rock'n Roll", 0);
