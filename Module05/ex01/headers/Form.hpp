@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 17:20:15 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/25 13:28:57 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/25 13:44:12 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ class Form
     bool                _isSigned;
     const int           _gradeToSign;
     const int           _gradeToExecute;
-    static const int           MAX_GRADE = 1;
-    static const int           MIN_GRADE = 150;
+    static const int    MAX_GRADE = 1;
+    static const int    MIN_GRADE = 150;
 
 public:
     Form(void);
