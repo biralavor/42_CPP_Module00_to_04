@@ -6,13 +6,11 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 14:09:57 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 12:05:14 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 15:09:46 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#include <string>
-#include <iostream>
 #include "AForm.hpp"
 #include <cstdlib>
 #include <fstream>
