@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 14:12:37 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 11:25:21 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 12:38:54 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ void PresidentialPardonForm::announcement(void) const
 
 void PresidentialPardonForm::action(Bureaucrat const &executor) const
 {
-	requirementsController(executor);
-	announcement();
+	this->requirementsController(executor);
+	this->announcement();
 }
