@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 14:59:45 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 10:40:04 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 13:24:49 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void Bureaucrat::executeForm(AForm const &paper) const
 {
     try
     {
-        paper.requirementsController(*this);
+        paper.action(*this);
         std::cout
         << "\e[34m" << this->getName() << " executed "
         << paper.getName() << "\e[0m" << std::endl;
