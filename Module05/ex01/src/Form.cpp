@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:18:16 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/25 13:50:34 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/25 15:37:47 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,13 +93,18 @@ const char* Form::GradeTooLowException::what() const throw()
     return "Grade is too low";
 }
 
+void Form::setSignature(Form &paper, bool status)
+{
+    paper._isSigned = status;
+}
+
 bool Form::beSigned(Bureaucrat &bureaucrat)
 {
     if (bureaucrat.getGrade() > this->_gradeToSign)
     {
         throw Form::GradeTooLowException();
     }
-    this->_isSigned = true;
+    this->setSignature(*this, true);
     return true;
 }
 

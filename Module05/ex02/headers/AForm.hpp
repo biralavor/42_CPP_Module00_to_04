@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 17:20:15 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/25 15:36:25 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 13:32:12 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
-    const std::string   _name;
+    const std::string   _type;
+    const std::string   _target;
     bool                _isSigned;
     const int           _gradeToSign;
     const int           _gradeToExecute;
@@ -26,12 +27,12 @@ class Form
     static const int    MIN_GRADE = 150;
 
 public:
-    Form(void);
-    Form(const std::string name, int gradeToSign, int gradeToExecute);
-    ~Form(void);
-    Form(Form const &src);
-    Form &operator=(Form const &rightSide);
-    void beSigned(void);
+    AForm(void);
+    AForm(const std::string type, int gradeToSign, int gradeToExecute,
+        const std::string target);
+    virtual ~AForm(void);
+    AForm(AForm const &src);
+    AForm &operator=(AForm const &rightSide);
 
     class GradeTooHighException : public std::exception
     {
@@ -43,13 +44,27 @@ public:
         public:
             virtual const char *what() const throw();
     };
+    class FormNotSignedException : public std::exception
+    {
+        public:
+            virtual const char *what() const throw();
+    };
+    class FormAlreadySignedException : public std::exception
+    {
+        public:
+            virtual const char *what() const throw();
+    };
 
-    std::string getName(void) const;
+    std::string getType(void) const;
     bool getSignature(void) const;
     int getGradeToSign(void) const;
     int getGradeToExecute(void) const;
     bool beSigned(Bureaucrat &bureaucrat);
-    void setSignature(Form &paper, bool status);
+    void setSignature(bool status);
+
+    const std::string &getTarget(void) const;
+    void requirementsController(const Bureaucrat &executor) const;
+    virtual void action(const Bureaucrat &executor) const = 0;
 };
 
-std::ostream &operator<<(std::ostream &out, const Form &form);
+std::ostream &operator<<(std::ostream &out, const AForm &absForm);
