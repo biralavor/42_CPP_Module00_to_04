@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:18:16 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 12:33:41 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 13:26:45 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 AForm::AForm(void)
     : _name("Default Abstract Form"),
+    _target("Default Target"),
     _isSigned(false),
     _gradeToSign(MIN_GRADE),
     _gradeToExecute(MIN_GRADE)
@@ -23,6 +24,7 @@ AForm::AForm(void)
 
 AForm::AForm(const std::string name, int gradeToSign, int gradeToExecute)
     : _name(name),
+    _target(name),
     _isSigned(false),
     _gradeToSign(gradeToSign),
     _gradeToExecute(gradeToExecute)
@@ -39,11 +41,11 @@ AForm::~AForm(void)
 
 AForm::AForm(AForm const &src)
     : _name(src.getName()),
+    _target(src.getTarget()),
     _isSigned(src.getSignature()),
     _gradeToSign(src.getGradeToSign()),
     _gradeToExecute(src.getGradeToExecute())
 {
-    *this = src;
 }
 
 AForm &AForm::operator=(AForm const &rightSide)
@@ -118,7 +120,7 @@ const std::string &AForm::getTarget(void) const
 void AForm::requirementsController(const Bureaucrat &bureaucrat) const
 {
     if (!this->getSignature())
-        throw AForm::GradeTooLowException();
+        throw AForm::FormNotSignedException();
     if (bureaucrat.getGrade() > this->getGradeToExecute())
         throw AForm::GradeTooLowException();
 }
