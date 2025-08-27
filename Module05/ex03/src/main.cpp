@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 10:43:08 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 14:59:54 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 15:12:48 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ int main(void)
 		std::cerr << "\e[31m" << err.what() << "\e[0m" << std::endl;
 	}
 
-	std::cout
+	std::cout << "\e[33m"
 	<< "\n#5 ----- TESTING NOT SIGNED FORMS AND EXECUTE THEM -----"
 	<< "\e[0m" << std::endl;
 	try
