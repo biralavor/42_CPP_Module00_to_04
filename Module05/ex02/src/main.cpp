@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 10:43:08 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 14:40:05 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 14:59:54 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 int main(void)
 {
 	std::cout << "\e[33m"
-	<< "#1 ----- TESTING BUREAUCRATS -----"
+	<< "#1 ----- TESTING BUREAUCRATS CREATION -----"
 	<< "\e[0m" << std::endl;
 	try
 	{
@@ -137,6 +137,43 @@ int main(void)
 		boss.executeForm(president);
 
 		intern.signForm(president);
+		intern.executeForm(president);
+
+		std::cout << shrub << std::endl;
+		std::cout << robot << std::endl;
+		std::cout << president << std::endl;
+	}
+	catch (const std::exception &err)
+	{
+		std::cerr << "\e[31m" << err.what() << "\e[0m" << std::endl;
+	}
+
+	std::cout
+	<< "\n#5 ----- TESTING NOT SIGNED FORMS AND EXECUTE THEM -----"
+	<< "\e[0m" << std::endl;
+	try
+	{
+		Bureaucrat intern("Intern", 4);
+		Bureaucrat boss("Boss", 1);
+
+		ShrubberyCreationForm shrub("Flowers In My Garden");
+		RobotomyRequestForm robot("iRobot");
+		PresidentialPardonForm president("Macron");
+
+		std::cout << boss << std::endl;
+		std::cout << intern << std::endl;
+		
+		std::cout << shrub << std::endl;
+		std::cout << robot << std::endl;
+		std::cout << president << "\n" << std::endl;
+
+		boss.executeForm(shrub);
+		intern.executeForm(shrub);
+
+		boss.executeForm(robot);
+		intern.executeForm(robot);
+
+		boss.executeForm(president);
 		intern.executeForm(president);
 
 		std::cout << shrub << std::endl;
