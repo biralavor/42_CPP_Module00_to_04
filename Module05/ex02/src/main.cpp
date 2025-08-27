@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 10:43:08 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 12:25:57 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 12:27:12 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,22 @@ int main(void)
 		Bureaucrat boss("Boss", 1);
 		Bureaucrat intern("Intern", 150);
 
-		// ShrubberyCreationForm shrub("FlowersInMyGarden-ShrubberyForm");
+		ShrubberyCreationForm shrub("FlowersInMyGarden-ShrubberyForm");
 		RobotomyRequestForm robot("iRobot-RobotomyForm");
 		PresidentialPardonForm president("Macron-PresidentialPardonForm");
 
 		std::cout << boss << std::endl;
 		std::cout << intern << std::endl;
 		
-		// std::cout << shrub << std::endl;
+		std::cout << shrub << std::endl;
 		std::cout << robot << std::endl;
 		std::cout << president << std::endl;
 
-		// intern.signForm(shrub);
-		// intern.executeForm(shrub);
+		intern.signForm(shrub);
+		intern.executeForm(shrub);
 
-		// boss.signForm(shrub);
-		// boss.executeForm(shrub);
+		boss.signForm(shrub);
+		boss.executeForm(shrub);
 
 		intern.signForm(robot);
 		intern.executeForm(robot);
@@ -67,7 +67,7 @@ int main(void)
 		boss.signForm(president);
 		boss.executeForm(president);
 
-		// std::cout << shrub << std::endl;
+		std::cout << shrub << std::endl;
 		std::cout << robot << std::endl;
 		std::cout << president << std::endl;
 	}
