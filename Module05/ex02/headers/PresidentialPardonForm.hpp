@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 14:12:16 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/25 15:30:18 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 11:13:53 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,18 @@
 
 class PresidentialPardonForm : public AForm
 {
+	static const int _minGradeToSign = 25;
+	static const int _minGradeToExecute = 5;
+
+private:
+	void announcement(void) const;
+
 public:
 	PresidentialPardonForm(void);
-	PresidentialPardonForm(const std::string &target);
+	explicit PresidentialPardonForm(const std::string &target);
 	~PresidentialPardonForm(void);
 	PresidentialPardonForm(PresidentialPardonForm const &src);
 	PresidentialPardonForm &operator=(PresidentialPardonForm const &rightSide);
-	void action(void) const;
+    
+	virtual void action(Bureaucrat const &executor) const;
 };
