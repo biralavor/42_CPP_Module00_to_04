@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:18:16 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 13:33:09 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 14:50:57 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ void AForm::setSignature(bool status)
 
 bool AForm::beSigned(Bureaucrat &bureaucrat)
 {
+    if (this->getSignature())
+        throw AForm::FormAlreadySignedException();
     if (bureaucrat.getGrade() > this->_gradeToSign)
     {
         throw AForm::GradeTooLowException();

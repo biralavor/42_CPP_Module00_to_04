@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 10:43:08 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 13:46:33 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 14:40:05 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int main(void)
 
 		ShrubberyCreationForm shrub("Flowers In My Garden");
 		RobotomyRequestForm robot("iRobot");
-		PresidentialPardonForm president("Macron's Pardon");
+		PresidentialPardonForm president("Macron");
 
 		std::cout << intern << std::endl;
 		
@@ -76,7 +76,7 @@ int main(void)
 
 		ShrubberyCreationForm shrub("Flowers In My Garden");
 		RobotomyRequestForm robot("iRobot");
-		PresidentialPardonForm president("Macron's Pardon");
+		PresidentialPardonForm president("Macron");
 
 		std::cout << intern << std::endl;
 		
@@ -112,7 +112,7 @@ int main(void)
 
 		ShrubberyCreationForm shrub("Flowers In My Garden");
 		RobotomyRequestForm robot("iRobot");
-		PresidentialPardonForm president("Macron's Pardon");
+		PresidentialPardonForm president("Macron");
 
 		std::cout << boss << std::endl;
 		std::cout << intern << std::endl;
