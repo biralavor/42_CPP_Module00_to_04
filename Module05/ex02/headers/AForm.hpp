@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 17:20:15 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 10:54:43 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 11:09:26 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ public:
 
     const std::string &getTarget(void) const;
     void requirementsController(const Bureaucrat &executor) const;
-    virtual void action(void) const = 0;
+    virtual void action(const Bureaucrat &executor) const = 0;
 };
 
 std::ostream &operator<<(std::ostream &out, const AForm &absForm);
