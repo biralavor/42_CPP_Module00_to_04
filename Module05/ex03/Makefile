@@ -6,7 +6,7 @@
 #    By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/19 16:42:48 by umeneses          #+#    #+#              #
-#    Updated: 2025/08/27 12:26:47 by umeneses         ###   ########.fr        #
+#    Updated: 2025/08/27 16:07:00 by umeneses         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRC_F			+= AForm.cpp
 SRC_F			+= ShrubberyCreationForm.cpp
 SRC_F			+= RobotomyRequestForm.cpp
 SRC_F			+= PresidentialPardonForm.cpp
+SRC_F			+= Intern.cpp
 
 SRC_F_ALL		:= $(addprefix $(SRC_DIR), $(SRC_F))
 OBJ_F			:= $(patsubst $(SRC_DIR)%.cpp, $(BUILD_DIR)%.o, $(SRC_F_ALL))
