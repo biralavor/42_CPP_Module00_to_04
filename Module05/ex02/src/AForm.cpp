@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:18:16 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 10:26:11 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 10:56:41 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,13 +115,12 @@ const std::string &AForm::getTarget(void) const
     return this->_target;
 }
 
-void AForm::requirementsController(const Bureaucrat &bureaucrat)
+void AForm::requirementsController(const Bureaucrat &bureaucrat) const
 {
     if (!this->getSignature())
         throw AForm::GradeTooLowException();
     if (bureaucrat.getGrade() > this->getGradeToExecute())
         throw AForm::GradeTooLowException();
-    this->action();
 }
 
 std::ostream &operator<<(std::ostream &out, const AForm &absForm)
