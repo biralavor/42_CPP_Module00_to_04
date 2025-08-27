@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:18:16 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 13:26:45 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 13:33:09 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Bureaucrat.hpp"
 
 AForm::AForm(void)
-    : _name("Default Abstract Form"),
+    : _type("Default Abstract Form"),
     _target("Default Target"),
     _isSigned(false),
     _gradeToSign(MIN_GRADE),
@@ -22,9 +22,10 @@ AForm::AForm(void)
 {
 }
 
-AForm::AForm(const std::string name, int gradeToSign, int gradeToExecute)
-    : _name(name),
-    _target(name),
+AForm::AForm(const std::string type, int gradeToSign, int gradeToExecute,
+    const std::string target)
+    : _type(type),
+    _target(target),
     _isSigned(false),
     _gradeToSign(gradeToSign),
     _gradeToExecute(gradeToExecute)
@@ -40,7 +41,7 @@ AForm::~AForm(void)
 }
 
 AForm::AForm(AForm const &src)
-    : _name(src.getName()),
+    : _type(src.getType()),
     _target(src.getTarget()),
     _isSigned(src.getSignature()),
     _gradeToSign(src.getGradeToSign()),
@@ -57,9 +58,9 @@ AForm &AForm::operator=(AForm const &rightSide)
     return *this;
 }
 
-std::string AForm::getName(void) const
+std::string AForm::getType(void) const
 {
-    return this->_name;
+    return this->_type;
 }
 
 bool AForm::getSignature(void) const
@@ -128,7 +129,8 @@ void AForm::requirementsController(const Bureaucrat &bureaucrat) const
 std::ostream &operator<<(std::ostream &out, const AForm &absForm)
 {
     out
-    << "\n:: AForm '" << absForm.getName() << "' ::\n"
+    << "\n:: AForm '" << absForm.getType() << "' ::\n"
+    << "Target: " << absForm.getTarget() << "\n"
     << "Status: " << (absForm.getSignature() ? "signed" : "not signed") << "\n"
     << "Grade to sign: " << absForm.getGradeToSign() << "\n"
     << "Grade to execute: " << absForm.getGradeToExecute();

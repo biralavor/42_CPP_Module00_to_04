@@ -6,19 +6,25 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 14:12:37 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 12:38:54 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 13:35:53 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm(void)
-	: AForm("Default Presidential Pardon", _minGradeToSign, _minGradeToExecute)
+	: AForm("Default Presidential Pardon",
+		_minGradeToSign,
+		_minGradeToExecute,
+		"Default Target")
 {
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string &target)
-	: AForm(target, _minGradeToSign, _minGradeToExecute)
+	: AForm("Presidential Pardon Form",
+		_minGradeToSign,
+		_minGradeToExecute,
+		target)
 {	
 }
 

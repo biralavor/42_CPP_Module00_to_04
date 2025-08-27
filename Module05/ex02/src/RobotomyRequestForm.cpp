@@ -6,19 +6,25 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 14:11:56 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 11:40:14 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 13:35:22 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm(void)
-	: AForm("Default Robotomy Request", _minGradeToSign, _minGradeToExecute)
+	: AForm("Default Robotomy Request",
+		_minGradeToSign,
+		_minGradeToExecute,
+		"Default Target")
 {
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
-	: AForm(target, _minGradeToSign, _minGradeToExecute)
+	: AForm("Robotomy Request Form",
+		_minGradeToSign,
+		_minGradeToExecute,
+		target)
 {
 }
 

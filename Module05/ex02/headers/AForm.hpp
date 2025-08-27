@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 17:20:15 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 11:09:26 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 13:32:12 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ class Bureaucrat;
 
 class AForm
 {
-    const std::string   _name;
+    const std::string   _type;
     const std::string   _target;
     bool                _isSigned;
     const int           _gradeToSign;
@@ -28,7 +28,8 @@ class AForm
 
 public:
     AForm(void);
-    AForm(const std::string name, int gradeToSign, int gradeToExecute);
+    AForm(const std::string type, int gradeToSign, int gradeToExecute,
+        const std::string target);
     virtual ~AForm(void);
     AForm(AForm const &src);
     AForm &operator=(AForm const &rightSide);
@@ -54,7 +55,7 @@ public:
             virtual const char *what() const throw();
     };
 
-    std::string getName(void) const;
+    std::string getType(void) const;
     bool getSignature(void) const;
     int getGradeToSign(void) const;
     int getGradeToExecute(void) const;

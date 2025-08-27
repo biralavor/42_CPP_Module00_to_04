@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 14:59:45 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 13:24:49 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 13:37:25 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,12 @@ void Bureaucrat::signForm(AForm &paper)
         paper.beSigned(*this);
         std::cout
         << "\e[34m" << this->getName() << " signed "
-        << paper.getName() << "\e[0m" << std::endl;
+        << paper.getType() << "\e[0m" << std::endl;
     }
     catch(const std::exception &err)
     {
         std::cerr
-        << "\e[34m" << _name << " couldn't sign " << paper.getName()
+        << "\e[34m" << _name << " couldn't sign " << paper.getType()
         << " because \e[31m" << err.what() << "\e[0m\n";
     }
 }
@@ -105,12 +105,12 @@ void Bureaucrat::executeForm(AForm const &paper) const
         paper.action(*this);
         std::cout
         << "\e[34m" << this->getName() << " executed "
-        << paper.getName() << "\e[0m" << std::endl;
+        << paper.getType() << "\e[0m" << std::endl;
     }
     catch(const std::exception &err)
     {
         std::cerr
-        << "\e[34m" << _name << " couldn't execute " << paper.getName()
+        << "\e[34m" << _name << " couldn't execute " << paper.getType()
         << " because \e[31m" << err.what() << "\e[0m\n";
     }
 }
