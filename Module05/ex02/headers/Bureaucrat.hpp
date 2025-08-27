@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 15:06:59 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/25 16:10:02 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 10:42:00 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,19 @@ public:
 
     void incrementGrade(void);
     void decrementGrade(void);
-
+    void signForm(AForm &paper);
+    void executeForm(AForm const &paper) const;
     class GradeTooHighException : public std::exception
     {
     public:
-        virtual const char* what() const throw();
+        virtual const char *what() const throw();
     };
 
     class GradeTooLowException : public std::exception
     {
     public:
-        virtual const char* what() const throw();
+        virtual const char *what() const throw();
     };
-
-    void signForm(AForm &paper);
-    void executeForm(AForm const &paper) const;
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat);

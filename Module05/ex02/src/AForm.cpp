@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:18:16 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/26 12:46:34 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 10:26:11 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ AForm::AForm(AForm const &src)
     _gradeToSign(src.getGradeToSign()),
     _gradeToExecute(src.getGradeToExecute())
 {
+    *this = src;
 }
 
 AForm &AForm::operator=(AForm const &rightSide)
@@ -76,22 +77,22 @@ int AForm::getGradeToExecute(void) const
 
 const char* AForm::GradeTooHighException::what() const throw()
 {
-    return "Grade is too high";
+    return "Grade is too high. Must be between 1 and 150.";
 }
 
 const char* AForm::GradeTooLowException::what() const throw()
 {
-    return "Grade is too low";
+    return "Grade is too low. Must be between 1 and 150.";
 }
 
 const char* AForm::FormNotSignedException::what() const throw()
 {
-    return "Form is not signed";
+    return "Form is not signed!";
 }
 
 const char* AForm::FormAlreadySignedException::what() const throw()
 {
-    return "Form is already signed";
+    return "Form is already signed!";
 }
 
 void AForm::setSignature(bool status)
@@ -114,7 +115,7 @@ const std::string &AForm::getTarget(void) const
     return this->_target;
 }
 
-void AForm::execute(const Bureaucrat &bureaucrat)
+void AForm::requirementsController(const Bureaucrat &bureaucrat)
 {
     if (!this->getSignature())
         throw AForm::GradeTooLowException();
@@ -123,12 +124,12 @@ void AForm::execute(const Bureaucrat &bureaucrat)
     this->action();
 }
 
-std::ostream &operator<<(std::ostream &out, const AForm &abstractForm)
+std::ostream &operator<<(std::ostream &out, const AForm &absForm)
 {
     out
-    << "AForm '" << abstractForm.getName()
-    << "', status: " << (abstractForm.getSignature() ? "signed" : "not signed")
-    << ", grade to sign: " << abstractForm.getGradeToSign()
-    << ", grade to execute: " << abstractForm.getGradeToExecute();
+    << ":: AForm '" << absForm.getName() << "' ::\n"
+    << "Status: " << (absForm.getSignature() ? "signed" : "not signed") << "\n"
+    << "Grade to sign: " << absForm.getGradeToSign() << "\n"
+    << "Grade to execute: " << absForm.getGradeToExecute() << "\n";
     return out;
 }

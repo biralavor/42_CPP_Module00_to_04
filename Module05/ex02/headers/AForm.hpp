@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 17:20:15 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/26 12:49:13 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 10:32:18 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class AForm
 public:
     AForm(void);
     AForm(const std::string name, int gradeToSign, int gradeToExecute);
-    ~AForm(void);
+    virtual ~AForm(void);
     AForm(AForm const &src);
     AForm &operator=(AForm const &rightSide);
 
@@ -62,8 +62,8 @@ public:
     void setSignature(bool status);
 
     const std::string &getTarget(void) const;
-    virtual void execute(const Bureaucrat &executor);
+    void requirementsController(const Bureaucrat &executor);
     virtual void action(void) const = 0;
 };
 
-std::ostream &operator<<(std::ostream &out, const AForm &abstractForm);
+std::ostream &operator<<(std::ostream &out, const AForm &absForm);

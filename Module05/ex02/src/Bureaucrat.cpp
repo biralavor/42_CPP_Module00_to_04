@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 14:59:45 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/25 16:12:00 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 10:40:04 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@
 Bureaucrat::Bureaucrat(void)
     : _name("Default"), _grade(LOWEST_GRADE)
 {
-    std::cout << "Bureaucrat default constructor called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string name, int grade)
     : _name(name)
 {
-    std::cout << "Bureaucrat parameterized constructor called" << std::endl;
     if (grade < HIGHEST_GRADE)
         throw Bureaucrat::GradeTooHighException();
     if (grade > LOWEST_GRADE)
@@ -32,30 +30,18 @@ Bureaucrat::Bureaucrat(const std::string name, int grade)
 
 Bureaucrat::~Bureaucrat(void)
 {
-    std::cout
-    << "Bureaucrat destructor for "
-    << _name << " called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &src)
     : _name(src._name)
 {
-    std::cout
-    << "Bureaucrat copy constructor called for: "
-    << _name << std::endl;
     *this = src;
 }
 
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &rightSide)
 {
-    std::cout << "Bureaucrat assignment operator called for: "
-    << rightSide.getName() << std::endl;
     if (this != &rightSide)
-    {
-        // _name is const, so it cannot be changed after construction.
-        // Only non-const members can be assigned.
         this->_grade = rightSide.getGrade();
-    }
     return *this;
 }
 
@@ -87,12 +73,12 @@ void Bureaucrat::decrementGrade(void)
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-    return "Grade is too high";
+    return "Grade is too high. Must be between 1 and 150.";
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-    return "Grade is too low";
+    return "Grade is too low. Must be between 1 and 150.";
 }
 
 void Bureaucrat::signForm(AForm &paper)
@@ -104,11 +90,11 @@ void Bureaucrat::signForm(AForm &paper)
         << "\e[34m" << this->getName() << " signed "
         << paper.getName() << "\e[0m" << std::endl;
     }
-    catch(const std::exception& e)
+    catch(const std::exception &err)
     {
         std::cerr
         << "\e[34m" << _name << " couldn't sign " << paper.getName()
-        << " because \e[31m" << e.what() << "\e[0m\n";
+        << " because \e[31m" << err.what() << "\e[0m\n";
     }
 }
 
@@ -116,16 +102,16 @@ void Bureaucrat::executeForm(AForm const &paper) const
 {
     try
     {
-        paper.execute(*this);
+        paper.requirementsController(*this);
         std::cout
         << "\e[34m" << this->getName() << " executed "
         << paper.getName() << "\e[0m" << std::endl;
     }
-    catch(const std::exception& e)
+    catch(const std::exception &err)
     {
         std::cerr
         << "\e[34m" << _name << " couldn't execute " << paper.getName()
-        << " because \e[31m" << e.what() << "\e[0m\n";
+        << " because \e[31m" << err.what() << "\e[0m\n";
     }
 }
 
