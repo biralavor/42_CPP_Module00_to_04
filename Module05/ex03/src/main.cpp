@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 10:43:08 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 15:12:48 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 16:10:31 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int main(void)
 {
@@ -179,6 +180,36 @@ int main(void)
 		std::cout << shrub << std::endl;
 		std::cout << robot << std::endl;
 		std::cout << president << std::endl;
+	}
+	catch (const std::exception &err)
+	{
+		std::cerr << "\e[31m" << err.what() << "\e[0m" << std::endl;
+	}
+
+	std::cout << "\e[33m"
+	<< "\n#6 ----- TESTING INTERN CLASS THAT MAKES FORMS -----"
+	<< "\e[0m" << std::endl;
+	try
+	{
+		Bureaucrat boss("Boss", 1);
+		Intern intern;
+		
+		std::cout << boss << std::endl;
+		
+		AForm *rrf = intern.makeForm("Robotomy Request", "Bender");
+		boss.signForm(*rrf);
+		boss.executeForm(*rrf);
+		delete rrf;
+
+		AForm *scf = intern.makeForm("Shrubbery Creation", "Home");
+		boss.signForm(*scf);
+		boss.executeForm(*scf);
+		delete scf;
+
+		AForm *ppf = intern.makeForm("Presidential Pardon", "President");
+		boss.signForm(*ppf);
+		boss.executeForm(*ppf);
+		delete ppf;
 	}
 	catch (const std::exception &err)
 	{
