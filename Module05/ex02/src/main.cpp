@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 10:43:08 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 13:38:27 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/27 13:46:33 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,52 @@ int main(void)
 
 		intern.signForm(robot);
 		intern.executeForm(robot);
+
+		intern.signForm(president);
+		intern.executeForm(president);
+
+		std::cout << shrub << std::endl;
+		std::cout << robot << std::endl;
+		std::cout << president << std::endl;
+	}
+	catch (const std::exception &err)
+	{
+		std::cerr << "\e[31m" << err.what() << "\e[0m" << std::endl;
+	}
+
+	std::cout << "\e[33m"
+	<< "\n#4 ----- TESTING ALREADY SIGNED FORMS -----"
+	<< "\e[0m" << std::endl;
+	try
+	{
+		Bureaucrat intern("Intern", 4);
+		Bureaucrat boss("Boss", 1);
+
+		ShrubberyCreationForm shrub("Flowers In My Garden");
+		RobotomyRequestForm robot("iRobot");
+		PresidentialPardonForm president("Macron's Pardon");
+
+		std::cout << boss << std::endl;
+		std::cout << intern << std::endl;
+		
+		std::cout << shrub << std::endl;
+		std::cout << robot << std::endl;
+		std::cout << president << "\n" << std::endl;
+
+		boss.signForm(shrub);
+		boss.executeForm(shrub);
+
+		intern.signForm(shrub);
+		intern.executeForm(shrub);
+
+		boss.signForm(robot);
+		boss.executeForm(robot);
+
+		intern.signForm(robot);
+		intern.executeForm(robot);
+
+		boss.signForm(president);
+		boss.executeForm(president);
 
 		intern.signForm(president);
 		intern.executeForm(president);
