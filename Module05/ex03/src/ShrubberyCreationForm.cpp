@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 14:10:25 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 13:34:32 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/28 16:41:28 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,27 @@ const char * ShrubberyCreationForm::FileOperationException::what() const throw()
 	return "Error creating or writing to the shrubbery file.";
 }
 
+void ShrubberyCreationForm::randomTree(std::ofstream &ofs) const
+{
+	srand(time(0));
+	int treeSize = (rand() % 42) + 4;
+	int patternAmount = 0;
+	std::string pattern = "*";
+
+	for (int idx = 0; idx < treeSize; idx++)
+	{
+		patternAmount = 2 * idx + 1;
+		for (int kdx = 0; kdx < patternAmount; kdx++)
+			ofs << pattern;
+		ofs << std::endl;
+	}
+	for (int idx = 0; idx < (treeSize % 5) + 4; idx++)
+		ofs << " ";
+	for (int idx = 0; idx < (treeSize % 10) + 4; idx++)
+		ofs << pattern;
+	ofs << std::endl;
+}
+
 void ShrubberyCreationForm::writeShrubberyArt(std::ofstream &ofs) const
 {
 	ofs << "       _-_" << std::endl;
@@ -64,13 +85,18 @@ void ShrubberyCreationForm::writeShrubberyArt(std::ofstream &ofs) const
 
 void ShrubberyCreationForm::createShrubberyFile(void) const
 {
-	std::string filename = this->getTarget() + "_shrubbery";
-	std::ofstream ofs(filename.c_str());
-
+	std::string		filename = this->getTarget() + "_shrubbery";
+	std::ofstream	ofs(filename.c_str());
+	int				actualTry = 0;
+	
+	srand(time(0));
+	actualTry = rand() % 42;
 	if (!ofs.is_open())
 		throw ShrubberyCreationForm::FileOperationException();
-	else
+	else if (actualTry % 2)
 		writeShrubberyArt(ofs);
+	else
+		randomTree(ofs);
 	ofs << std::endl;
 	std::cout << "Shrubbery created in file: " << filename << std::endl;
 	ofs.close();

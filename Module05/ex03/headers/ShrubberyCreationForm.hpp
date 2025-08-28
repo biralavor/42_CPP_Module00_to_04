@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 14:09:57 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 15:09:46 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/28 16:32:11 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class ShrubberyCreationForm : public AForm
 private:
 	void createShrubberyFile(void) const;
 	void writeShrubberyArt(std::ofstream &ofs) const;
+	void randomTree(std::ofstream &ofs) const;
 
 public:
 	ShrubberyCreationForm(void);
