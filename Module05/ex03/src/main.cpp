@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 10:43:08 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 16:10:31 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/28 15:15:40 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,5 +215,26 @@ int main(void)
 	{
 		std::cerr << "\e[31m" << err.what() << "\e[0m" << std::endl;
 	}
+
+	std::cout << "\e[33m"
+	<< "\n#6 ----- TESTING INTERN CLASS THAT TRY TO MAKE INVALID FORMS -----"
+	<< "\e[0m" << std::endl;
+	try
+	{
+		Bureaucrat boss("Boss", 1);
+		Intern intern;
+		
+		std::cout << boss << std::endl;
+		
+		AForm *invalidForm28B = intern.makeForm("invalidForm28B", "Moulinette");
+		boss.signForm(*invalidForm28B);
+		boss.executeForm(*invalidForm28B);
+		delete invalidForm28B;
+	}
+	catch (const std::exception &err)
+	{
+		std::cerr << "\e[31m" << err.what() << "\e[0m" << std::endl;
+	}
+	std::cout << std::endl;
 	return 0;
 }
