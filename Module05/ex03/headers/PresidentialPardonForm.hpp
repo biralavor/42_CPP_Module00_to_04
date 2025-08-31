@@ -6,12 +6,13 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 14:12:16 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 15:09:54 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/31 16:38:51 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
 
 class PresidentialPardonForm : public AForm
 {

@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 14:11:56 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/28 15:14:15 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/31 16:33:34 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,24 +47,25 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &r
 void RobotomyRequestForm::drillingNoise(void) const
 {
 	std::cout
-	<< "\e[33m" << "Bzzzzzzzz... Vrrrrrrrrr... Bzzzzzzzz..."
-	<< "\e[0m" << std::endl;
+	<< "\e[33m"
+	<< "Bzzzzzzzz... Vrrrrrrrrr... Bzzzzzzzz..."
+	<< "\e[0m" <<std::endl;
 }
 
 void RobotomyRequestForm::successAnnouncement(void) const
 {
 	std::cout
 	<< this->getTarget()
-	<< "\e[32m" <<" has been robotomized successfully."
-	<< "\e[0m" << std::endl;
+	<< "\e[32m" << " has been robotomized successfully."
+	<< "\e[0m" <<std::endl;
 }
 
 void RobotomyRequestForm::failureAnnouncement(void) const
 {
 	std::cout
 	<< "The robotomy on " << this->getTarget()
-	<< "\e[31m has failed."
-	<< "\e[0m" << std::endl;
+	<< "\e[31m" << " has failed."
+	<< "\e[0m" <<std::endl;
 }
 
 void RobotomyRequestForm::randomOutcome(void) const
@@ -78,6 +79,9 @@ void RobotomyRequestForm::randomOutcome(void) const
 
 void RobotomyRequestForm::action(Bureaucrat const &executor) const
 {
-	requirementsController(executor);
+	std::cout
+	<< "\e[34m" << executor.getName()
+	<< "\e[32m is running the form \e[36m"
+	<< this->getType() << "\e[0m" <<std::endl;
 	randomOutcome();
 }
