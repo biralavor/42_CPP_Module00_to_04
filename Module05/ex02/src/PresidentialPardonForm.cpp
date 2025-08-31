@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 14:12:37 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 13:35:53 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/31 16:03:11 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ void PresidentialPardonForm::announcement(void) const
 
 void PresidentialPardonForm::action(Bureaucrat const &executor) const
 {
-	this->requirementsController(executor);
 	this->announcement();
+	std::cout
+	<< "\e[34m" << executor.getName()
+	<< "\e[32m just successfully run the form \e[34m"
+	<< this->getType() << "\e[0m" <<std::endl;
 }

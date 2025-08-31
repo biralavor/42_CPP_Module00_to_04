@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 14:11:56 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 13:35:22 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/31 16:03:05 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,9 @@ void RobotomyRequestForm::randomOutcome(void) const
 
 void RobotomyRequestForm::action(Bureaucrat const &executor) const
 {
-	requirementsController(executor);
 	randomOutcome();
+	std::cout
+	<< "\e[34m" << executor.getName()
+	<< "\e[32m just successfully run the form \e[34m"
+	<< this->getType() << "\e[0m" <<std::endl;
 }

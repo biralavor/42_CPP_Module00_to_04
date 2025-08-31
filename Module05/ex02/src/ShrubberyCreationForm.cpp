@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 14:10:25 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 13:34:32 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/31 16:02:56 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,9 @@ void ShrubberyCreationForm::createShrubberyFile(void) const
 
 void ShrubberyCreationForm::action(Bureaucrat const &executor) const
 {
-	this->requirementsController(executor);
 	this->createShrubberyFile();
+	std::cout
+	<< "\e[34m" << executor.getName()
+	<< "\e[32m just successfully run the form \e[34m"
+	<< this->getType() << "\e[0m" <<std::endl;
 }
