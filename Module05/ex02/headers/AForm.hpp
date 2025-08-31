@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 17:20:15 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 13:32:12 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/31 15:15:52 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ public:
     void setSignature(bool status);
 
     const std::string &getTarget(void) const;
+    void execute(const Bureaucrat &bureaucrat) const;
     void requirementsController(const Bureaucrat &executor) const;
     virtual void action(const Bureaucrat &executor) const = 0;
 };
