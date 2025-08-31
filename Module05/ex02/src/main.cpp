@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 10:43:08 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 15:12:39 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/31 15:12:35 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,5 +184,19 @@ int main(void)
 	{
 		std::cerr << "\e[31m" << err.what() << "\e[0m" << std::endl;
 	}
+	
+	// std::cout << "\e[33m"
+	// << "\n#6 ----- TESTING ABSTRACT FORM CLASSES -----"
+	// << "\e[0m" << std::endl;
+	// try
+	// {
+	// 	AForm shouldNotExistForm("Weird and Abstract Form");
+
+	// 	std::cout << shouldNotExistForm << std::endl;
+	// }
+	// catch (const std::exception &err)
+	// {
+	// 	std::cerr << "\e[31m" << err.what() << "\e[0m" << std::endl;
+	// }
 	return 0;
 }
