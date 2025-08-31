@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:18:16 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/31 14:29:12 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/31 16:51:17 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,8 @@ std::ostream &operator<<(std::ostream &out, const Form &form)
 {
     out << "\n:: AForm '" << form.getName() << "' ::\n"
     << "Status: "
-    << (form.getSignature() ? "\e[32m signed" : "\e[31m not signed") << "\n\e[0m"
+    << (form.getSignature() ? "\e[32m signed" : "\e[31m not signed")
+    << "\n\e[0m"
     << "Grade to sign: " << form.getGradeToSign() << "\n"
     << "Grade to execute: " << form.getGradeToExecute();
     return out;

@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:18:16 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/31 16:29:37 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/31 16:51:36 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,9 @@ std::ostream &operator<<(std::ostream &out, const AForm &absForm)
     out
     << "\n:: AForm '" << absForm.getType() << "' ::\n"
     << "Target: " << absForm.getTarget() << "\n"
-    << "Status: " << (absForm.getSignature() ? "signed" : "not signed") << "\n"
+    << "Status: "
+    << (absForm.getSignature() ? "\e[32m signed" : "\e[31m not signed")
+    << "\n\e[0m"
     << "Grade to sign: " << absForm.getGradeToSign() << "\n"
     << "Grade to execute: " << absForm.getGradeToExecute();
     return out;
