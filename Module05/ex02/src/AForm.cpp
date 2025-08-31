@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:18:16 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 14:50:57 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/31 15:37:14 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,16 @@ int AForm::getGradeToExecute(void) const
     return this->_gradeToExecute;
 }
 
+void AForm::setSignature(bool status)
+{
+    this->_isSigned = status;
+}
+
+const std::string &AForm::getTarget(void) const
+{
+    return this->_target;
+}
+
 const char* AForm::GradeTooHighException::what() const throw()
 {
     return "Grade is too high. Must be between 1 and 150.";
@@ -98,11 +108,6 @@ const char* AForm::FormAlreadySignedException::what() const throw()
     return "Form is already signed!";
 }
 
-void AForm::setSignature(bool status)
-{
-    this->_isSigned = status;
-}
-
 bool AForm::beSigned(Bureaucrat &bureaucrat)
 {
     if (this->getSignature())
@@ -115,17 +120,18 @@ bool AForm::beSigned(Bureaucrat &bureaucrat)
     return true;
 }
 
-const std::string &AForm::getTarget(void) const
-{
-    return this->_target;
-}
-
 void AForm::requirementsController(const Bureaucrat &bureaucrat) const
 {
     if (!this->getSignature())
         throw AForm::FormNotSignedException();
     if (bureaucrat.getGrade() > this->getGradeToExecute())
         throw AForm::GradeTooLowException();
+}
+
+void AForm::execute(const Bureaucrat &bureaucrat) const
+{
+    this->requirementsController(bureaucrat);
+    action(bureaucrat);
 }
 
 std::ostream &operator<<(std::ostream &out, const AForm &absForm)
