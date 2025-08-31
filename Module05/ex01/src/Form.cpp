@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:18:16 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/31 13:26:34 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/31 13:37:54 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,10 @@ bool Form::beSigned(Bureaucrat &bureaucrat)
 
 std::ostream &operator<<(std::ostream &out, const Form &form)
 {
-    out << "Form '" << form.getName()
-        << "', status: " << (form.getSignature() ? "signed" : "not signed")
-        << ", grade to sign: " << form.getGradeToSign()
-        << ", grade to execute: " << form.getGradeToExecute();
+    out << "\n:: AForm '" << form.getName() << "' ::\n"
+    << "Status: "
+    << (form.getSignature() ? "\e[32m signed" : "\e[31m not signed") << "\n\e[0m"
+    << "Grade to sign: " << form.getGradeToSign() << "\n"
+    << "Grade to execute: " << form.getGradeToExecute();
     return out;
 }
