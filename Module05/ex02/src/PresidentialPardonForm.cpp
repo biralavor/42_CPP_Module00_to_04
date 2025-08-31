@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 14:12:37 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/31 16:03:11 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/31 16:18:03 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,15 @@ void PresidentialPardonForm::announcement(void) const
 {
 	std::cout
 	<< this->getTarget()
-	<< " has been pardoned by Zaphod Beeblebrox."
-	<< std::endl;
+	<< "\e[32m" << " has been pardoned by Zaphod Beeblebrox."
+	<< "\e[0m" <<std::endl;
 }
 
 void PresidentialPardonForm::action(Bureaucrat const &executor) const
 {
-	this->announcement();
 	std::cout
 	<< "\e[34m" << executor.getName()
-	<< "\e[32m just successfully run the form \e[34m"
+	<< "\e[32m is running the form \e[36m"
 	<< this->getType() << "\e[0m" <<std::endl;
+	this->announcement();
 }
