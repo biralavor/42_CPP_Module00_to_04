@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:57:24 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/23 22:13:12 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/31 13:45:42 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,54 @@ const std::string BLUE = "\e[34m";
 
 int main(void)
 {
-    std::cout << YELLOW << "#1 Bureaucrat and Form VALID tests"
+    std::cout << YELLOW
+    << "#1 Bureaucrat and Form VALID test"
     << RESET << std::endl;
-    
     try
     {
-        Bureaucrat bureaucrat("John", 42);
+        Bureaucrat bureaucrat("Odin", 42);
         Form form("Form A", 50, 100);
+        
+        std::cout << bureaucrat << std::endl;
+        std::cout << form << std::endl;
         bureaucrat.signForm(form);
+        std::cout << form << std::endl;
     }
     catch (const std::exception &e) {
         std::cerr
         << RED << e.what() << '\n' << RESET;
     }
 
-    std::cout << YELLOW << "\n#2 GradeTooLow for Signing Forms tests"
+    std::cout << YELLOW
+    << "\n#2 VALID Bureaucrat with Too High Form Grade test"
     << RESET << std::endl;
     try
     {
-        Bureaucrat bureaucrat("John", 42);
-        Form form("Form B", 30, 60);
+        Bureaucrat bureaucrat("Aphrodite", 42);
+        Form form("Form A", 40, 100);
+        
+        std::cout << bureaucrat << std::endl;
+        std::cout << form << std::endl;
         bureaucrat.signForm(form);
+        std::cout << form << std::endl;
+    }
+    catch (const std::exception &e) {
+        std::cerr
+        << RED << e.what() << '\n' << RESET;
+    }
+
+    std::cout << YELLOW
+    << "\n#3 INVALID Bureaucrat (GradeTooLow) for Signing Forms test"
+    << RESET << std::endl;
+    try
+    {
+        Bureaucrat bureaucrat("Thor", 42);
+        Form form("Form B", 30, 60);
+
+        std::cout << bureaucrat << std::endl;
+        std::cout << form << std::endl;
+        bureaucrat.signForm(form);
+        std::cout << form << std::endl;
     }
     catch(const std::exception& e)
     {
@@ -49,13 +76,18 @@ int main(void)
         << RED << e.what() << '\n' << RESET;
     }
     
-    std::cout << YELLOW << "\n#3 GradeTooHigh for Signing Forms tests"
+    std::cout << YELLOW
+    << "\n#4 INVALID Bureaucrat (GradeTooHigh) for Signing Forms test"
     << RESET << std::endl;
     try
     {
-        Bureaucrat bureaucrat("John", 0);
+        Bureaucrat bureaucrat("Zeus", 0);
         Form form("Form C", 30, 60);
+        
+        std::cout << bureaucrat << std::endl;
+        std::cout << form << std::endl;
         bureaucrat.signForm(form);
+        std::cout << form << std::endl;
     }
     catch(const std::exception &e)
     {
@@ -63,5 +95,4 @@ int main(void)
         << RED << e.what() << '\n' << RESET;
     }
     return 0;
-
 }
