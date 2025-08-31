@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 10:43:08 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/28 15:15:40 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/31 17:53:23 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,7 +217,7 @@ int main(void)
 	}
 
 	std::cout << "\e[33m"
-	<< "\n#6 ----- TESTING INTERN CLASS THAT TRY TO MAKE INVALID FORMS -----"
+	<< "\n#7 ----- TESTING INTERN CLASS THAT TRY TO MAKE INVALID FORMS -----"
 	<< "\e[0m" << std::endl;
 	try
 	{
