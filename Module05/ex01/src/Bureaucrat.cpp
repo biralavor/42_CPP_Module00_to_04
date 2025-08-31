@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 14:59:45 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/25 13:50:24 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/31 13:25:44 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@
 Bureaucrat::Bureaucrat(void)
     : _name("Default"), _grade(LOWEST_GRADE)
 {
-    std::cout << "Bureaucrat default constructor called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string name, int grade)
     : _name(name)
 {
-    std::cout << "Bureaucrat parameterized constructor called" << std::endl;
     if (grade < HIGHEST_GRADE)
         throw Bureaucrat::GradeTooHighException();
     if (grade > LOWEST_GRADE)
@@ -32,28 +30,18 @@ Bureaucrat::Bureaucrat(const std::string name, int grade)
 
 Bureaucrat::~Bureaucrat(void)
 {
-    std::cout
-    << "Bureaucrat destructor for "
-    << _name << " called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &src)
     : _name(src._name)
 {
-    std::cout
-    << "Bureaucrat copy constructor called for: "
-    << _name << std::endl;
     *this = src;
 }
 
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &rightSide)
 {
-    std::cout << "Bureaucrat assignment operator called for: "
-    << rightSide.getName() << std::endl;
     if (this != &rightSide)
     {
-        // _name is const, so it cannot be changed after construction.
-        // Only non-const members can be assigned.
         this->_grade = rightSide.getGrade();
     }
     return *this;

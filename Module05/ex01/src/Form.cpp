@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:18:16 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/25 15:37:47 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/31 13:26:34 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ Form::Form(void)
     _gradeToSign(MIN_GRADE),
     _gradeToExecute(MIN_GRADE)
 {
-    std::cout << "Form default constructor called"
-    << std::endl;
 }
 
 Form::Form(const std::string name, int gradeToSign, int gradeToExecute)
@@ -29,8 +27,6 @@ Form::Form(const std::string name, int gradeToSign, int gradeToExecute)
     _gradeToSign(gradeToSign),
     _gradeToExecute(gradeToExecute)
 {
-    std::cout << "Form parameterized constructor called"
-    << std::endl;
     if (gradeToSign < MAX_GRADE || gradeToExecute < MAX_GRADE)
         throw GradeTooHighException();
     if (gradeToSign > MIN_GRADE || gradeToExecute > MIN_GRADE)
@@ -39,7 +35,6 @@ Form::Form(const std::string name, int gradeToSign, int gradeToExecute)
 
 Form::~Form(void)
 {
-    std::cout << "Form destructor called" << std::endl;
 }
 
 Form::Form(Form const &src)
@@ -48,14 +43,10 @@ Form::Form(Form const &src)
     _gradeToSign(src.getGradeToSign()),
     _gradeToExecute(src.getGradeToExecute())
 {
-    std::cout << "Form copy constructor called for: "
-    << _name << std::endl;
 }
 
 Form &Form::operator=(Form const &rightSide)
 {
-    std::cout << "Form assignment operator called for: "
-    << rightSide.getName() << std::endl;
     if (this != &rightSide)
     {
         this->_isSigned = rightSide.getSignature();
