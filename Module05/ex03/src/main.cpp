@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 10:43:08 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 15:12:39 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/28 15:15:40 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int main(void)
 {
@@ -184,5 +185,56 @@ int main(void)
 	{
 		std::cerr << "\e[31m" << err.what() << "\e[0m" << std::endl;
 	}
+
+	std::cout << "\e[33m"
+	<< "\n#6 ----- TESTING INTERN CLASS THAT MAKES FORMS -----"
+	<< "\e[0m" << std::endl;
+	try
+	{
+		Bureaucrat boss("Boss", 1);
+		Intern intern;
+		
+		std::cout << boss << std::endl;
+		
+		AForm *rrf = intern.makeForm("Robotomy Request", "Bender");
+		boss.signForm(*rrf);
+		boss.executeForm(*rrf);
+		delete rrf;
+
+		AForm *scf = intern.makeForm("Shrubbery Creation", "Home");
+		boss.signForm(*scf);
+		boss.executeForm(*scf);
+		delete scf;
+
+		AForm *ppf = intern.makeForm("Presidential Pardon", "President");
+		boss.signForm(*ppf);
+		boss.executeForm(*ppf);
+		delete ppf;
+	}
+	catch (const std::exception &err)
+	{
+		std::cerr << "\e[31m" << err.what() << "\e[0m" << std::endl;
+	}
+
+	std::cout << "\e[33m"
+	<< "\n#6 ----- TESTING INTERN CLASS THAT TRY TO MAKE INVALID FORMS -----"
+	<< "\e[0m" << std::endl;
+	try
+	{
+		Bureaucrat boss("Boss", 1);
+		Intern intern;
+		
+		std::cout << boss << std::endl;
+		
+		AForm *invalidForm28B = intern.makeForm("invalidForm28B", "Moulinette");
+		boss.signForm(*invalidForm28B);
+		boss.executeForm(*invalidForm28B);
+		delete invalidForm28B;
+	}
+	catch (const std::exception &err)
+	{
+		std::cerr << "\e[31m" << err.what() << "\e[0m" << std::endl;
+	}
+	std::cout << std::endl;
 	return 0;
 }
