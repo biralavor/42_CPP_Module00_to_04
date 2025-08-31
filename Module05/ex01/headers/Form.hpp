@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 17:20:15 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/25 15:36:25 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/31 14:27:28 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ public:
             virtual const char *what() const throw();
     };
     class GradeTooLowException : public std::exception
+    {
+        public:
+            virtual const char *what() const throw();
+    };
+    class AlreadySignedForm : public std::exception
     {
         public:
             virtual const char *what() const throw();
