@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 15:14:59 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/31 16:58:06 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/31 17:33:28 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,24 +81,17 @@ AForm *Intern::createPresidentialForm(const std::string target) const
 AForm *Intern::makeForm(const std::string formName, const std::string target) const
 {
 	int formIdx = this->getActualFormIndex(formName);
-	AForm *createForm = NULL;
-	switch (formIdx)
-	{
-		case 0:
-			createForm = this->createShrubberyForm(target);
-			break;
-		case 1:
-			createForm = this->createRobotomyForm(target);
-			break;
-		case 2:
-			createForm = this->createPresidentialForm(target);
-			break;
-		default:
-			break;
-	}
+	AForm *chosenForm = NULL;
+	AForm *(Intern::*makeFormPointer[POSSIBLE_FORMS])
+		(const std::string target) const = {
+			&Intern::createShrubberyForm,
+			&Intern::createRobotomyForm,
+			&Intern::createPresidentialForm
+	};
 	std::cout
 	<< "\e[35m"
 	<< "Intern creates a " << "\e[36m" << formName
 	<< "\e[0m" << std::endl;
-	return createForm;
+	chosenForm = (this->*makeFormPointer[formIdx])(target);
+	return (chosenForm);
 }
