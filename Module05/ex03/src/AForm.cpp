@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:18:16 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/27 14:50:57 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/31 16:29:37 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,10 @@ bool AForm::beSigned(Bureaucrat &bureaucrat)
 {
     if (this->getSignature())
         throw AForm::FormAlreadySignedException();
-    if (bureaucrat.getGrade() > this->_gradeToSign)
-    {
+    else if (bureaucrat.getGrade() > this->_gradeToSign)
         throw AForm::GradeTooLowException();
-    }
-    this->setSignature(true);
+    else
+        this->setSignature(true);
     return true;
 }
 
@@ -126,6 +125,12 @@ void AForm::requirementsController(const Bureaucrat &bureaucrat) const
         throw AForm::FormNotSignedException();
     if (bureaucrat.getGrade() > this->getGradeToExecute())
         throw AForm::GradeTooLowException();
+}
+
+void AForm::execute(const Bureaucrat &bureaucrat) const
+{
+    this->requirementsController(bureaucrat);
+    action(bureaucrat);
 }
 
 std::ostream &operator<<(std::ostream &out, const AForm &absForm)
