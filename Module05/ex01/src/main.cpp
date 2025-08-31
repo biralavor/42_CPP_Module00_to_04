@@ -6,7 +6,7 @@
 /*   By: umeneses <umeneses@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:57:24 by umeneses          #+#    #+#             */
-/*   Updated: 2025/08/31 14:32:13 by umeneses         ###   ########.fr       */
+/*   Updated: 2025/08/31 14:38:48 by umeneses         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int main(void)
         << RED << e.what() << '\n' << RESET;
     }
     std::cout << YELLOW
-    << "\n#3 INVALID Bureaucrat (GradeTooLow) for Signing Forms test"
+    << "\n#4 INVALID Bureaucrat (GradeTooLow) for Signing Forms test"
     << RESET << std::endl;
     try
     {
@@ -98,7 +98,7 @@ int main(void)
     }
     
     std::cout << YELLOW
-    << "\n#4 INVALID Bureaucrat (GradeTooHigh) for Signing Forms test"
+    << "\n#5 INVALID Bureaucrat (GradeTooHigh) for Signing Forms test"
     << RESET << std::endl;
     try
     {
