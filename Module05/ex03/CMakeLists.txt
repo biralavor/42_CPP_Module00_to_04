@@ -14,7 +14,7 @@ target_include_directories(Intern_lib PUBLIC
 	${CMAKE_CURRENT_SOURCE_DIR}/headers
 )
 
-add_executable(intern
+add_executable(intern-coffee-making
 	src/main.cpp
 )
 
